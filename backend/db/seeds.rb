@@ -3,7 +3,7 @@
         username: Faker::Internet.username,
         first_name: Faker::Name.unique.first_name,
         last_name: Faker::Name.unique.last_name,
-        email: Faker::Internet.unique.email,
+        email: Faker::TvShows::SiliconValley.email,
         password_digest: Faker::Lorem.characters(number: 10, min_alpha: 4),
         bio: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
         avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['face']),
@@ -45,5 +45,13 @@ end
         description: Faker::Lorem.paragraph_by_chars(number: 300, supplemental: false),
         image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['sports', 'fitness', 'nature']),
         type: "text" || "image" || "video" || "link" || "livestream" || "audio" || "poll",
+    )
+end
+
+20.times do
+    Comment.create(
+        text: Faker::Quotes::Shakespeare.hamlet_quote,
+        user: User.find(Random.rand(20)+1),
+        post: Post.find(Random.rand(20)+1),
     )
 end
