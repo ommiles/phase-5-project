@@ -24,3 +24,13 @@ end
         banner: Faker::LoremPixel.image(size: "1900x600"),
     )
 end
+
+20.times do
+    Membership_level.create(
+        cost: rand(20...100),
+        title: Faker::IndustrySegments.industry,
+        img_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['sports', 'fitness', 'nature']),
+        creator: Creator.find(Random.rand(20)+1),
+        type: "block_list" || "allow_list",
+    )
+end
