@@ -6,8 +6,21 @@
         email: Faker::Internet.unique.email,
         password_digest: Faker::Lorem.characters(number: 10, min_alpha: 4),
         bio: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
-        avatar: Faker::LoremPixel.unique.image,
+        avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['face']),
         latitude: Faker::Address.latitude,
         longitude: Faker::Address.longitude,
+    )
+end
+
+20.times do
+    Creator.create(
+        first_name: Faker::Name.unique.first_name,
+        last_name: Faker::Name.unique.last_name,
+        page_name: Faker::Company.catch_phrase,
+        avatar: Faker::LoremFlickr.image(size: "300x300", search_terms: ['face']),
+        bio: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
+        bio_video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        bio_image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['face']),
+        banner: Faker::LoremPixel.image(size: "1900x600"),
     )
 end
