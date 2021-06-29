@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  cost: 1
-  title: MyString
-  img_url: MyString
+  user: one
+  membership_level: one
   creator: one
-  type: 
+  subscription_status: false
 
 two:
-  cost: 1
-  title: MyString
-  img_url: MyString
+  user: two
+  membership_level: two
   creator: two
-  type: 
+  subscription_status: false

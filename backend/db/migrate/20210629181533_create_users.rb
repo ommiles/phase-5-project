@@ -10,6 +10,11 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :avatar
       t.float :latitude
       t.float :longitude
+      t.string :bio_video
+      t.string :bio_image
+      t.string :banner
+      t.string :page_name
+      t.boolean :is_creator
 
       t.timestamps
     end

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :creator
-  belongs_to :membership_level
+  belongs_to :subscription
+  has_many :comments
 end
