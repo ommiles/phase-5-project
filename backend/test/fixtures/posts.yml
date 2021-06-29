@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creator: one
+  title: MyString
+  header: MyString
+  subheader: MyString
+  description: MyText
+  image: MyString
+  type: 
+  membership_level: one
+
+two:
+  creator: two
+  title: MyString
+  header: MyString
+  subheader: MyString
+  description: MyText
+  image: MyString
+  type: 
+  membership_level: two

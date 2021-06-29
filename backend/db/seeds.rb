@@ -34,3 +34,16 @@ end
         type: "block_list" || "allow_list",
     )
 end
+
+20.times do
+    Post.create(
+        creator: Creator.find(Random.rand(20)+1),
+        membership_level: Membership_level.find(Random.rand(20)+1),
+        title: Faker::IndustrySegments.industry,
+        header: Faker::IndustrySegments.sector,
+        subheader: Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false),
+        description: Faker::Lorem.paragraph_by_chars(number: 300, supplemental: false),
+        image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['sports', 'fitness', 'nature']),
+        type: "text" || "image" || "video" || "link" || "livestream" || "audio" || "poll",
+    )
+end

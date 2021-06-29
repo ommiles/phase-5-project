@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :membership_levels
   resources :creators
   resources :users
