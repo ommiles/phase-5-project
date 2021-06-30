@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_183430) do
+ActiveRecord::Schema.define(version: 2021_06_30_204212) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment_content"
@@ -23,13 +23,14 @@ ActiveRecord::Schema.define(version: 2021_06_30_183430) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "type"
+    t.string "post_type"
     t.string "image"
     t.string "title"
     t.string "header"
     t.text "description"
     t.string "subheader"
     t.integer "membership_level"
+    t.string "listing"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,7 +38,6 @@ ActiveRecord::Schema.define(version: 2021_06_30_183430) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.string "type"
     t.integer "cost"
     t.string "title"
     t.string "img_url"
