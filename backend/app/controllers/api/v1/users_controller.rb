@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :login, :set_user]
+    before_action :set_user, only: [:show, :update, :destroy]
+    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user]
 
     def index
         users = User.all
@@ -7,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def show
-        render json: user
+        render json: @user
     end
 
     def create
@@ -22,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def destroy
-        user.destroy
+        @user.destroy
     end
 
     def login
