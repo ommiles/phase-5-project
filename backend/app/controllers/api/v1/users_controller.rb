@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy]
-    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user]
+    before_action :set_user, only: [:update, :destroy]
+    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user, :user_params]
 
     def index
         users = User.all
@@ -8,18 +8,22 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def show
-        render json: @user
+        user = User.find_by(params[:id])
+        render json: user
     end
 
     def create
         user = User.new(user_params)
         # puts user
-        if user .save
+        if user.save
             token = encode_token({ user_id: user.id })
             render json: { user: UserSerializer.new(user), jwt: token }
         else
             render json: { error: user.errors }, status: :unauthorized
         end
+    end
+
+    def update
     end
 
     def destroy
