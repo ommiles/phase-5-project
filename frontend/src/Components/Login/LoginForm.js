@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { fetchLogin } from "../../Actions/loginAction";
-// import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function LoginForm(props) {
   // START_LOGIN_REQUEST
-  // UPDATE_USERNAME
-  // UPDATE_PASSWORD
   // ERROR_MESSAGE
   // LOGIN_USER
 
-//   const username = useSelector((state) => state.username);
-//   const password = useSelector((state) => state.password);
+  //   const username = useSelector((state) => state.username);
+  //   const password = useSelector((state) => state.password);
+  console.log(props);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
@@ -19,26 +17,24 @@ export default function LoginForm(props) {
 
   const handleChange = (e) => {
     if (e.target.name === "username") {
-        setUsername(e.target.value)
-    //   dispatch({ type: "UPDATE_USERNAME", payload: e.target.value });
+      setUsername(e.target.value);
     }
     if (e.target.name === "password") {
-        setPassword(e.target.value)
-    //   dispatch({ type: "UPDATE_PASSWORD", payload: e.target.value });
+      setPassword(e.target.value);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(fetchLogin({ username, password }))
-    console.log({ username, password })
-    // setUsername("");
-    // setPassword("");
-    // dispatch({ type: "START_LOGIN_REQUEST" });
+    dispatch(fetchLogin({ username, password }));
+    // dispatch(getProfileFetch());
+    console.log({ username, password });
+    props.history.push(`/${username}`)
   };
 
   return (
     <div>
+      
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>

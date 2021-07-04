@@ -1,7 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import LoginForm from "../../Components/Login/LoginForm";
 
-export default function LoginContainer(props) {
+function LoginContainer(props) {
   return (
     <div>
       <LoginForm
@@ -12,3 +13,5 @@ export default function LoginContainer(props) {
     </div>
   );
 }
+
+export default withRouter(LoginContainer)

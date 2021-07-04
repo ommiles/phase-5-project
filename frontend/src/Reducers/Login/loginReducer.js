@@ -10,8 +10,8 @@ const initialState = {
   currentUser: {},
   requesting: false,
   error: false,
-  // username: "",
-  // password: "",
+  username: "",
+  password: "",
 };
 
 export default function loginReducer(state = initialState, action) {

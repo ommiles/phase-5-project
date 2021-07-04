@@ -2,19 +2,16 @@
 // ERROR_MESSAGE
 // LOGIN_USER
 
-export const fetchLogin = (username, password) => {
+export const fetchLogin = ({username, password}) => {
   console.log("hello there");
   return (dispatch) => {
     dispatch({ type: "START_LOGIN_REQUEST" });
     fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
-      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // username: username,
-        // password: password,
         username,
         password,
       }),
@@ -25,7 +22,6 @@ export const fetchLogin = (username, password) => {
           throw resp;
         }
         return resp.json();
-        // return resp.json();
       })
       .then((data) => {
         console.log(data);
@@ -40,9 +36,6 @@ export const fetchLogin = (username, password) => {
           dispatch({ type: "LOGIN_USER", user });
         }
       });
-    // .catch((error){
-    //   console.log('Request failed', error);
-    // });
   };
 };
 
@@ -50,7 +43,7 @@ export const fetchLogin = (username, password) => {
 //   return (dispatch) => {
 //     const token = localStorage.token;
 //     if (token) {
-//       return fetch("http://localhost:3000/api/v1/users/1", {
+//       return fetch("http://localhost:3000/api/v1/:username", {
 //         method: "GET",
 //         headers: {
 //           "Content-Type": "application/json",
