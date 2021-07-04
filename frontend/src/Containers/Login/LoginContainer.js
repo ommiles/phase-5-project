@@ -5,13 +5,9 @@ import LoginForm from "../../Components/Login/LoginForm";
 function LoginContainer(props) {
   return (
     <div>
-      <LoginForm
-        error={props.error}
-        history={props.history}
-        // fetchLogin={props.fetchLogin}
-      />
+      <LoginForm error={props.error} history={props.history} />
     </div>
   );
 }
 
-export default withRouter(LoginContainer)
+export default withRouter(LoginContainer);

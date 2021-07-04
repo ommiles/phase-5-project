@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { fetchLogin } from "../../Actions/loginAction";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import TestButton from "../TestButton";
 
 export default function LoginForm(props) {
-  // START_LOGIN_REQUEST
-  // ERROR_MESSAGE
-  // LOGIN_USER
 
-  //   const username = useSelector((state) => state.username);
-  //   const password = useSelector((state) => state.password);
   console.log(props);
   const dispatch = useDispatch();
 
@@ -29,12 +25,11 @@ export default function LoginForm(props) {
     dispatch(fetchLogin({ username, password }));
     // dispatch(getProfileFetch());
     console.log({ username, password });
-    props.history.push(`/${username}`)
+    props.history.push(`/${username}`);
   };
 
   return (
     <div>
-      
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>
@@ -56,7 +51,7 @@ export default function LoginForm(props) {
         </div>
         <input type="submit" value="Login" />
       </form>
-      {/* {this.props.error ? <p>Invalid username or password</p> : null} */}
+      <TestButton />
     </div>
   );
 }

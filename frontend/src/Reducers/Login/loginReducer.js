@@ -1,9 +1,3 @@
-// START_LOGIN_REQUEST
-// UPDATE_USERNAME
-// UPDATE_PASSWORD
-// ERROR_MESSAGE
-// LOGIN_USER
-
 console.log(loginReducer.getState);
 
 const initialState = {
@@ -30,7 +24,12 @@ export default function loginReducer(state = initialState, action) {
         requesting: false,
       };
     case "LOGIN_USER":
-      return { ...state, currentUser: action.user, error: false, requesting: false };
+      return {
+        ...state,
+        currentUser: action.user,
+        error: false,
+        requesting: false,
+      };
     default:
       return state;
   }

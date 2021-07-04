@@ -1,14 +1,13 @@
-import React from 'react'
-import TestButton from './TestButton'
-import { useRouteMatch, withRouter } from "react-router-dom";
+import React from "react";
+import TestButton from "./TestButton";
+import HomeButton from "./HomeButton";
 
-export default function TestPage() {
-    // let match = useRouteMatch("/testpage");
-
-    return (
-        <div>
-            <TestButton />
-            <h1>This is the TestPage Component.</h1>
-        </div>
-    )
+export default function TestPage({ history }) {
+  return (
+    <div>
+      <TestButton />
+      <HomeButton />
+      <h1>This is the TestPage Component.</h1>
+    </div>
+  );
 }

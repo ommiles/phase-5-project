@@ -1,7 +1,3 @@
-// START_LOGIN_REQUEST
-// ERROR_MESSAGE
-// LOGIN_USER
-
 export const fetchLogin = ({username, password}) => {
   console.log("hello there");
   return (dispatch) => {
