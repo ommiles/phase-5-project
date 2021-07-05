@@ -6,7 +6,7 @@ function PostsContainer(props) {
   const username = props.match.params.username;
   const capitalizedUsername =
     username.charAt(0).toUpperCase() + username.slice(1);
-  console.log(props);
+
   return (
     <div>
       <h1>This is the Posts Container.</h1>

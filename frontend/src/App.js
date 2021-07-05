@@ -15,40 +15,36 @@ import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/ProfilePage";
 import Post from "./Components/Post/Post";
 import LoginContainer from "./Containers/Login/LoginContainer";
-import { fetchPosts }from "./Actions/postsAction";
-import { fetchUsers }from "./Actions/usersAction";
+import { fetchPosts } from "./Actions/postsAction";
+import { fetchUsers } from "./Actions/usersAction";
 import { getProfileFetch } from "./Actions/loginAction";
 
 function App(props) {
   console.log(props);
-  
+
   let history = useHistory();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(getProfileFetch())
-    dispatch(fetchPosts())
-    dispatch(fetchUsers())
+    dispatch(getProfileFetch());
+    dispatch(fetchPosts());
+    dispatch(fetchUsers());
     // fetch("http://localhost:3000/api/v1/posts")
     //   .then((resp) => resp.json())
     //   .then(console.log)
-  },[]);
-  
+  }, []);
+
   const posts = useSelector((state) => state.post.posts);
   // const users = useSelector((state) => state.users.users);
   const login_error = useSelector((state) => state.login.error);
 
   const handleLogin = () => (
-    <LoginContainer
-      error={login_error}
-      history={history}
-      // fetchLogin={fetchLogin}
-    />
+    <LoginContainer error={login_error} history={history} />
   );
 
   const handleUser = () => <ProfilePage />;
-  const handlePosts = () => <PostsContainer posts={posts} creator={props.match.params.username} />
-  const handlePost = () => <Post />
+  const handlePosts = () => <PostsContainer posts={posts} />;
+  const handlePost = () => <Post />;
 
   return (
     <div>

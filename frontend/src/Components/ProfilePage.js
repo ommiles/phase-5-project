@@ -6,16 +6,8 @@ import TestButton from "./TestButton";
 import { useSelector } from "react-redux";
 
 function ProfilePage(props) {
-  // console.log(props);
   const url_username = props.match.params.username;
   const users = useSelector((state) => state.users.users);
-  // const user = users.find( ({ username }) => username === `${url_username}`);
-  // const user = users.find( user => user.username === `${url_username}`);
-  // const user = users.map(user => user.username === url_username)
-
-  // console.log(users);
-  // console.log(url_username);
-  // console.log(user);
 
   return (
     <div>
