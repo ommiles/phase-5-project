@@ -3,34 +3,43 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import HomeButton from "./HomeButton";
 import TestButton from "./TestButton";
-import { useSelector } from "react-redux";
 
 function ProfilePage(props) {
   const url_username = props.match.params.username;
-  const users = useSelector((state) => state.users.users);
+  // search through users array and if current user .is_creator true, render this, else, render that
+  console.log(props);
 
   return (
     <div>
       <HomeButton />
       <TestButton />
       <h1>Hi! This is the Profile Page Component.</h1>
-      {users
+      {props.users
         .filter((user) => user.username === url_username)
-        .map((user, index) => (
-          <div key={index}>
-            <h2>Welcome to {user.username}'s profile 👋</h2>
-            {user.is_creator ? (
-              <h3>I am a creator. </h3>
-            ) : (
-              <h3>I am not a creator.</h3>
-            )}
-            <h4>My id is: {user.id}</h4>
-            <h5>My bio is: {user.bio}</h5>
-            <h6>Username: {user.username}</h6>
-            <img src={user.avatar} alt="profile"></img>
-            <img src={user.banner} alt="profile"></img>
-          </div>
-        ))}
+        .map((user, index) =>
+          user.is_creator ? (
+            <div key={index}>
+              <h2>Welcome to {user.username}'s profile 👋</h2>
+              {user.is_creator ? (
+                <h3>I am a creator. </h3>
+              ) : (
+                <h3>I am not a creator.</h3>
+              )}
+              <h4>My id is: {user.id}</h4>
+              <h5>My bio is: {user.bio}</h5>
+              <h6>Username: {user.username}</h6>
+              <img src={user.avatar} alt="profile"></img>
+              <img src={user.banner} alt="profile"></img>
+            </div>
+          ) : (
+            <div key={index}>
+              This is falsey AKA {user.username} is not a creator.
+              <h4>My id is: {user.id}</h4>
+              <h5>My bio is: {user.bio}</h5>
+              <h6>Username: {user.username}</h6>
+            </div>
+          )
+        )}
     </div>
   );
 }

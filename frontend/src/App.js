@@ -33,7 +33,7 @@ function App(props) {
     //   .then(console.log)
   }, []);
 
-  // const users = useSelector((state) => state.users.users);
+  const users = useSelector((state) => state.users.users);
   const posts = useSelector((state) => state.post.posts);
   const comments = useSelector((state) => state.comment.comments);
   const login_error = useSelector((state) => state.login.error);
@@ -42,7 +42,7 @@ function App(props) {
     <LoginContainer error={login_error} history={history} />
   );
 
-  const handleUser = () => <ProfilePage />;
+  const handleUser = () => <ProfilePage users={users} />;
   const handlePosts = () => (
     <PostsContainer posts={posts} comments={comments} />
   );
