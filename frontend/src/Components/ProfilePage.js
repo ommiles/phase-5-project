@@ -16,16 +16,16 @@ function ProfilePage(props) {
       <h1>Hi! This is the Profile Page Component.</h1>
       {users
         .filter((user) => user.username === url_username)
-        .map((user) => (
-          <div>
+        .map((user, index) => (
+          <div key={index}>
             <h2>Welcome to {user.username}'s profile 👋</h2>
             {user.is_creator ? (
               <h3>I am a creator. </h3>
             ) : (
               <h3>I am not a creator.</h3>
             )}
-            <h3>My id is: {user.id}</h3>
-            <h6>My bio is: {user.bio}</h6>
+            <h4>My id is: {user.id}</h4>
+            <h5>My bio is: {user.bio}</h5>
             <h6>Username: {user.username}</h6>
             <img src={user.avatar} alt="profile"></img>
             <img src={user.banner} alt="profile"></img>

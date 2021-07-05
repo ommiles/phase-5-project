@@ -1,7 +1,6 @@
 export const fetchLogin = ({ username, password }) => {
-  console.log("hello there");
   return (dispatch) => {
-    dispatch({ type: "START_LOGIN_REQUEST" });
+    dispatch({ type: "FETCH_LOGIN_REQUEST" });
     fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
       headers: {
@@ -13,26 +12,22 @@ export const fetchLogin = ({ username, password }) => {
       }),
     })
       .then((resp) => {
-        console.log(resp);
         if (!resp.ok) {
           throw resp;
         }
         return resp.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.message === "Incorrect Username or Password") {
           // localStorage.removeItem("token");
           localStorage.removeItem("jwt");
-          console.log(data);
-          dispatch({ type: "ERROR_MESSAGE" });
+          dispatch({ type: "FETCH_LOGIN_FAILURE" });
         } else {
           // localStorage.setItem("token", data.token);
           // localStorage.setItem("jwt", data.token);
-          localStorage.setItem('jwt', data.jwt)
+          localStorage.setItem("jwt", data.jwt);
           let user = data.user;
-          console.log(data);
-          dispatch({ type: "LOGIN_USER", user });
+          dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
         }
       });
   };
@@ -40,7 +35,7 @@ export const fetchLogin = ({ username, password }) => {
 
 export const getProfileFetch = () => {
   return (dispatch) => {
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem("jwt");
     if (token) {
       return fetch("http://localhost:3000/api/v1/set_user", {
         method: "GET",
@@ -57,9 +52,8 @@ export const getProfileFetch = () => {
           if (data.message) {
             localStorage.removeItem("jwt");
           } else {
-            // console.log(data)
             let user = data;
-            dispatch({ type: "LOGIN_USER", user });
+            dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }
         });
     }

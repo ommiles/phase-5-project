@@ -33,6 +33,8 @@ class Api::V1::SubscriptionsController < ApplicationController
         @subscription.destroy
     end
 
+    private
+
     def set_subscription
         @subscription = Subscription.find(params[:id])
     end

@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import TestButton from "../TestButton";
 
 export default function LoginForm(props) {
-
-  console.log(props);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
@@ -23,7 +21,6 @@ export default function LoginForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchLogin({ username, password }));
-    // dispatch(getProfileFetch());
     console.log({ username, password });
     props.history.push(`/${username}`);
   };

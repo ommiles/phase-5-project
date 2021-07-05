@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-// import commentReducer from "./Comment/commentReducer";
+import commentReducer from "./Comment/commentReducer";
 import loginReducer from "./Login/loginReducer";
 // import logoutReducer from "./Logout/logoutReducer";
 import postsReducer from "./Posts/postsReducer";
@@ -7,7 +7,7 @@ import postsReducer from "./Posts/postsReducer";
 import usersReducer from "./Users/usersReducer";
 
 const rootReducer = combineReducers({
-  // comment: commentReducer,
+  comment: commentReducer,
   login: loginReducer,
   // logout: logoutReducer,
   post: postsReducer,

@@ -8,24 +8,24 @@ const initialState = {
 
 export default function loginReducer(state = initialState, action) {
   switch (action.type) {
-    case "START_LOGIN_REQUEST":
+    case "FETCH_LOGIN_REQUEST":
       return {
         ...state,
         requesting: true,
         // username:,
         // password:,
       };
-    case "ERROR_MESSAGE":
-      return {
-        ...state,
-        error: true,
-        requesting: false,
-      };
-    case "LOGIN_USER":
+    case "FETCH_LOGIN_SUCCESS":
       return {
         ...state,
         currentUser: action.user,
         error: false,
+        requesting: false,
+      };
+    case "FETCH_LOGIN_FAILURE":
+      return {
+        ...state,
+        error: true,
         requesting: false,
       };
     default:

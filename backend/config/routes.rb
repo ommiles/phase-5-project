@@ -9,10 +9,9 @@ Rails.application.routes.draw do
       post '/login', to: 'users#login'
       post '/create', to: 'users#create'
       # the users#show action works with or without the below route:
-      # post '/users/:id', to: 'users#show'
+      post '/posts/:id', to: 'posts#show'
       get '/:username', to: 'users#show'
       get '/set_user', to: 'users#set_user'
-      # get '/:username/posts', to: 'users#posts'
     end
   end
 end
