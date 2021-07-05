@@ -1,5 +1,3 @@
-console.log(loginReducer.getState);
-
 const initialState = {
   currentUser: {},
   requesting: false,

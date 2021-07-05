@@ -2,17 +2,17 @@ import { combineReducers } from "redux";
 // import commentReducer from "./Comment/commentReducer";
 import loginReducer from "./Login/loginReducer";
 // import logoutReducer from "./Logout/logoutReducer";
-// import postReducer from "./Post/postReducer";
+import postsReducer from "./Posts/postsReducer";
 // import subscriptionReducer from "./Subscription/subscriptionReducer";
-// import userReducer from "./User/userReducer";
+import usersReducer from "./Users/usersReducer";
 
 const rootReducer = combineReducers({
   // comment: commentReducer,
   login: loginReducer,
   // logout: logoutReducer,
-  // post: postReducer,
+  post: postsReducer,
   // subscription: subscriptionReducer,
-  // user: userReducer,
+  users: usersReducer,
 });
 
 // shape of state:

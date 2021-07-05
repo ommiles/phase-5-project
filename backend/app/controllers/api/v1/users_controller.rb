@@ -44,10 +44,10 @@ class Api::V1::UsersController < ApplicationController
 
     def set_user
         user = User.find(decoded_token["user_id"])
-        # puts user
         if user
             render json: {user: UserSerializer.new(user)}, status: :accepted
         end
+        # render json: {user: UserSerializer.new(current_user)}, status: :accepted
     end
 
     def user_params
@@ -68,5 +68,12 @@ class Api::V1::UsersController < ApplicationController
             :page_name,
             :is_creator,
         )
+    end
+
+    def user_posts
+        user = User.find(params[:user_id])
+        posts = user.posts
+        
+        render json: posts
     end
 end
