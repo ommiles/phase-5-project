@@ -6,6 +6,10 @@ import TestButton from "./TestButton";
 
 function ProfilePage(props) {
   const url_username = props.match.params.username;
+  const memberships = props.subscriptions.filter(
+    (subscription) => subscription.subscribee.username === url_username
+  );
+  console.log(memberships);
   console.log(props);
 
   return (

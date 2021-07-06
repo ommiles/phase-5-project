@@ -4,8 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :post_type
       t.string :image
       t.string :title
-      t.string :header
-      t.text :description
+      t.string :post_content
       t.string :subheader
       t.integer :membership_level
       t.string :listing

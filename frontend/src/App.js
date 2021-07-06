@@ -48,7 +48,9 @@ function App() {
     <LoginContainer error={login_error} history={history} />
   );
 
-  const handleUser = () => <ProfilePage users={users} />;
+  const handleUser = () => (
+    <ProfilePage users={users} subscriptions={subscriptions} />
+  );
   const handlePosts = () => (
     <PostsContainer
       posts={posts}

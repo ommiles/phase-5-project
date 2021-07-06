@@ -9,8 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.text :bio
       t.string :avatar
       t.float :latitude
-      t.string :longitude
-      t.string :float
+      t.float :longitude
       t.string :bio_video
       t.string :bio_image
       t.string :banner

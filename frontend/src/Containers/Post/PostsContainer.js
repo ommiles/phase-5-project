@@ -11,9 +11,6 @@ function PostsContainer(props) {
   let userId = useSelector((state) => state.login.currentUser.id);
   let capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
 
-  // FINAL VERSION OF THIS VARIABLE WILL BE:
-  // let subscription = props.subscriptions.find((subscription) => subscription.subscribee_id === userId);
-
   let subscription = props.subscriptions.find((subscription) => subscription.subscribee_id === userId && subscription.subscriber.username === props.match.params.username);
   console.log(subscription)
 
