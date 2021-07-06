@@ -5,41 +5,33 @@ import Post from "../../Components/Post/Post";
 import { useSelector } from "react-redux";
 
 function PostsContainer(props) {
-  // For a post to be "visible"
-  // the post's membership_level must be equal to
-  // the membership_level of all subscriptions whose
-  // subscribee_id === state.login.currentUser.id
-
+  console.log(props)
+  let id = parseInt(props.match.params.id);
+  let username = props.match.params.username;
   let userId = useSelector((state) => state.login.currentUser.id);
+  let capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
 
-  // filteredArr returns the posts that the logged in user has access to
-  let allowedPosts = props.subscriptions.filter(
-    (subscription) => subscription.subscribee_id === userId
-  );
+  // FINAL VERSION OF THIS VARIABLE WILL BE:
+  // let subscription = props.subscriptions.find((subscription) => subscription.subscribee_id === userId);
 
-  console.log(useSelector((state) => state.login.currentUser.id));
-  console.log(props.subscriptions);
-  // console.log(filteredArr);
+  let subscription = props.subscriptions.find((subscription) => subscription.subscribee_id === userId && subscription.subscriber.username === props.match.params.username);
+  console.log(subscription)
 
   if (props.match.path === "/:username/posts") {
-    const username = props.match.params.username;
-    const capitalizedUsername =
-      username.charAt(0).toUpperCase() + username.slice(1);
     return (
       <div>
         <h1>This is the Posts Container.</h1>
         <h2>Currently viewing: {capitalizedUsername}</h2>
         {props.posts
           .filter((post) => post.user.username === username)
-          .map((post) => (
-            <PostsList post={post} key={post.id} allowedPosts={allowedPosts} />
-          ))}
+          .map((post) => 
+          <PostsList post={post} key={post.id} allowed={subscription !== undefined && subscription.subscribee_id === userId && post.membership_level <= subscription.membership_level ? true : false}  />
+          )}
       </div>
     );
   }
 
   if (props.match.path === "/posts/:id") {
-    const id = parseInt(props.match.params.id);
     return (
       <div>
         {props.posts
