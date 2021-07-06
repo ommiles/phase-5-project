@@ -3,15 +3,15 @@ import commentReducer from "./Comment/commentReducer";
 import loginReducer from "./Login/loginReducer";
 // import logoutReducer from "./Logout/logoutReducer";
 import postsReducer from "./Posts/postsReducer";
-// import subscriptionReducer from "./Subscription/subscriptionReducer";
+import subscriptionsReducer from "./Subscription/subscriptionReducer";
 import usersReducer from "./Users/usersReducer";
 
 const rootReducer = combineReducers({
-  comment: commentReducer,
+  comments: commentReducer,
   login: loginReducer,
   // logout: logoutReducer,
-  post: postsReducer,
-  // subscription: subscriptionReducer,
+  posts: postsReducer,
+  subscriptions: subscriptionsReducer,
   users: usersReducer,
 });
 

@@ -6,7 +6,6 @@ import TestButton from "./TestButton";
 
 function ProfilePage(props) {
   const url_username = props.match.params.username;
-  // search through users array and if current user .is_creator true, render this, else, render that
   console.log(props);
 
   return (

@@ -17,9 +17,10 @@ import LoginContainer from "./Containers/Login/LoginContainer";
 import { fetchPosts } from "./Actions/postsAction";
 import { fetchUsers } from "./Actions/usersAction";
 import { fetchComments } from "./Actions/commentsAction";
+import { fetchSubscriptions } from "./Actions/subscriptionsAction";
 import { getProfileFetch } from "./Actions/loginAction";
 
-function App(props) {
+function App() {
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -28,14 +29,19 @@ function App(props) {
     dispatch(fetchPosts());
     dispatch(fetchUsers());
     dispatch(fetchComments());
+    dispatch(fetchSubscriptions());
     // fetch("http://localhost:3000/api/v1/posts")
     //   .then((resp) => resp.json())
     //   .then(console.log)
   }, []);
 
   const users = useSelector((state) => state.users.users);
-  const posts = useSelector((state) => state.post.posts);
-  const comments = useSelector((state) => state.comment.comments);
+  const posts = useSelector((state) => state.posts.posts);
+  const comments = useSelector((state) => state.comments.comments);
+  const subscriptions = useSelector(
+    (state) => state.subscriptions.subscriptions
+  );
+  console.log(subscriptions);
   const login_error = useSelector((state) => state.login.error);
 
   const handleLogin = () => (
@@ -44,7 +50,11 @@ function App(props) {
 
   const handleUser = () => <ProfilePage users={users} />;
   const handlePosts = () => (
-    <PostsContainer posts={posts} comments={comments} />
+    <PostsContainer
+      posts={posts}
+      comments={comments}
+      subscriptions={subscriptions}
+    />
   );
 
   return (

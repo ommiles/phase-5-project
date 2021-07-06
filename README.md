@@ -1,13 +1,10 @@
 # Phase 5 Project Todo's:
 
-## Sunday, July 4, 2021:
+<h2>To-do List:</h2>
 
--If the user is a creator, render ComponentA
+    -Render Creator Page: List of subscribees 
 
--ComponentA has membership levels listed and a button to purchase
+    -Function that sorts through array of subscription objects in the PostsList component
 
--If the user is NOT a creator, render ComponentB
+    -Add Button on Creator page: clicking on a locked post leads to a sign up page if not logged in (currentUser is empty)
 
--ComponentB has membership levels displayed + a bio image / video 
-
--Clicking on a locked post leads to a sign up page if not logged in (currentUser is empty)
