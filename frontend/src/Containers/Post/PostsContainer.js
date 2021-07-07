@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 function PostsContainer(props) {
   const userId = useSelector((state) => state.login.currentUser.id);
-
   const usersRequest = useSelector((state) => state.users.loading);
   const postsRequest = useSelector((state) => state.posts.loading);
   const commentsRequest = useSelector((state) => state.comments.loading);

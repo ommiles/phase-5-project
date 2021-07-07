@@ -20,12 +20,12 @@ export const fetchLogin = ({ username, password }) => {
       .then((data) => {
         if (data.message === "Incorrect Username or Password") {
           // localStorage.removeItem("token");
-          localStorage.removeItem("jwt");
+          localStorage.removeItem("token");
           dispatch({ type: "FETCH_LOGIN_FAILURE" });
         } else {
-          // localStorage.setItem("token", data.token);
+          localStorage.setItem("token", data.jwt);
           // localStorage.setItem("jwt", data.token);
-          localStorage.setItem("jwt", data.jwt);
+          // localStorage.setItem("jwt", data.jwt);
           let user = data.user;
           dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
         }
@@ -35,7 +35,7 @@ export const fetchLogin = ({ username, password }) => {
 
 export const getProfileFetch = () => {
   return (dispatch) => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("token");
     if (token) {
       return fetch("http://localhost:3000/api/v1/set_user", {
         method: "GET",
@@ -50,7 +50,7 @@ export const getProfileFetch = () => {
         })
         .then((data) => {
           if (data.message) {
-            localStorage.removeItem("jwt");
+            localStorage.removeItem("token");
           } else {
             let user = data;
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });

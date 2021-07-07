@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import commentReducer from "./Comment/commentReducer";
 import loginReducer from "./Login/loginReducer";
 // import logoutReducer from "./Logout/logoutReducer";
+import signupReducer from "./Signup/signupReducer";
 import postsReducer from "./Posts/postsReducer";
 import subscriptionsReducer from "./Subscription/subscriptionReducer";
 import usersReducer from "./Users/usersReducer";
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   login: loginReducer,
   // logout: logoutReducer,
+  signup: signupReducer,
   posts: postsReducer,
   subscriptions: subscriptionsReducer,
   users: usersReducer,

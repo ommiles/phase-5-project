@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :set_user, only: [:update, :destroy]
-    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user, :user_params]
+    before_action :set_user, only: [:update]
+    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user, :user_params, :destroy]
 
     def index
         users = User.all
@@ -10,11 +10,11 @@ class Api::V1::UsersController < ApplicationController
     def show
         user = User.find_by(params[:id])
         render json: user
+        # render json: current_user
     end
 
     def create
         user = User.new(user_params)
-        # puts user
         if user.save
             token = encode_token({ user_id: user.id })
             render json: { user: UserSerializer.new(user), jwt: token }
@@ -23,11 +23,20 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
-    def update
-    end
+    # def update
+    #     @user = User.find(params[:id])
+    #     @user.update(edit_params)
+    #     if @user.valid?
+    #         @token = encode_token({ user_id: @user.id })
+    #         render json: { user: UserSerializer.new(@user), jwt: @token}
+    #     else
+    #         render json: { error: 'failed to edit user' }, status: :not_acceptable
+    #     end
+    # end
 
     def destroy
-        @user.destroy
+        user = User.find(params[:id])
+        user.destroy
     end
 
     def login
@@ -36,14 +45,15 @@ class Api::V1::UsersController < ApplicationController
             token = encode_token(user_id: user.id)
             render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
         else
-            render json: {error: "Incorrect username or password"}, status: :unauthorized
+            render json: {error: "Incorrect Username or password"}, status: :unauthorized
         end
     end
 
     private
 
     def set_user
-        user = User.find(decoded_token["user_id"])
+        # user = User.find(decoded_token["user_id"])
+        user = User.find(params[:id])
         if user
             render json: {user: UserSerializer.new(user)}, status: :accepted
         end
@@ -55,6 +65,7 @@ class Api::V1::UsersController < ApplicationController
             :username, 
             :email, 
             :password,
+            :password_confirmation,
             :first_name,
             :last_name,
             :bio,
@@ -69,10 +80,7 @@ class Api::V1::UsersController < ApplicationController
         )
     end
 
-    def user_posts
-        user = User.find(params[:user_id])
-        posts = user.posts
-        
-        render json: posts
-    end
+    # def edit_params
+    #     params.require(:user).permit(:username, :bio, :avatar, :banner)
+    # end
 end

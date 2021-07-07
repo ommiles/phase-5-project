@@ -14,6 +14,7 @@ import TestPage from "./Components/TestPage";
 import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/ProfilePage";
 import LoginContainer from "./Containers/Login/LoginContainer";
+import SignupContainer from "./Containers/Signup/SignupContainer";
 import { fetchPosts } from "./Actions/postsAction";
 import { fetchUsers } from "./Actions/usersAction";
 import { fetchComments } from "./Actions/commentsAction";
@@ -41,10 +42,11 @@ function App() {
   const subscriptions = useSelector(
     (state) => state.subscriptions.subscriptions
   );
-  console.log(users);
-  console.log(posts);
-  console.log(comments);
-  console.log(subscriptions);
+  const currentUser = useSelector((state) => state.login.currentUser);
+  // console.log(users);
+  // console.log(posts);
+  // console.log(comments);
+  // console.log(subscriptions);
   const login_error = useSelector((state) => state.login.error);
 
   const handleLogin = () => (
@@ -52,7 +54,11 @@ function App() {
   );
 
   const handleUser = () => (
-    <ProfilePage users={users} subscriptions={subscriptions} />
+    <ProfilePage
+      users={users}
+      subscriptions={subscriptions}
+      currentUser={currentUser}
+    />
   );
 
   const handlePosts = () => (
@@ -63,18 +69,22 @@ function App() {
     />
   );
 
-    return (
-      <div>
-        <Route path="/" exact component={handleLogin} />
-        <Switch>
-          <Route exact path="/testpage" component={TestPage} />
-          <Route path={`/:username`} exact component={handleUser} />
-          <Route path={`/:username/posts`} exact component={handlePosts} />
-          <Route path={`/posts/:id`} exact component={handlePosts} />
-        </Switch>
-        {/* <Redirect from="/accounts" to="/" /> */}
-      </div>
-    );
+  const handleSignup = () => <SignupContainer />;
+
+  return (
+    <div>
+      <Route path="/" exact component={handleLogin} />
+      <Switch>
+        <Route exact path="/testpage" component={TestPage} />
+        <Route exact path="/signup" component={handleSignup} />
+        {/* <Route exact path="/checkout" component={handleCheckout} /> */}
+        <Route exact path={`/:username`} component={handleUser} />
+        <Route exact path={`/:username/posts`} component={handlePosts} />
+        <Route exact path={`/posts/:id`} component={handlePosts} />
+      </Switch>
+      {/* <Redirect from="/accounts" to="/" /> */}
+    </div>
+  );
 }
 
 export default withRouter(App);
