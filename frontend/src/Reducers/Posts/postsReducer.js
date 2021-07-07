@@ -1,6 +1,6 @@
 const initialState = {
   posts: [],
-  requesting: false,
+  loading: false,
   error: false,
 };
 

@@ -1,9 +1,9 @@
 const initialState = {
   currentUser: {},
-  requesting: false,
+  loading: false,
   error: false,
-  username: "",
-  password: "",
+  // username: "",
+  // password: "",
 };
 
 export default function loginReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export default function loginReducer(state = initialState, action) {
     case "FETCH_LOGIN_REQUEST":
       return {
         ...state,
-        requesting: true,
+        loading: true,
         // username:,
         // password:,
       };
@@ -20,13 +20,13 @@ export default function loginReducer(state = initialState, action) {
         ...state,
         currentUser: action.user,
         error: false,
-        requesting: false,
+        loading: false,
       };
     case "FETCH_LOGIN_FAILURE":
       return {
         ...state,
         error: true,
-        requesting: false,
+        loading: false,
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import HomeButton from "./HomeButton";
 import TestButton from "./TestButton";
+import MembershipLevels from "./Subscriptions/MembershipLevels";
 
 function ProfilePage(props) {
   const url_username = props.match.params.username;
@@ -43,6 +44,7 @@ function ProfilePage(props) {
             </div>
           )
         )}
+        <MembershipLevels subscriptions={props.subscriptions} />
     </div>
   );
 }

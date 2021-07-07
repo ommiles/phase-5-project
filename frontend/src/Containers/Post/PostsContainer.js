@@ -5,39 +5,80 @@ import Post from "../../Components/Post/Post";
 import { useSelector } from "react-redux";
 
 function PostsContainer(props) {
-  console.log(props)
-  let id = parseInt(props.match.params.id);
-  let username = props.match.params.username;
-  let userId = useSelector((state) => state.login.currentUser.id);
-  let capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+  const userId = useSelector((state) => state.login.currentUser.id);
 
-  let subscription = props.subscriptions.find((subscription) => subscription.subscribee_id === userId && subscription.subscriber.username === props.match.params.username);
-  console.log(subscription)
+  const usersRequest = useSelector((state) => state.users.loading);
+  const postsRequest = useSelector((state) => state.posts.loading);
+  const commentsRequest = useSelector((state) => state.comments.loading);
+  const subscriptionsRequest = useSelector((state) => state.subscriptions.loading);
 
   if (props.match.path === "/:username/posts") {
-    return (
-      <div>
-        <h1>This is the Posts Container.</h1>
-        <h2>Currently viewing: {capitalizedUsername}</h2>
-        {props.posts
-          .filter((post) => post.user.username === username)
-          .map((post) => 
-          <PostsList post={post} key={post.id} allowed={subscription !== undefined && subscription.subscribee_id === userId && post.membership_level <= subscription.membership_level ? true : false}  />
-          )}
-      </div>
-    );
+    if (
+      postsRequest === true ||
+      commentsRequest === true ||
+      subscriptionsRequest === true ||
+      usersRequest === true
+    ) {
+      return <div>Hold tight while items are being fetched...</div>;
+    } else {
+      const username = props.match.params.username;
+      const capitalizedUsername =
+        username.charAt(0).toUpperCase() + username.slice(1);
+      const subscription = props.subscriptions.find(
+        (subscription) =>
+          subscription.subscribee_id === userId &&
+          subscription.subscriber.username === username
+      );
+
+      return (
+        <div>
+          <h1>This is the Posts Container.</h1>
+          <h2>Currently viewing: {capitalizedUsername}</h2>
+          {props.posts
+            .filter((post) => post.user.username === username)
+            .map((post) => (
+              <PostsList
+                post={post}
+                key={post.id}
+                allowed={
+                  subscription !== undefined &&
+                  subscription.subscribee_id === userId &&
+                  post.membership_level <= subscription.membership_level
+                    ? true
+                    : false
+                }
+              />
+            ))}
+        </div>
+      );
+    }
   }
 
   if (props.match.path === "/posts/:id") {
-    return (
-      <div>
-        {props.posts
-          .filter((post) => post.id === id)
-          .map((post) => (
-            <Post post={post} key={post.id} comments={props.comments} id={id} />
-          ))}
-      </div>
-    );
+    if (
+      postsRequest === true ||
+      commentsRequest === true ||
+      subscriptionsRequest === true ||
+      usersRequest === true
+    ) {
+      return <div>Hold tight while items are being fetched...</div>;
+    } else {
+      const id = parseInt(props.match.params.id);
+      return (
+        <div>
+          {props.posts
+            .filter((post) => post.id === id)
+            .map((post) => (
+              <Post
+                post={post}
+                key={post.id}
+                comments={props.comments}
+                id={id}
+              />
+            ))}
+        </div>
+      );
+    }
   }
 }
 

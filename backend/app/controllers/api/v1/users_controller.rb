@@ -61,7 +61,6 @@ class Api::V1::UsersController < ApplicationController
             :avatar,
             :latitude,
             :longitude,
-            :float,
             :bio_video,
             :bio_image,
             :banner,

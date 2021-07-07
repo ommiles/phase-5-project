@@ -1,6 +1,6 @@
 const initialState = {
   subscriptions: [],
-  requesting: false,
+  loading: false,
   error: false,
 };
 

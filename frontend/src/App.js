@@ -41,6 +41,9 @@ function App() {
   const subscriptions = useSelector(
     (state) => state.subscriptions.subscriptions
   );
+  console.log(users);
+  console.log(posts);
+  console.log(comments);
   console.log(subscriptions);
   const login_error = useSelector((state) => state.login.error);
 
@@ -51,6 +54,7 @@ function App() {
   const handleUser = () => (
     <ProfilePage users={users} subscriptions={subscriptions} />
   );
+
   const handlePosts = () => (
     <PostsContainer
       posts={posts}
@@ -59,18 +63,18 @@ function App() {
     />
   );
 
-  return (
-    <div>
-      <Route path="/" exact component={handleLogin} />
-      <Switch>
-        <Route exact path="/testpage" component={TestPage} />
-        <Route path={`/:username`} exact component={handleUser} />
-        <Route path={`/:username/posts`} exact component={handlePosts} />
-        <Route path={`/posts/:id`} exact component={handlePosts} />
-      </Switch>
-      {/* <Redirect from="/accounts" to="/" /> */}
-    </div>
-  );
+    return (
+      <div>
+        <Route path="/" exact component={handleLogin} />
+        <Switch>
+          <Route exact path="/testpage" component={TestPage} />
+          <Route path={`/:username`} exact component={handleUser} />
+          <Route path={`/:username/posts`} exact component={handlePosts} />
+          <Route path={`/posts/:id`} exact component={handlePosts} />
+        </Switch>
+        {/* <Redirect from="/accounts" to="/" /> */}
+      </div>
+    );
 }
 
 export default withRouter(App);

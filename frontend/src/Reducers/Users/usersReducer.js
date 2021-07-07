@@ -1,6 +1,6 @@
 const initialState = {
   users: [],
-  requesting: false,
+  loading: false,
   error: false,
 };
 

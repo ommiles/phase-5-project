@@ -1,6 +1,6 @@
 const initialState = {
   comments: [],
-  requesting: false,
+  loading: false,
   error: false,
 };
 
