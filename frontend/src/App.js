@@ -47,6 +47,7 @@ function App() {
     (state) => state.subscriptions.subscriptions
   );
   const currentUser = useSelector((state) => state.login.currentUser);
+  console.log(currentUser)
   // console.log(users);
   // console.log(posts);
   // console.log(comments);

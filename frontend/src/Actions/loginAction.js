@@ -53,7 +53,7 @@ export const getProfileFetch = () => {
           if (data.message) {
             localStorage.removeItem("token");
           } else {
-            let user = data.user;
+            let user = data;
             console.log(data)
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }

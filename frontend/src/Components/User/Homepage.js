@@ -3,6 +3,7 @@ import DeleteProfile from "../User/DeleteProfile";
 import EditProfile from "./EditProfile";
 
 export default function Homepage(props) {
+  console.log(props)
   if (Object.keys(props.currentUser).length === 0) {
     return <div>Hold tight while items are being fetched...</div>;
   } else {
