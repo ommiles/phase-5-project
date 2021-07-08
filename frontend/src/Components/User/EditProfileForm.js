@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GoBackButton from "./GoBackButton";
+import GoBackButton from "../GoBackButton";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchUserEdit } from "../../Actions/usersAction";

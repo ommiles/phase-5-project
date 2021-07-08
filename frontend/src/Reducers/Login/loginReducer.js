@@ -12,6 +12,7 @@ export default function loginReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
+        error: false,
         // username:,
         // password:,
       };

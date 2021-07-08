@@ -25,6 +25,13 @@ export default function commentsReducer(state = initialState, action) {
         error: true,
         comments: [],
       };
+    case "FETCH_COMMENT_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        comments: [...state.comments, action.comment]
+      };
     default:
       return state;
   }

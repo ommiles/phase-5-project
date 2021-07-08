@@ -13,6 +13,8 @@ export const fetchLogin = ({ username, password }) => {
     })
       .then((resp) => {
         if (!resp.ok) {
+          // TODO: HOW TO HANDLE 401 UNAUTHORIZED REROUTE OR ALERT?
+          // resp.status === 401
           throw resp;
         }
         return resp.json();
@@ -27,6 +29,7 @@ export const fetchLogin = ({ username, password }) => {
           // localStorage.setItem("jwt", data.token);
           // localStorage.setItem("jwt", data.jwt);
           let user = data.user;
+          console.log(user)
           dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
         }
       });
@@ -36,8 +39,9 @@ export const fetchLogin = ({ username, password }) => {
 export const getProfileFetch = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
+    // const token = localStorage.token;
     if (token) {
-      return fetch("http://localhost:3000/api/v1/set_user", {
+      return fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -48,11 +52,13 @@ export const getProfileFetch = () => {
         .then((resp) => {
           return resp.json();
         })
+        // .then(console.log)
         .then((data) => {
           if (data.message) {
             localStorage.removeItem("token");
           } else {
-            let user = data;
+            let user = data.user;
+            console.log(data)
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }
         });

@@ -1,10 +1,10 @@
 class Api::V1::UsersController < ApplicationController
     # before_action :set_user, only: [:update]
-    before_action :authorized, only: [:profile]
-    skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user, :user_params, :destroy]
+    before_action :authorized, only: [:profile, :update]
+    skip_before_action :authorized, only: [:index, :show, :create, :login, :destroy]
 
     def profile
-        render json: { user: UserSerializer.new(current_user) }
+        render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
     
     def index
@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             token = encode_token({ user_id: user.id })
-            render json: { user: UserSerializer.new(user), jwt: token }
+            render json: { user: UserSerializer.new(user), jwt: token }, status: :accepted
         else
             render json: { error: user.errors }, status: :unauthorized
         end
