@@ -9,10 +9,6 @@ import Step3 from "./Step3";
 export default function SignupForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  //   const currentStep = useSelector((state) => state.signup.currentStep);
-  //   const email = useSelector((state) => state.signup.email);
-  //   const username = useSelector((state) => state.signup.username);
-  //   const password = useSelector((state) => state.signup.password);
 
   const [currentStep, setCurrentStep] = useState(1);
   const [username, setUsername] = useState("");
@@ -36,7 +32,6 @@ export default function SignupForm() {
         is_creator,
       })
     );
-    // history.push(`/${username}`);
     history.push("/home");
     alert(`Your new account details: \n 
              Email: ${email} \n 
@@ -45,9 +40,9 @@ export default function SignupForm() {
   };
 
   const handleChange = (e) => {
-    // const { name, value } = e.target;
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
+    // const name = e.target.name;
+    // const value = e.target.value;
     // console.log({ name, value });
     console.log(name);
     console.log(value);

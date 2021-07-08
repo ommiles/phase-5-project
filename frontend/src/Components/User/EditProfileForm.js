@@ -17,9 +17,10 @@ export default function EditProfileForm(props) {
   const [last_name, setLastName] = useState("");
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(
-          fetchUserEdit({
+    e.preventDefault();
+    dispatch(
+      fetchUserEdit({
+        //   TODO: HOW TO HANDLE  EMPTY FIELDS ""
         //   username === "" ? setUsername(props.currentUser.username) : null;
         id,
         username,
@@ -45,6 +46,7 @@ export default function EditProfileForm(props) {
       case "email":
         setEmail(e.target.value);
         break;
+      // TODO: HOW TO EDIT PASSWORD?
       // case "password":
       //   setPassword(e.target.value);
       //   break;
