@@ -16,15 +16,16 @@ export default function CommentsList(props) {
     // save comment content (textarea input)
     history.push(`/posts/${props.id}/comment`);
   };
+
   return (
     <div>
       <h1>Here are the comments!</h1>
       {props.comments
         .filter((comment) => comment.post.id === props.id)
         .map((comment) => (
-          <Comment comment={comment} key={comment.id} />
+          <Comment comment={comment} key={comment.id} currentUser={currentUser} />
         ))}
-        {Object.keys(currentUser).length === 0 ? null : (
+      {Object.keys(currentUser).length === 0 ? null : (
         <button onClick={handleAddComment}>Add Comment</button>
       )}
     </div>
