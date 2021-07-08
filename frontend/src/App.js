@@ -74,7 +74,7 @@ function App() {
     />
   );
 
-  const handleSignup = () => <SignupContainer />;
+  const handleSignup = () => <SignupContainer currentUser={currentUser} />;
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
   const handleHomepage = () => <Homepage currentUser={currentUser} />;
   // checkout needs a currentUser in state
