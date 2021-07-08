@@ -111,6 +111,7 @@ export default function SignupForm() {
   return (
     <div>
       <h1>React Wizard Form 🧙‍♂️</h1>
+      {/* Form from https://css-tricks.com/the-magic-of-react-based-multi-step-forms/ */}
       <p>Step {currentStep} </p>
 
       <form onSubmit={handleSubmit}>

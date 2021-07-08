@@ -27,6 +27,7 @@ export const fetchLogin = ({ username, password }) => {
           // localStorage.setItem("jwt", data.token);
           // localStorage.setItem("jwt", data.jwt);
           let user = data.user;
+          console.log(user)
           dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
         }
       });
@@ -37,7 +38,7 @@ export const getProfileFetch = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
     if (token) {
-      return fetch("http://localhost:3000/api/v1/set_user", {
+      return fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +53,8 @@ export const getProfileFetch = () => {
           if (data.message) {
             localStorage.removeItem("token");
           } else {
-            let user = data;
+            let user = data.user;
+            console.log(data)
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }
         });
