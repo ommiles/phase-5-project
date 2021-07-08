@@ -18,7 +18,7 @@ import SignupContainer from "./Containers/Signup/SignupContainer";
 import CheckoutContainer from "./Containers/Checkout/CheckoutContainer";
 import Homepage from "./Components/User/Homepage";
 import EditProfileForm from "./Components/User/EditProfileForm";
-import CommentForm from "./Components/Comments/CommentForm";
+import CommentFormContainer from "./Containers/Comment/CommentFormContainer"
 import { fetchPosts } from "./Actions/postsAction";
 import { fetchUsers } from "./Actions/usersAction";
 import { fetchComments } from "./Actions/commentsAction";
@@ -80,7 +80,8 @@ function App() {
   // checkout needs a currentUser in state
   // pass is the cost,
   const handleCheckout = () => <CheckoutContainer />;
-  const handleAddComment = () => <CommentForm id={history} />;
+  const handleAddComment = () => <CommentFormContainer id={history} />;
+  const handleEditComment = () => <CommentFormContainer id={history} />;
   return (
     <div>
       <Route path="/" exact component={handleLogin} />
@@ -94,6 +95,7 @@ function App() {
         <Route exact path={`/:username/edit`} component={handleProfileEdit} />
         <Route exact path={`/posts/:id`} component={handlePosts} />
         <Route exact path={`/posts/:id/comment`} component={handleAddComment} />
+        <Route exact path={`/posts/:id/edit_comment`} component={handleEditComment} />
       </Switch>
       {/* <Redirect from="/accounts" to="/" /> */}
     </div>

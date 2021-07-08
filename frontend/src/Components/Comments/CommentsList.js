@@ -23,10 +23,16 @@ export default function CommentsList(props) {
       {props.comments
         .filter((comment) => comment.post.id === props.id)
         .map((comment) => (
-          <Comment comment={comment} key={comment.id} currentUser={currentUser} />
+          <Comment
+            comment={comment}
+            key={comment.id}
+            currentUser={currentUser}
+          />
         ))}
       {Object.keys(currentUser).length === 0 ? null : (
-        <button onClick={handleAddComment}>Add Comment</button>
+        <div>
+          <button onClick={handleAddComment}>Add Comment</button>
+        </div>
       )}
     </div>
   );

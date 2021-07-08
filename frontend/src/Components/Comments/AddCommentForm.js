@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import GoBackButton from "../GoBackButton";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router";
+import GoBackButton from "../GoBackButton";
 import { fetchAddComment } from "../../Actions/commentsAction";
 
-function CommentForm(props) {
+export default function AddCommentForm(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user_id = useSelector((state) => state.login.currentUser.id);
-  const post_id = props.match.params.id;
+  const post_id = props.post_id;
   //   console.log(history);
   //   console.log(user_id);
   //   console.log(post_id);
@@ -23,13 +25,12 @@ function CommentForm(props) {
         comment_content,
       })
     );
-    props.history.push(`/posts/${post_id}`);
+    history.push(`/posts/${post_id}`);
   };
 
   const handleChange = (e) => {
     setCommentContent(e.target.value);
   };
-
   return (
     <div>
       <p>Not ready to share your comment?</p>
@@ -54,5 +55,3 @@ function CommentForm(props) {
     </div>
   );
 }
-
-export default withRouter(CommentForm);
