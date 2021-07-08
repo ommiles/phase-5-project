@@ -30,3 +30,19 @@ export const fetchAddComment = (comment) => {
       .then((comment) => dispatch({ type: "FETCH_COMMENT_SUCCESS", comment }));
   };
 };
+
+export const deleteComment = (comment_id) => {
+  return (dispatch) => {
+    dispatch({ type: "START_COMMENTS_REQUEST" });
+    fetch(`http://localhost:3000/api/v1/comments/${comment_id}`, {
+      method: "DELETE",
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: "DELETE_COMMENT_SUCCESS", comment_id });
+      });
+  };
+};
