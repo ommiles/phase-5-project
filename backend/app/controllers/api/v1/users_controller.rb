@@ -1,7 +1,12 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :set_user, only: [:update]
+    # before_action :set_user, only: [:update]
+    before_action :authorized, only: [:profile]
     skip_before_action :authorized, only: [:index, :show, :create, :login, :set_user, :user_params, :destroy]
 
+    def profile
+        render json: { user: UserSerializer.new(current_user) }
+    end
+    
     def index
         users = User.all
         render json: users
@@ -23,16 +28,16 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
-    # def update
-    #     @user = User.find(params[:id])
-    #     @user.update(edit_params)
-    #     if @user.valid?
-    #         @token = encode_token({ user_id: @user.id })
-    #         render json: { user: UserSerializer.new(@user), jwt: @token}
-    #     else
-    #         render json: { error: 'failed to edit user' }, status: :not_acceptable
-    #     end
-    # end
+    def update
+        user = User.find(params[:id])
+        user.update(edit_params)
+        if user.valid?
+            token = encode_token({ user_id: user.id })
+            render json: { user: UserSerializer.new(user), jwt: token}
+        else
+            render json: { error: 'failed to edit user' }, status: :not_acceptable
+        end
+    end
 
     def destroy
         user = User.find(params[:id])
@@ -50,15 +55,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     private
-
-    def set_user
-        # user = User.find(decoded_token["user_id"])
-        user = User.find(params[:id])
-        if user
-            render json: {user: UserSerializer.new(user)}, status: :accepted
-        end
-        # render json: {user: UserSerializer.new(current_user)}, status: :accepted
-    end
 
     def user_params
         params.permit(
@@ -80,7 +76,8 @@ class Api::V1::UsersController < ApplicationController
         )
     end
 
-    # def edit_params
-    #     params.require(:user).permit(:username, :bio, :avatar, :banner)
-    # end
+    # TODO: WHY IS USERNAME NOT UPDATING?
+    def edit_params
+        params.require(:user).permit(:username, :email, :first_name, :last_name)
+    end
 end

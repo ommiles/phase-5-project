@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchSignup } from "../../Actions/signupAction";
 import Step1 from "./Step1";
@@ -36,7 +36,8 @@ export default function SignupForm() {
         is_creator,
       })
     );
-    history.push(`/${username}`);
+    // history.push(`/${username}`);
+    history.push("/home");
     alert(`Your new account details: \n 
              Email: ${email} \n 
              Username: ${username} \n

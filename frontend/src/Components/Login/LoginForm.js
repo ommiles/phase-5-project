@@ -40,7 +40,7 @@ export default function LoginForm(props) {
         <div>
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             onChange={handleChange}
             value={password}

@@ -15,6 +15,8 @@ import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/ProfilePage";
 import LoginContainer from "./Containers/Login/LoginContainer";
 import SignupContainer from "./Containers/Signup/SignupContainer";
+import Homepage from "./Components/User/Homepage";
+import EditProfileForm from './Components/User/EditProfileForm'
 import { fetchPosts } from "./Actions/postsAction";
 import { fetchUsers } from "./Actions/usersAction";
 import { fetchComments } from "./Actions/commentsAction";
@@ -70,6 +72,8 @@ function App() {
   );
 
   const handleSignup = () => <SignupContainer />;
+  const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
+  const handleHomepage = () => <Homepage currentUser={currentUser} />;
 
   return (
     <div>
@@ -78,8 +82,10 @@ function App() {
         <Route exact path="/testpage" component={TestPage} />
         <Route exact path="/signup" component={handleSignup} />
         {/* <Route exact path="/checkout" component={handleCheckout} /> */}
+        <Route exact path={`/home`} component={handleHomepage} />
         <Route exact path={`/:username`} component={handleUser} />
         <Route exact path={`/:username/posts`} component={handlePosts} />
+        <Route exact path={`/:username/edit`} component={handleProfileEdit} />
         <Route exact path={`/posts/:id`} component={handlePosts} />
       </Switch>
       {/* <Redirect from="/accounts" to="/" /> */}

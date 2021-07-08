@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       # the users#show action works with or without the below route:
       post '/posts/:id', to: 'posts#show'
       get '/:username', to: 'users#show'
-      get '/set_user', to: 'users#set_user'
+      get '/profile', to: 'users#profile'
     end
   end
 end

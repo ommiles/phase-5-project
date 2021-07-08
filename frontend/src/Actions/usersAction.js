@@ -7,6 +7,35 @@ export const fetchUsers = () => {
   };
 };
 
+export const fetchUserEdit = (user) => {
+  console.log(user);
+  return (dispatch) => {
+    const token = localStorage.token;
+    if (token) {
+      return fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: user.name,
+          email: user.email,
+          first_name: user.first_name,
+          last_name: user.last_name,
+        }),
+      })
+        .then((resp) => {
+          return resp.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  };
+};
+
 export const deleteUser = (userId) => {
   return (dispatch) => {
     dispatch({ type: "FETCH_USER_REQUEST" });

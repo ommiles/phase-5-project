@@ -42,6 +42,7 @@ export const fetchSignup = (info) => {
         //   localStorage.setItem("jwt", data.jwt);
           let user = data.user;
           dispatch({ type: "FETCH_SIGNUP_SUCCESS", user });
+          dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           localStorage.setItem("token", data.jwt);
         }
       });
