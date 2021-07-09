@@ -24,6 +24,8 @@ export const fetchUserEdit = (user) => {
           email: user.email,
           first_name: user.first_name,
           last_name: user.last_name,
+          // password: user.password,
+          // password_confirmation: user.password_confirmation,
         }),
       })
         .then((resp) => {

@@ -11,7 +11,7 @@ export default function Homepage(props) {
 
   const handleLogout = () => {
     dispatch(logout());
-    history.pust("/")
+    history.push("/")
   };
 
   if (Object.keys(props.currentUser).length === 0) {
