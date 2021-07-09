@@ -62,3 +62,11 @@ export const getProfileFetch = () => {
     }
   };
 };
+
+export const logout = () => {
+  return(dispatch) => {
+    // const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    dispatch({ type: "LOGOUT_REQUEST" })
+  }
+}

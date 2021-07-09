@@ -12,12 +12,6 @@ export default function usersReducer(state = initialState, action) {
         loading: true,
         error: null,
       };
-    case "FETCH_USER_REQUEST":
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
     case "FETCH_USERS_SUCCESS":
       return {
         ...state,
@@ -30,6 +24,12 @@ export default function usersReducer(state = initialState, action) {
         loading: false,
         error: true,
         users: [],
+      };
+    case "FETCH_USER_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: null,
       };
     case "FETCH_USER_FAILURE":
       return {

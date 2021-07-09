@@ -29,6 +29,12 @@ export default function loginReducer(state = initialState, action) {
         error: true,
         loading: false,
       };
+    case "LOGOUT_REQUEST":
+      return {
+        currentUser: {},
+        error: false,
+        loading: false,
+      };
     default:
       return state;
   }
