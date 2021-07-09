@@ -32,6 +32,23 @@ export default function commentsReducer(state = initialState, action) {
         error: false,
         comments: [...state.comments, action.comment],
       };
+    case "EDIT_COMMENT_SUCCESS":
+      if (state.comments.findIndex) {
+        let index = state.comments.findIndex(
+          (comment) => comment.id === action.comment.id
+        );
+        return {
+          comments: [
+            ...state.comments.slice(0, index),
+            action.comment,
+            ...state.comments.slice(index + 1),
+          ],
+          loading: false,
+          error: false,
+        };
+      } else {
+        return { ...state, loading: false, error: false };
+      }
     case "DELETE_COMMENT_SUCCESS":
       if (state.comments.findIndex) {
         let index = state.comments.findIndex(

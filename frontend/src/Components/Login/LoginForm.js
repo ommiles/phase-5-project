@@ -21,8 +21,7 @@ export default function LoginForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchLogin({ username, password }));
-    console.log({ username, password });
-    // props.history.push(`/${username}`);
+
     // TODO: HOW TO HANDLE 401 UNAUTHORIZED REROUTE OR ALERT?
     props.history.push("/home");
   };

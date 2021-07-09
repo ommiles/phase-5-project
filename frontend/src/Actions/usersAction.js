@@ -20,7 +20,7 @@ export const fetchUserEdit = (user) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          name: user.name,
+          username: user.username,
           email: user.email,
           first_name: user.first_name,
           last_name: user.last_name,

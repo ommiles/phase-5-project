@@ -21,7 +21,7 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def update
-        if @comment.update(comment_params)
+        if @comment.update(edit_params)
             render json: @comment
         else
             render json: {error: @comment.errors}, status: :unprocessable_entity
@@ -30,6 +30,7 @@ class Api::V1::CommentsController < ApplicationController
 
     def destroy
         @comment.destroy
+        render json: @comment
     end
 
     private
@@ -41,5 +42,10 @@ class Api::V1::CommentsController < ApplicationController
     def comment_params
         # How to incorporate the timestamps into 
         params.require(:comment).permit(:user_id, :post_id, :comment_content)
+    end
+    
+    def edit_params
+        # How to incorporate the timestamps into 
+        params.require(:comment).permit(:comment_content)
     end
 end

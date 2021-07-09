@@ -7,14 +7,14 @@ export default function Comment(props) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // TODO: COMMENT IS DELETING FROM THE RENDER, NOT THE DB!
   const handleDelete = () => {
     dispatch(deleteComment(props.comment.id));
   };
 
   const handleEditComment = () => {
-    history.push(`/posts/${props.comment.post.id}/edit_comment`);
+    history.push(`/comments/${props.comment.id}/edit`)
   };
+
   console.log(props);
   return (
     <div style={{ border: "5px solid black", margin: "5px" }}>

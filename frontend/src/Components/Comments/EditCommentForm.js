@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import GoBackButton from "../GoBackButton";
+import { fetchEditComment } from "../../Actions/commentsAction";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 export default function EditCommentForm(props) {
-    console.log(props)
+  console.log(props);
+  const comment_id = props.comment_id;
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [comment_content, setCommentContent] = useState("");
 
-    const handleSubmit = () => {
-        console.log('Submit is firing.')
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      fetchEditComment({
+        comment_id,
+        comment_content,
+      })
+    );
+    history.goBack()
+  };
 
-    const handleChange = () => {
-        console.log('Handle change is firing.')
-    }
+  const handleChange = (e) => {
+    setCommentContent(e.target.value);
+  };
+
   return (
     <div>
       <p>Not ready to change your comment?</p>
@@ -24,7 +39,7 @@ export default function EditCommentForm(props) {
             className="form-control"
             onChange={handleChange}
             // How to make value of current comment
-            // value={comment_content}
+            value={comment_content}
           />
         </div>
         <input

@@ -7,11 +7,12 @@ import EditCommentForm from "../../Components/Comments/EditCommentForm";
 // import { fetchAddComment } from "../../Actions/commentsAction";
 
 function CommentFormContainer(props) {
+  console.log(props)
   if (props.match.path === "/posts/:id/comment") {
     return <AddCommentForm post_id={props.match.params.id} />;
   }
-  if (props.match.path === "/posts/:id/edit_comment") {
-    return <EditCommentForm />;
+  if (props.match.path === "/comments/:id/edit") {
+    return <EditCommentForm comment_id={props.match.params.id} />;
   }
 }
 

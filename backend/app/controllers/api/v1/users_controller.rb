@@ -1,6 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    # before_action :set_user, only: [:update]
-    before_action :authorized, only: [:profile]
+    before_action :authorized, only: [:profile, :update]
     skip_before_action :authorized, only: [:index, :show, :create, :login, :destroy]
 
     def profile
@@ -76,7 +75,6 @@ class Api::V1::UsersController < ApplicationController
         )
     end
 
-    # TODO: WHY IS USERNAME NOT UPDATING?
     def edit_params
         params.require(:user).permit(:username, :email, :first_name, :last_name)
     end

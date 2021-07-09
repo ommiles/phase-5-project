@@ -78,7 +78,7 @@ function App() {
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
   const handleHomepage = () => <Homepage currentUser={currentUser} />;
   // checkout needs a currentUser in state
-  // pass is the cost,
+  // pass in the cost, memebrship_level
   const handleCheckout = () => <CheckoutContainer />;
   const handleAddComment = () => <CommentFormContainer id={history} />;
   const handleEditComment = () => <CommentFormContainer id={history} />;
@@ -95,7 +95,7 @@ function App() {
         <Route exact path={`/:username/edit`} component={handleProfileEdit} />
         <Route exact path={`/posts/:id`} component={handlePosts} />
         <Route exact path={`/posts/:id/comment`} component={handleAddComment} />
-        <Route exact path={`/posts/:id/edit_comment`} component={handleEditComment} />
+        <Route exact path={`/comments/:id/edit`} component={handleEditComment} />
       </Switch>
       {/* <Redirect from="/accounts" to="/" /> */}
     </div>
