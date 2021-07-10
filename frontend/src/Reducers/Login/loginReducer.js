@@ -2,6 +2,7 @@ const initialState = {
   currentUser: {},
   loading: false,
   error: false,
+  token: "",
   // username: "",
   // password: "",
 };
@@ -29,8 +30,22 @@ export default function loginReducer(state = initialState, action) {
         error: true,
         loading: false,
       };
+      case "FETCH_PASSWORD_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+      case "FETCH_PASSWORD_SUCCESS":
+      return {
+        currentUser: action.data.user,
+        token: action.data.jwt,
+        error: false,
+        loading: false,
+      };
     case "LOGOUT_REQUEST":
       return {
+        ...state,
         currentUser: {},
         error: false,
         loading: false,

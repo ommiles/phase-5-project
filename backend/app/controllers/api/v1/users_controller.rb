@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     before_action :authorized, only: [:profile, :update]
-    skip_before_action :authorized, only: [:index, :show, :create, :login, :destroy]
+    skip_before_action :authorized, only: [:index, :show, :create, :login, :password_reset, :destroy]
 
     def profile
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -34,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
             token = encode_token({ user_id: user.id })
             render json: { user: UserSerializer.new(user), jwt: token}
         else
-            render json: { error: 'failed to edit user' }, status: :not_acceptable
+            render json: { error: 'Failed to edit user.' }, status: :not_acceptable
         end
     end
 
@@ -49,7 +49,17 @@ class Api::V1::UsersController < ApplicationController
             token = encode_token(user_id: user.id)
             render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
         else
-            render json: {error: "Incorrect Username or password"}, status: :unauthorized
+            render json: {error: "Incorrect Username or password."}, status: :unauthorized
+        end
+    end
+    
+    def password_reset
+        user = User.find_by(email: params[:email])
+        if user.present?
+            token = encode_token(user_id: user.id)
+            render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
+        else
+            render json: {error: "User not found."}, status: :unauthorized
         end
     end
 
@@ -76,6 +86,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def edit_params
-        params.require(:user).permit(:username, :email, :first_name, :last_name)
+        params.permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
     end
 end

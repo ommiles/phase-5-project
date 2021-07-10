@@ -24,8 +24,6 @@ export const fetchUserEdit = (user) => {
           email: user.email,
           first_name: user.first_name,
           last_name: user.last_name,
-          // password: user.password,
-          // password_confirmation: user.password_confirmation,
         }),
       })
         .then((resp) => {
@@ -35,6 +33,30 @@ export const fetchUserEdit = (user) => {
           console.log(data);
         });
     }
+  };
+};
+
+export const fetchPasswordEdit = (passwordTokenObj) => {
+  console.log(passwordTokenObj);
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/users/${passwordTokenObj.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${passwordTokenObj.token}`,
+      },
+      body: JSON.stringify({
+        password: passwordTokenObj.password,
+        password_confirmation: passwordTokenObj.password_confirmation,
+      }),
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
   };
 };
 

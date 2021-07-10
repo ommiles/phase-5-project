@@ -63,6 +63,38 @@ export const getProfileFetch = () => {
   };
 };
 
+export const getPasswordFetch = (email) => {
+  return (dispatch) => {
+    dispatch({ type: "FETCH_PASSWORD_REQUEST" })
+    return fetch("http://localhost:3000/api/v1/password/reset", {
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+    })
+    .then((resp) => {
+      return resp.json();
+    })
+    // .then(console.log)
+    .then((data) => {
+      if (data.message) {
+        alert("Please try again.")
+      } else {
+        let user = data.user;
+        let token = data.jwt;
+        console.log(data)
+        console.log(user)
+        console.log(token)
+        dispatch({ type: "FETCH_PASSWORD_SUCCESS", data });
+      }
+    });
+  }
+}
+
 export const logout = () => {
   return(dispatch) => {
     // const token = localStorage.getItem("token");

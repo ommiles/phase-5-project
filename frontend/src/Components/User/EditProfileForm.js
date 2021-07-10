@@ -11,8 +11,6 @@ export default function EditProfileForm(props) {
   const id = props.currentUser.id;
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [password_confirmation, setPasswordConfirmation] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
 
@@ -25,8 +23,6 @@ export default function EditProfileForm(props) {
         id,
         username,
         email,
-        // password,
-        // password_confirmation,
         first_name,
         last_name,
       })
@@ -52,13 +48,6 @@ export default function EditProfileForm(props) {
       case "last_name":
         setLastName(e.target.value);
         break;
-      // TODO: HOW TO EDIT PASSWORD?
-      // case "password":
-      //   setPassword(e.target.value);
-      //   break;
-      // case "password_confirmation":
-      //   setPasswordConfirmation(e.target.value);
-      //   break;
       default:
         break;
     }
@@ -108,26 +97,6 @@ export default function EditProfileForm(props) {
             value={last_name}
           />
         </div>
-        {/* <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            name="password"
-            className="form-control"
-            onChange={handleChange}
-            value={password}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password_confirmation">Password Confirmation</label>
-          <input
-            type="text"
-            name="password_confirmation"
-            className="form-control"
-            onChange={handleChange}
-            value={password_confirmation}
-          />
-        </div> */}
         <input
           type="submit"
           className="btn btn-primary"

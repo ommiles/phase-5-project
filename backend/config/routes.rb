@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       # the users#show action works with or without the below route:
       post '/posts/:id', to: 'posts#show'
       get '/:username', to: 'users#show'
+      get '/password/reset', to: 'users#password_reset'
+      post '/password/reset', to: 'users#password_reset'
     end
   end
 end
