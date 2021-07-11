@@ -3,8 +3,6 @@ const initialState = {
   loading: false,
   error: false,
   token: "",
-  // username: "",
-  // password: "",
 };
 
 export default function loginReducer(state = initialState, action) {
@@ -14,8 +12,6 @@ export default function loginReducer(state = initialState, action) {
         ...state,
         loading: true,
         error: false,
-        // username:,
-        // password:,
       };
     case "FETCH_LOGIN_SUCCESS":
       return {
