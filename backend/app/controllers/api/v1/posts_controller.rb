@@ -22,7 +22,7 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def update
-        if @post.update(post_params)
+        if @post.update(edit_params)
             render json: @post
         else
             render json: {error: @post.errors}, status: :unprocessable_entity
@@ -31,6 +31,7 @@ class Api::V1::PostsController < ApplicationController
 
     def destroy
         @post.destroy
+        render json: @post
     end
 
     private
@@ -40,6 +41,10 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def post_params
+        params.require(:post).permit(:user_id, :post_type, :image, :title, :post_content, :subheader, :membership_level, :listing)
+    end
+    
+    def edit_params
         params.require(:post).permit(:user_id, :post_type, :image, :title, :post_content, :subheader, :membership_level, :listing)
     end
 end

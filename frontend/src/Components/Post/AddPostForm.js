@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchAddPost } from "../../Actions/postsAction";
 
-export default function AddPostForm(props) {
-  console.log(props);
+export default function AddPostForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const username = useSelector((state) => state.login.currentUser.username);
@@ -32,7 +31,8 @@ export default function AddPostForm(props) {
         user_id,
       })
     );
-      history.push(`/${username}/posts`);
+    // TODO: Homepage component needs to rerender
+      history.push(`/home`);
   };
 
   const handleChange = (e) => {
@@ -59,9 +59,10 @@ export default function AddPostForm(props) {
             setPostContent(value);
             break;
         case "membership_level":
-            // console.log(typeof value.to_i)
+            // console.log(parseInt(value))
+            // console.log(value.to_i)
             // TODO Number not converting to number
-            setMembershipLevel(value.to_i);
+            setMembershipLevel(parseInt(value));
             break;
         case "listing":
             console.log(value)

@@ -1,15 +1,17 @@
-import React from 'react'
-// import { withRouter } from 'react-router-dom'
-import AddPostForm from '../../Components/Post/AddPostForm'
-import EditPostForm from '../../Components/Post/EditPostForm'
+import React from "react";
+import { withRouter } from "react-router-dom";
+import AddPostForm from "../../Components/Post/AddPostForm";
+import EditPostForm from "../../Components/Post/EditPostForm";
 
-export default function PostFormContainer(props) {
-    console.log(props)
-    return (
-        <div>
-            <h1>Hello, this is the posts form container.</h1>
-            <AddPostForm />
-            <EditPostForm />
-        </div>
-    )
+function PostFormContainer(props) {
+  console.log(props);
+  if (props.match.path === "/:username/add_post") {
+    return <AddPostForm />;
+  }
+  if (props.match.path === "/posts/:id/edit") {
+      console.log(props.match.params)
+    return <EditPostForm post_id={props.match.params.id} />;
+  }
 }
+
+export default withRouter(PostFormContainer);

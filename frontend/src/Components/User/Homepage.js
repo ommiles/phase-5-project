@@ -30,6 +30,16 @@ export default function Homepage(props) {
         <DeleteProfile userId={props.currentUser.id} />
         <button onClick={handleLogout}>Logout</button>
         {props.currentUser.is_creator === true ? <button onClick={handleAddPost}>Add Post</button> : null}
+        <h1>Your Posts:</h1>
+        {/* this can be refactored to include the Post component... */}
+        {props.posts.filter((post) => post.user.id === props.currentUser.id).map((post) => 
+        <div key={post.id}>
+          <h1>{post.title}</h1>
+          <h3><em>{post.post_type}</em></h3>
+          <button onClick={() => history.push(`/posts/${post.id}/edit`)} >Edit Post</button>
+          <button>Delete Post</button>
+        </div>
+        )}
       </div>
     );
   }

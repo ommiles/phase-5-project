@@ -94,16 +94,16 @@ function App(props) {
 
   const handleSignup = () => <SignupContainer currentUser={currentUser} />;
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
-  const handleHomepage = () => <Homepage currentUser={currentUser} />;
+  const handleHomepage = () => <Homepage currentUser={currentUser} posts={posts} />;
   // checkout needs a currentUser in state
   // pass in the cost, memebrship_level
   const handleCheckout = () => <CheckoutContainer />;
-  const handleAddComment = () => <CommentFormContainer id={history} />;
-  const handleEditComment = () => <CommentFormContainer id={history} />;
+  const handleAddComment = () => <CommentFormContainer />;
+  const handleEditComment = () => <CommentFormContainer />;
   const handlePasswordReset = () => <PasswordResetForm />;
   const handlePasswordEdit = () => <PasswordEditForm users={users} />;
   const handleAddPost = () => <PostFormContainer />;
-  // const handleEditPost = () => <PostFormContainer id={history} />;
+  const handleEditPost = () => <PostFormContainer />;
 
   return (
     <div>
@@ -133,6 +133,11 @@ function App(props) {
           exact
           path={`/:username/add_post`}
           component={handleAddPost}
+        />
+        <Route
+          exact
+          path={`/posts/:id/edit`}
+          component={handleEditPost}
         />
       </Switch>
     </div>

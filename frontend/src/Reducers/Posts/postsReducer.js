@@ -25,6 +25,23 @@ export default function postsReducer(state = initialState, action) {
         error: true,
         posts: [],
       };
+    case "EDIT_POST_SUCCESS":
+      if (state.posts.findIndex) {
+        let index = state.posts.findIndex(
+          (post) => post.id === action.post.id
+        );
+        return {
+          posts: [
+            ...state.posts.slice(0, index),
+            action.post,
+            ...state.posts.slice(index + 1),
+          ],
+          loading: false,
+          error: false,
+        };
+      } else {
+        return { ...state, loading: false, error: false };
+      }
     default:
       return state;
   }
