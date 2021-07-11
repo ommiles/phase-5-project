@@ -57,7 +57,29 @@ export const fetchEditPost = (post) => {
       }),
     })
       .then((resp) => resp.json())
-      .then(console.log)
-      // .then((comment) => dispatch({ type: "EDIT_POST_SUCCESS", post }));
+      // .then(console.log)
+      .then((post) => dispatch({ type: "EDIT_POST_SUCCESS", post }));
+  };
+};
+
+export const deletePost = (post_id) => {
+  return (dispatch) => {
+    console.log(post_id)
+    dispatch({ type: "START_POSTS_REQUEST" });
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3000/api/v1/posts/${post_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((resp) => resp.json())
+      // .then(console.log)
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: "DELETE_POST_SUCCESS", post_id });
+      });
   };
 };

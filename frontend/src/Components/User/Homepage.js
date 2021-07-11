@@ -4,6 +4,7 @@ import EditProfile from "./EditProfile";
 import { logout } from "../../Actions/loginAction";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { deletePost } from "../../Actions/postsAction";
 
 export default function Homepage(props) {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ export default function Homepage(props) {
     dispatch(logout());
     history.push("/");
   };
+
+  const handleDelete = (post_id) => {
+    dispatch(deletePost(post_id));
+  }
 
   if (Object.keys(props.currentUser).length === 0) {
     return <div>Hold tight while items are being fetched...</div>;
@@ -37,7 +42,7 @@ export default function Homepage(props) {
           <h1>{post.title}</h1>
           <h3><em>{post.post_type}</em></h3>
           <button onClick={() => history.push(`/posts/${post.id}/edit`)} >Edit Post</button>
-          <button>Delete Post</button>
+          <button  onClick={() => handleDelete(post.id)} >Delete Post</button>
         </div>
         )}
       </div>

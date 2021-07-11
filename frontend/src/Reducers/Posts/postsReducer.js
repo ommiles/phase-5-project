@@ -42,6 +42,22 @@ export default function postsReducer(state = initialState, action) {
       } else {
         return { ...state, loading: false, error: false };
       }
+      case "DELETE_POST_SUCCESS":
+      if (state.posts.findIndex) {
+        let index = state.posts.findIndex(
+          (post) => post.id === action.post_id
+        );
+        return {
+          posts: [
+            ...state.posts.slice(0, index),
+            ...state.posts.slice(index + 1),
+          ],
+          loading: false,
+          error: false,
+        };
+      } else {
+        return { ...state, loading: false, error: false };
+      }
     default:
       return state;
   }
