@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchPasswordEdit } from "../../Actions/usersAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -20,6 +20,12 @@ function PasswordEditForm(props) {
       setPasswordConfirmation(e.target.value);
     }
   };
+
+  console.log(props)
+
+// useEffect(() => {
+
+// })
 
   const handleSubmit = (e) => {
     e.preventDefault();
