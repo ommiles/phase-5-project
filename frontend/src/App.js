@@ -44,73 +44,12 @@ function App(props) {
 
   useEffect(() => {
     // ? GETPROFILEFETCH MOVES TO
-    console.log(`The currentUser is:`+`${currentUser}`)
-    console.log("Line 47")
     dispatch(getProfileFetch());
-    console.log("Line 49")
-    // FETCH POSTS MOVES TO POSTS CONTAINER
     dispatch(fetchPosts());
-    console.log("Line 52")
-    // FETCHUSERS MOVES TO 
     dispatch(fetchUsers());
-    console.log("Line 55")
-    // FETCHCOMMENTS MOVES TO
     dispatch(fetchComments());
-    console.log("Line 58")
-    // FETCHSUBSCRIPTIONS MOVES TO
     dispatch(fetchSubscriptions());
-    // console.log("Line 56")
-    // fetchData()
-    // if (token !== "" && props.location.pathname === "/password/reset") {
-    //   emailjs.init("user_CZ8AxCf2hgq23IKcpjfYS");
-
-    //   const templateParams = {
-    //     name: currentUser.first_name,
-    //     reply_to: currentUser.email,
-    //     message: `http://localhost:3001/password/reset/${token}`,
-    //   };
-
-    //   emailjs.send("service_wollzph", "template_89vbj9f", templateParams).then(
-    //     function (response) {
-    //       console.log("SUCCESS!", response.status, response.text);
-    //     },
-    //     function (error) {
-    //       console.log("FAILED...", error);
-    //     }
-    //   );
-    // }
   }, [dispatch]);
-
-  const fetchData = () => {
-    console.log("Line 61")
-    dispatch(getProfileFetch());
-    console.log("Line 64")
-    dispatch(fetchPosts());
-    console.log("Line 67")
-    dispatch(fetchUsers());
-    console.log("Line 70")
-    dispatch(fetchComments());
-    console.log("Line 72")
-    dispatch(fetchSubscriptions());
-    if (token !== "" && props.location.pathname === "/password/reset") {
-      emailjs.init("user_CZ8AxCf2hgq23IKcpjfYS");
-
-      const templateParams = {
-        name: currentUser.first_name,
-        reply_to: currentUser.email,
-        message: `http://localhost:3001/password/reset/${token}`,
-      };
-
-      emailjs.send("service_wollzph", "template_89vbj9f", templateParams).then(
-        function (response) {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        function (error) {
-          console.log("FAILED...", error);
-        }
-      );
-    }
-  }
 
   useEffect(() => {
     if (token !== "" && props.location.pathname === "/password/reset") {
@@ -132,11 +71,6 @@ function App(props) {
       );
     }
   });
-
-  // token !== "" && props.location.pathname === "/password/reset"
-  //   ? history.push(`/password/reset/${token}`)
-  //   : console.log("token is empty");
-  // });
 
   const handleLogin = () => (
     <LoginContainer error={login_error} history={history} />
