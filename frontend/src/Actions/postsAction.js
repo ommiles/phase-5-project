@@ -6,3 +6,30 @@ export const fetchPosts = () => {
       .then((posts) => dispatch({ type: "FETCH_POSTS_SUCCESS", posts }));
   };
 };
+
+export const fetchAddPost = (post) => {
+  return (dispatch) => {
+    dispatch({ type: "FETCH_POSTS_REQUEST" });
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/v1/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title: post.title,
+        post_type: post.post_type,
+        image: post.image,
+        post_content: post.post_content,
+        subheader: post.subheader,
+        mambership_level: post.mambership_level,
+        listing: post.listing,
+        user_id: post.user_id,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((comment) => dispatch({ type: "FETCH_POST_SUCCESS", comment }));
+  };
+};

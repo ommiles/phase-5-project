@@ -41,6 +41,7 @@ function App(props) {
   const currentUser = useSelector((state) => state.login.currentUser);
   const login_error = useSelector((state) => state.login.error);
   const token = useSelector((state) => state.login.token);
+  // console.log(posts.length)
 
   useEffect(() => {
     dispatch(getProfileFetch());
@@ -102,6 +103,8 @@ function App(props) {
   const handlePasswordReset = () => <PasswordResetForm />;
   const handlePasswordEdit = () => <PasswordEditForm users={users} />;
   const handleAddPost = () => <PostFormContainer />;
+  // const handleEditPost = () => <PostFormContainer id={history} />;
+
   return (
     <div>
       <Route path="/" exact component={handleLogin} />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router";
 import GoBackButton from "../GoBackButton";
 import { fetchAddComment } from "../../Actions/commentsAction";
@@ -10,10 +9,6 @@ export default function AddCommentForm(props) {
   const history = useHistory();
   const user_id = useSelector((state) => state.login.currentUser.id);
   const post_id = props.post_id;
-  //   console.log(history);
-  //   console.log(user_id);
-  //   console.log(post_id);
-  console.log(props);
   const [comment_content, setCommentContent] = useState("");
 
   const handleSubmit = (e) => {
@@ -31,6 +26,7 @@ export default function AddCommentForm(props) {
   const handleChange = (e) => {
     setCommentContent(e.target.value);
   };
+
   return (
     <div>
       <p>Not ready to share your comment?</p>
