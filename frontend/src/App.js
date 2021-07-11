@@ -22,6 +22,7 @@ import EditProfileForm from "./Components/User/EditProfileForm";
 import CommentFormContainer from "./Containers/Comment/CommentFormContainer";
 import PasswordResetForm from "./Components/Login/PasswordResetForm";
 import PasswordEditForm from "./Components/Login/PasswordEditForm";
+import PostFormContainer from "./Containers/Post/PostFormContainer";
 import { fetchPosts } from "./Actions/postsAction";
 import { fetchUsers } from "./Actions/usersAction";
 import { fetchComments } from "./Actions/commentsAction";
@@ -31,7 +32,6 @@ import { getProfileFetch } from "./Actions/loginAction";
 function App(props) {
   let history = useHistory();
   const dispatch = useDispatch();
-
   const users = useSelector((state) => state.users.users);
   const posts = useSelector((state) => state.posts.posts);
   const comments = useSelector((state) => state.comments.comments);
@@ -43,7 +43,6 @@ function App(props) {
   const token = useSelector((state) => state.login.token);
 
   useEffect(() => {
-    // ? GETPROFILEFETCH MOVES TO
     dispatch(getProfileFetch());
     dispatch(fetchPosts());
     dispatch(fetchUsers());
@@ -102,6 +101,7 @@ function App(props) {
   const handleEditComment = () => <CommentFormContainer id={history} />;
   const handlePasswordReset = () => <PasswordResetForm />;
   const handlePasswordEdit = () => <PasswordEditForm users={users} />;
+  const handleAddPost = () => <PostFormContainer />;
   return (
     <div>
       <Route path="/" exact component={handleLogin} />
@@ -125,6 +125,11 @@ function App(props) {
           exact
           path={`/password/reset/:token`}
           component={handlePasswordEdit}
+        />
+        <Route
+          exact
+          path={`/:username/add_post`}
+          component={handleAddPost}
         />
       </Switch>
     </div>
