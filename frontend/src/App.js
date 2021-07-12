@@ -98,7 +98,7 @@ function App(props) {
   );
   // checkout needs a currentUser in state
   // pass in the cost, memebrship_level
-  const handleCheckout = () => <CheckoutContainer />;
+  const handleCheckout = () => <CheckoutContainer subscriptions={subscriptions}  />;
   const handleAddComment = () => <CommentFormContainer />;
   const handleEditComment = () => <CommentFormContainer />;
   const handlePasswordReset = () => <PasswordResetForm />;
@@ -112,7 +112,7 @@ function App(props) {
       <Switch>
         <Route exact path="/login" component={handleLogin} />
         <Route exact path="/signup" component={handleSignup} />
-        <Route exact path="/checkout" component={handleCheckout} />
+        <Route exact path={`/checkout/:id`} component={handleCheckout} />
         <Route exact path="/home" component={handleHomepage} />
         <Route exact path={`/:username`} component={handleUserProfile} />
         <Route exact path={`/:username/posts`} component={handlePosts} />

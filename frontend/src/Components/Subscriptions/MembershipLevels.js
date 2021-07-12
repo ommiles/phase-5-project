@@ -8,20 +8,15 @@ function MembershipLevels(props) {
       subscription.subscribee.username === props.match.params.username
   );
   const currentUser = useSelector((state) => state.login.currentUser);
-  // console.log(props);
-  console.log(currentUser);
-  // console.log(!currentUser);
-  // console.log(!!currentUser);
+
   let history = useHistory();
 
-  //   if there is a currentUser logged in & in state, 
-  //   go to checkout page
-  //   else go to login page
-  const handleClick = () => {
-    // if a user is logged in, send them to the checkout page
-    // if a user IS NOT logged in, send them to the checkout page
-    Object.keys(currentUser).length === 0 ? history.push("/login") : history.push("/checkout")
-    // !currentUser ? history.push("/login") : history.push("/checkout");
+  const handleClick = (subscription_id) => {
+    // How will checkout know what the user wants to subscribe to?
+    console.log(subscription_id)
+    Object.keys(currentUser).length === 0
+      ? history.push("/login")
+      : history.push(`/checkout/${subscription_id}`);
   };
 
   return (
@@ -38,7 +33,10 @@ function MembershipLevels(props) {
             <h3>$ {subscription.cost}</h3>
             <img src={subscription.img_url} alt="subscription-thumbnail"></img>
             <h4>{subscription.membership_level}</h4>
-            <button onClick={handleClick}>Join</button>
+            {props.match.params.username !== currentUser.username ? (
+              <button onClick={() => handleClick(subscription.id)}>Join</button>
+            ) : null}
+            {/* <button onClick={handleClick}>Join</button> */}
           </div>
         ))}
     </div>
