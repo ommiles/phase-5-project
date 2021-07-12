@@ -9,7 +9,7 @@ function MembershipLevels(props) {
   );
   const currentUser = useSelector((state) => state.login.currentUser);
   // console.log(props);
-  // console.log(currentUser);
+  console.log(currentUser);
   // console.log(!currentUser);
   // console.log(!!currentUser);
   let history = useHistory();
@@ -18,7 +18,10 @@ function MembershipLevels(props) {
   //   go to checkout page
   //   else go to login page
   const handleClick = () => {
-    !currentUser ? history.push("/login") : history.push("/checkout");
+    // if a user is logged in, send them to the checkout page
+    // if a user IS NOT logged in, send them to the checkout page
+    Object.keys(currentUser).length === 0 ? history.push("/login") : history.push("/checkout")
+    // !currentUser ? history.push("/login") : history.push("/checkout");
   };
 
   return (

@@ -11,7 +11,6 @@ import {
   withRouter,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import TestPage from "./Components/TestPage";
 import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/ProfilePage";
 import LoginContainer from "./Containers/Login/LoginContainer";
@@ -76,7 +75,7 @@ function App(props) {
     <LoginContainer error={login_error} history={history} />
   );
 
-  const handleUser = () => (
+  const handleUserProfile = () => (
     <ProfilePage
       users={users}
       subscriptions={subscriptions}
@@ -94,7 +93,9 @@ function App(props) {
 
   const handleSignup = () => <SignupContainer currentUser={currentUser} />;
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
-  const handleHomepage = () => <Homepage currentUser={currentUser} posts={posts} />;
+  const handleHomepage = () => (
+    <Homepage currentUser={currentUser} posts={posts} />
+  );
   // checkout needs a currentUser in state
   // pass in the cost, memebrship_level
   const handleCheckout = () => <CheckoutContainer />;
@@ -107,13 +108,13 @@ function App(props) {
 
   return (
     <div>
-      <Route path="/" exact component={handleLogin} />
+      {/* <Route path="/" exact component={handleLogin} /> */}
       <Switch>
-        <Route exact path="/testpage" component={TestPage} />
+        <Route exact path="/login" component={handleLogin} />
         <Route exact path="/signup" component={handleSignup} />
         <Route exact path="/checkout" component={handleCheckout} />
         <Route exact path="/home" component={handleHomepage} />
-        <Route exact path={`/:username`} component={handleUser} />
+        <Route exact path={`/:username`} component={handleUserProfile} />
         <Route exact path={`/:username/posts`} component={handlePosts} />
         <Route exact path={`/:username/edit`} component={handleProfileEdit} />
         <Route exact path={`/posts/:id`} component={handlePosts} />
@@ -129,16 +130,8 @@ function App(props) {
           path={`/password/reset/:token`}
           component={handlePasswordEdit}
         />
-        <Route
-          exact
-          path={`/:username/add_post`}
-          component={handleAddPost}
-        />
-        <Route
-          exact
-          path={`/posts/:id/edit`}
-          component={handleEditPost}
-        />
+        <Route exact path={`/:username/add_post`} component={handleAddPost} />
+        <Route exact path={`/posts/:id/edit`} component={handleEditPost} />
       </Switch>
     </div>
   );

@@ -42,6 +42,7 @@ function ProfilePage(props) {
                 <h6>Username: {user.username}</h6>
                 <img src={user.avatar} alt="profile"></img>
                 <img src={user.banner} alt="profile"></img>
+                <MembershipLevels subscriptions={props.subscriptions} />
               </div>
             ) : (
               <div key={index}>
@@ -52,7 +53,6 @@ function ProfilePage(props) {
               </div>
             )
           )}
-        <MembershipLevels subscriptions={props.subscriptions} />
 
         {/* <SumOfUsers /> */}
         {/* <AboutContainer /> */}
