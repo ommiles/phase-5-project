@@ -94,11 +94,15 @@ function App(props) {
   const handleSignup = () => <SignupContainer currentUser={currentUser} />;
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
   const handleHomepage = () => (
-    <Homepage currentUser={currentUser} posts={posts} />
+    <Homepage
+      currentUser={currentUser}
+      posts={posts}
+      subscriptions={subscriptions}
+    />
   );
-  // checkout needs a currentUser in state
-  // pass in the cost, memebrship_level
-  const handleCheckout = () => <CheckoutContainer subscriptions={subscriptions}  />;
+  const handleCheckout = () => (
+    <CheckoutContainer subscriptions={subscriptions} />
+  );
   const handleAddComment = () => <CommentFormContainer />;
   const handleEditComment = () => <CommentFormContainer />;
   const handlePasswordReset = () => <PasswordResetForm />;
