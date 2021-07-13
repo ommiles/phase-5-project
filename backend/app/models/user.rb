@@ -8,13 +8,13 @@ class User < ApplicationRecord
     has_many :subscribing_users, foreign_key: :subscribee_id, class_name: 'Subscription'
     has_many :subscribers, through: :subscribing_users
 
-    # validates :first_name, presence: true
-    # validates :last_name, presence: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
 
-    # validates :username, presence: true, uniqueness: { case_sensitive: true }
-    # validates :email, presence: true, uniqueness: { case_sensitive: false }
+    validates :username, presence: true, uniqueness: { case_sensitive: true }
+    validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-    # validates :password, length: { minimum: 3, maximum: 20 }, allow_nil: true
+    validates :password, length: { minimum: 3, maximum: 20 }, allow_nil: true
 
     has_secure_password
 end
