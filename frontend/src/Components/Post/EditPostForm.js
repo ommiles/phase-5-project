@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import GoBackButton from "../GoBackButton";
 import { fetchEditPost } from "../../Actions/postsAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
 export default function EditPostForm(props) {
-  console.log(props);
   const history = useHistory();
   const dispatch = useDispatch();
   const post_id = parseInt(props.post_id);
-//   const user_id = useSelector((state) => state.login.currentUser.id);
   const [post_type, setPostType] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");

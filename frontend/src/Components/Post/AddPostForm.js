@@ -7,7 +7,6 @@ import { fetchAddPost } from "../../Actions/postsAction";
 export default function AddPostForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const username = useSelector((state) => state.login.currentUser.username);
   const user_id = useSelector((state) => state.login.currentUser.id);
   const [post_type, setPostType] = useState("");
   const [image, setImage] = useState("");

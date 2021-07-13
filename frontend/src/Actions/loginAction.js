@@ -54,7 +54,6 @@ export const getProfileFetch = () => {
             localStorage.removeItem("token");
           } else {
             let user = data.user;
-            console.log(data)
             console.log(user)
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }
@@ -84,11 +83,11 @@ export const getPasswordFetch = (email) => {
       if (data.message) {
         alert("Please try again.")
       } else {
-        let user = data.user;
-        let token = data.jwt;
-        console.log(data)
-        console.log(user)
-        console.log(token)
+        // let user = data.user;
+        // let token = data.jwt;
+        // console.log(data)
+        // console.log(user)
+        // console.log(token)
         dispatch({ type: "FETCH_PASSWORD_SUCCESS", data });
       }
     });
