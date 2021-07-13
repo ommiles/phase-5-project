@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import HomeButton from "./HomeButton";
-import TestButton from "./TestButton";
-import MembershipLevels from "./Subscriptions/MembershipLevels";
+import HomeButton from "../HomeButton";
+import MembershipLevels from "../Subscriptions/MembershipLevels"
 import { useSelector } from "react-redux";
 
 function ProfilePage(props) {
@@ -23,7 +22,6 @@ function ProfilePage(props) {
     return (
       <div>
         <HomeButton />
-        <TestButton />
 
         <h1>Hi! This is the Profile Page Component.</h1>
         {props.users

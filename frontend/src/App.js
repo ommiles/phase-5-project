@@ -12,7 +12,8 @@ import {
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PostsContainer from "./Containers/Post/PostsContainer";
-import ProfilePage from "./Components/ProfilePage";
+import ProfilePage from "./Components/User/ProfilePage";
+import PublicHomePage from "./Components/User/PublicHomePage";
 import LoginContainer from "./Containers/Login/LoginContainer";
 import SignupContainer from "./Containers/Signup/SignupContainer";
 import CheckoutContainer from "./Containers/Checkout/CheckoutContainer";
@@ -111,9 +112,9 @@ function App(props) {
 
   return (
     <div>
-      {/* <Route exact path="/">
+      <Route exact path="/">
         {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
-      </Route> */}
+      </Route>
       <Switch>
         <Route exact path="/login" component={handleLogin} />
         <Route exact path="/signup" component={handleSignup} />

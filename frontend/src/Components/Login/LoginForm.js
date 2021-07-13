@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { fetchLogin } from "../../Actions/loginAction";
 import { useDispatch } from "react-redux";
-import TestButton from "../TestButton";
 
 export default function LoginForm(props) {
   const dispatch = useDispatch();
@@ -49,7 +48,6 @@ export default function LoginForm(props) {
         </div>
         <input type="submit" value="Login" />
       </form>
-      <TestButton />
     </div>
   );
 }
