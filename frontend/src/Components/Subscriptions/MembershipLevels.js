@@ -12,7 +12,6 @@ function MembershipLevels(props) {
   let history = useHistory();
 
   const handleClick = (subscription_id) => {
-    // How will checkout know what the user wants to subscribe to?
     console.log(subscription_id)
     Object.keys(currentUser).length === 0
       ? history.push("/login")
@@ -23,7 +22,7 @@ function MembershipLevels(props) {
     <div>
       <h1>Select a Membership Level:</h1>
       {creatorMembershipLevels
-        .slice(creatorMembershipLevels.length - 5)
+        .slice(0, 5)
         .map((subscription) => (
           <div key={subscription.id}>
             <h3>
@@ -36,7 +35,6 @@ function MembershipLevels(props) {
             {props.match.params.username !== currentUser.username ? (
               <button onClick={() => handleClick(subscription.id)}>Join</button>
             ) : null}
-            {/* <button onClick={handleClick}>Join</button> */}
           </div>
         ))}
     </div>

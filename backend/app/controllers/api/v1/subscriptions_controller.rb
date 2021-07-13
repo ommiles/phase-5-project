@@ -22,7 +22,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
 
     def update
-        if @subscription.update(subscription_params)
+        if @subscription.update(edit_params)
             render json: @subscription
         else
             render json: {error: @subscription.errors}, status: :unprocessable_entity
@@ -31,6 +31,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
     def destroy
         @subscription.destroy
+        render json: @subscription
     end
 
     private
@@ -41,5 +42,9 @@ class Api::V1::SubscriptionsController < ApplicationController
 
     def subscription_params
         params.require(:subscription).permit(:subscriber_id, :subscribee_id, :cost, :title, :img_url, :membership_level, :subscription_status)
+    end
+
+    def edit_params
+        params.require(:subscription).permit(:cost, :title, :img_url, :membership_level, :subscription_status)
     end
 end

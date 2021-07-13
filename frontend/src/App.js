@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
   // Link,
-  // Redirect,
+  Redirect,
   useHistory,
   // useLocation,
   withRouter,
@@ -40,7 +40,6 @@ function App(props) {
   const currentUser = useSelector((state) => state.login.currentUser);
   const login_error = useSelector((state) => state.login.error);
   const token = useSelector((state) => state.login.token);
-  // console.log(posts.length)
 
   useEffect(() => {
     dispatch(getProfileFetch());
@@ -112,7 +111,9 @@ function App(props) {
 
   return (
     <div>
-      {/* <Route path="/" exact component={handleLogin} /> */}
+      {/* <Route exact path="/">
+        {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
+      </Route> */}
       <Switch>
         <Route exact path="/login" component={handleLogin} />
         <Route exact path="/signup" component={handleSignup} />

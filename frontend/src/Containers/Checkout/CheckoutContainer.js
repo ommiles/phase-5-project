@@ -5,23 +5,23 @@ import { fetchAddSubscription } from "../../Actions/subscriptionsAction";
 import { useDispatch, useSelector } from "react-redux";
 
 function CheckoutContainer(props) {
-  // const subscription_id = props.match.params.id;
   const subscription_id = parseInt(props.match.params.id);
   const subscription = props.subscriptions.find(
     (subscription) => subscription.id === subscription_id
   );
-  const currentUser = useSelector((state) => state.login.currentUser)
+  const currentUser = useSelector((state) => state.login.currentUser);
   console.log(props);
   console.log(currentUser);
   console.log(subscription);
   console.log(subscription_id);
 
   const dispatch = useDispatch();
-  const history = useHistory()
-  const subscriptionsRequest = useSelector((state) => state.subscriptions.loading);
+  const history = useHistory();
+  const subscriptionsRequest = useSelector(
+    (state) => state.subscriptions.loading
+  );
 
   const handlePurchase = () => {
-    // dispatch to create a new subscription in the db
     dispatch(
       fetchAddSubscription({
         cost: subscription.cost,
@@ -36,21 +36,20 @@ function CheckoutContainer(props) {
     history.push("/home")
   };
 
-    if ( subscriptionsRequest === true || Object.keys(currentUser).length === 0 ) {
-      return <div>Hold tight while items are being fetched...</div>;
-    } else {
-      return (
-        <div>
-          Not ready just yet? <GoBackButton />
-          <h1>Checkout Container</h1>
-          <h2>
-            Buy {subscription.title} for ${subscription.cost}
-          </h2>
-          <button onClick={handlePurchase}>Purchase Subscription</button>
-        </div>
-      );
-    }
-
+  if (subscriptionsRequest === true || Object.keys(currentUser).length === 0) {
+    return <div>Hold tight while items are being fetched...</div>;
+  } else {
+    return (
+      <div>
+        Not ready just yet? <GoBackButton />
+        <h1>Checkout Container</h1>
+        <h2>
+          Buy {subscription.title} for ${subscription.cost}
+        </h2>
+        <button onClick={handlePurchase}>Purchase Subscription</button>
+      </div>
+    );
+  }
 }
 
 export default withRouter(CheckoutContainer);
