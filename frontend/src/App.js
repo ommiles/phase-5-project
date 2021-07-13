@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "./css/App.css"
 import emailjs from "emailjs-com";
 import {
   // BrowserRouter as Router,
@@ -12,6 +13,7 @@ import {
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "./Components/NavBar"
+import Menu from "./Components/Menu"
 import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/User/ProfilePage";
 import PublicHomePage from "./Components/User/PublicHomePage";
@@ -42,6 +44,13 @@ function App(props) {
   const currentUser = useSelector((state) => state.login.currentUser);
   const login_error = useSelector((state) => state.login.error);
   const token = useSelector((state) => state.login.token);
+
+  // true means show the menu
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleMenuClick = () => {
+    setMenuOpen(!menuOpen)
+  }
 
   useEffect(() => {
     dispatch(getProfileFetch());
@@ -111,38 +120,47 @@ function App(props) {
   const handleAddPost = () => <PostFormContainer />;
   const handleEditPost = () => <PostFormContainer />;
 
-  return (
-    <div>
-      <NavBar />
-      <Route exact path="/">
-        {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
-      </Route>
-      <Switch>
-        <Route exact path="/login" component={handleLogin} />
-        <Route exact path="/signup" component={handleSignup} />
-        <Route exact path={`/checkout/:id`} component={handleCheckout} />
-        <Route exact path="/home" component={handleHomepage} />
-        <Route exact path={`/:username`} component={handleUserProfile} />
-        <Route exact path={`/:username/posts`} component={handlePosts} />
-        <Route exact path={`/:username/edit`} component={handleProfileEdit} />
-        <Route exact path={`/posts/:id`} component={handlePosts} />
-        <Route exact path={`/posts/:id/comment`} component={handleAddComment} />
-        <Route
-          exact
-          path={`/comments/:id/edit`}
-          component={handleEditComment}
-        />
-        <Route exact path="/password/reset/" component={handlePasswordReset} />
-        <Route
-          exact
-          path={`/password/reset/:token`}
-          component={handlePasswordEdit}
-        />
-        <Route exact path={`/:username/add_post`} component={handleAddPost} />
-        <Route exact path={`/posts/:id/edit`} component={handleEditPost} />
-      </Switch>
-    </div>
-  );
+  if (menuOpen === false) {
+    return (
+      <div>
+        <NavBar handleMenuClick={handleMenuClick} />
+        <Route exact path="/">
+          {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
+        </Route>
+        <Switch>
+          <Route exact path="/login" component={handleLogin} />
+          <Route exact path="/signup" component={handleSignup} />
+          <Route exact path={`/checkout/:id`} component={handleCheckout} />
+          <Route exact path="/home" component={handleHomepage} />
+          <Route exact path={`/:username`} component={handleUserProfile} />
+          <Route exact path={`/:username/posts`} component={handlePosts} />
+          <Route exact path={`/:username/edit`} component={handleProfileEdit} />
+          <Route exact path={`/posts/:id`} component={handlePosts} />
+          <Route exact path={`/posts/:id/comment`} component={handleAddComment} />
+          <Route
+            exact
+            path={`/comments/:id/edit`}
+            component={handleEditComment}
+          />
+          <Route exact path="/password/reset/" component={handlePasswordReset} />
+          <Route
+            exact
+            path={`/password/reset/:token`}
+            component={handlePasswordEdit}
+          />
+          <Route exact path={`/:username/add_post`} component={handleAddPost} />
+          <Route exact path={`/posts/:id/edit`} component={handleEditPost} />
+        </Switch>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <NavBar handleMenuClick={handleMenuClick} />
+        <Menu />
+      </div>
+    )
+  }
 }
 
 export default withRouter(App);
