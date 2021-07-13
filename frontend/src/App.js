@@ -11,6 +11,7 @@ import {
   withRouter,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import NavBar from "./Components/NavBar"
 import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/User/ProfilePage";
 import PublicHomePage from "./Components/User/PublicHomePage";
@@ -112,6 +113,7 @@ function App(props) {
 
   return (
     <div>
+      <NavBar />
       <Route exact path="/">
         {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
       </Route>
