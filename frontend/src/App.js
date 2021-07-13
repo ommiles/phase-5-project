@@ -12,8 +12,8 @@ import {
   withRouter,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import NavBar from "./Components/NavBar"
-import Menu from "./Components/Menu"
+import NavBar from "./Components/Navigation/NavBar"
+import Menu from "./Components/Navigation/Menu"
 import PostsContainer from "./Containers/Post/PostsContainer";
 import ProfilePage from "./Components/User/ProfilePage";
 import PublicHomePage from "./Components/User/PublicHomePage";
