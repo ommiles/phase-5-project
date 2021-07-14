@@ -225,7 +225,7 @@ function App(props) {
             </div>
 
             {/* HOME SECTION */}
-            <div className='dn-m dn-s absolute top-0 bottom-0 right-0 left-0 overflow-hidden flex justify-end mt6-m mt6-s'>
+            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'>
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 name='home'
