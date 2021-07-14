@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export default function PublicHomePage() {
-  // if the e.target.name or ID is X
-  // then toggle the state for that
-  // if home === true the change the height, width and remove display:none (dn) from className
-  // home: true,
-  // signup: false,
-  // login: false,
-  // cart: false,
-
-  const history = useHistory();
-
   const [toggleHome, setToggleHome] = useState(true);
   const [toggleSignup, setToggleSignup] = useState(false);
   const [toggleLogin, setToggleLogin] = useState(false);
@@ -60,7 +50,7 @@ export default function PublicHomePage() {
   return (
     <>
       <div
-        className='w-third dn flex-l flex-column fixed top-0 bottom-0'
+        className='w-25 dn flex-l flex-column fixed top-0 bottom-0'
         style={{ marginTop: '48px' }}
       >
         <div className='pt5 h-100 bb ph4'>
@@ -82,7 +72,7 @@ export default function PublicHomePage() {
       </div>
 
       <main
-        className='w-two-thirds-l fixed right-0 bottom-0 top-0 br overflow-scroll'
+        className='w-75 fixed right-0 bottom-0 top-0 br overflow-scroll'
         style={{ marginTop: '48px' }}
       >
         <div className='w-100 h-100 relative'>
@@ -97,10 +87,10 @@ export default function PublicHomePage() {
           <div className='dn-l w-100 h4'>
             <h1>Creators</h1>
             {creators.map(creator => (
-              <div>
+              <div key={creator.id}>
                 <Link
                   className='pointer link black'
-                  onClick={() => history.push(`/${creator.username}`)}
+                  to={`/${creator.username}`}
                 >
                   {creator.username}
                 </Link>
@@ -115,11 +105,15 @@ export default function PublicHomePage() {
               className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
               name='home'
               onClick={handleClick}
+              to='/'
             >
-              <span className='dot'></span>
+              <span
+                className={toggleHome === true ? 'dot dot-active' : 'dot'}
+              ></span>
               Home
             </Link>
-            <p
+
+            <div
               className={
                 toggleHome === true
                   ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
@@ -153,14 +147,26 @@ export default function PublicHomePage() {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
-            </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
 
             <Link
               className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
               name='signup'
               onClick={handleClick}
+              //   to="/signup"
             >
-              <span className='dot'></span>
+              <span
+                className={toggleSignup === true ? 'dot dot-active' : 'dot'}
+              ></span>
               Signup
             </Link>
             <p
@@ -177,8 +183,11 @@ export default function PublicHomePage() {
               className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
               name='login'
               onClick={handleClick}
+              //   to="/login"
             >
-              <span className='dot'></span>
+              <span
+                className={toggleLogin === true ? 'dot dot-active' : 'dot'}
+              ></span>
               Login
             </Link>
             <p
@@ -195,8 +204,11 @@ export default function PublicHomePage() {
               className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
               name='cart'
               onClick={handleClick}
+              //   to="/checkout"
             >
-              <span className='dot'></span>
+              <span
+                className={toggleCart === true ? 'dot dot-active' : 'dot'}
+              ></span>
               Cart
             </Link>
             <p
