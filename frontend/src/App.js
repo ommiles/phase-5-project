@@ -253,14 +253,14 @@ function App(props) {
                   )}
                 </Route>
                 <Switch>
-                  <Route exact path='/login' component={handleLogin} />
-                  <Route exact path='/signup' component={handleSignup} />
+                  <Route exact path='/home' component={handleHomepage} />
+                  {/* <Route exact path='/login' component={handleLogin} /> */}
+                  {/* <Route exact path='/signup' component={handleSignup} /> */}
                   <Route
                     exact
                     path={`/checkout/:id`}
                     component={handleCheckout}
                   />
-                  <Route exact path='/home' component={handleHomepage} />
                   <Route
                     exact
                     path={`/:username`}
@@ -351,44 +351,45 @@ function App(props) {
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 name='signup'
                 onClick={handleClick}
-                //   to="/signup"
+                  to="/signup"
               >
                 <span
                   className={toggleSignup === true ? 'dot dot-active' : 'dot'}
                 ></span>
                 Signup
               </Link>
-              <p
+              <div
                 className={
                   toggleSignup === true
                     ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
-                signup paragraph
-              </p>
+                <Route exact path='/signup' component={handleSignup} />
+              </div>
 
               {/* LOGIN SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 name='login'
                 onClick={handleClick}
-                //   to="/login"
+                  to="/login"
               >
                 <span
                   className={toggleLogin === true ? 'dot dot-active' : 'dot'}
                 ></span>
                 Login
               </Link>
-              <p
+              <div
                 className={
                   toggleLogin === true
                     ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
-                login paragraph
-              </p>
+                {/* login paragraph */}
+                <Route exact path='/login' component={handleLogin} />
+              </div>
 
               {/* CART SECTION */}
               <Link
