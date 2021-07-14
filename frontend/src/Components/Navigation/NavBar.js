@@ -9,17 +9,18 @@ export default function NavBar(props) {
     props.handleMenuClick();
   };
   return (
-    <header className='db fixed top-0 right-0 left-0 z-5'>
+    <header className='db fixed top-0 right-0 left-0 z-3 domaine-tx-light'>
+    {/* <header className='db fixed top-0 right-0 left-0 z-3 domaine-sans-fine-thin'> */}
       <div className='flex justify-center items-center relative pt3 pb2 pt2-l pb1-l z-1 bb'>
         <button
-          className='absolute top-0 bottom-0 left-0 z-4 dn-l ph4 pv3 pointer bg-transparent bn dib'
+          className='absolute top-0 bottom-0 left-0 z-2 dn-l ph4 pv3 pointer bg-transparent bn dib'
           onClick={handleToggle}
         >
           <div
             className={
               toggle === true
-                ? 'change div1 w2 bg-black mv2'
-                : 'div1 w2 bg-black mv2'
+                ? 'change div1 w2 bg-black'
+                : 'div1 w2 bg-black'
             }
             style={{ height: '1px', transition: '0.4s' }}
           ></div>
@@ -34,8 +35,8 @@ export default function NavBar(props) {
           <div
             className={
               toggle === true
-                ? 'change div3 w2 bg-black mv2'
-                : 'div3 w2 bg-black mv2'
+                ? 'change div3 w2 bg-black'
+                : 'div3 w2 bg-black'
             }
             style={{ height: '1px', transition: '0.4s' }}
           ></div>
@@ -46,7 +47,7 @@ export default function NavBar(props) {
             fontWeight: 'bold',
             color: 'black',
           }}
-          className='f2 f1-l link pointer'
+          className='f3 f2-l link pointer'
         >
           CODINAIRE
         </NavLink>

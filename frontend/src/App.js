@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./css/App.css"
+import "./CSS/App.css"
+import "./CSS/Fonts.css"
 import emailjs from "emailjs-com";
 import {
   // BrowserRouter as Router,
@@ -122,7 +123,7 @@ function App(props) {
 
   if (menuOpen === false) {
     return (
-      <div>
+      <>
         <NavBar handleMenuClick={handleMenuClick} />
         <Route exact path="/">
           {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
@@ -151,14 +152,14 @@ function App(props) {
           <Route exact path={`/:username/add_post`} component={handleAddPost} />
           <Route exact path={`/posts/:id/edit`} component={handleEditPost} />
         </Switch>
-      </div>
+      </>
     );
   } else {
     return (
-      <div>
+      <>
         <NavBar handleMenuClick={handleMenuClick} />
         <Menu />
-      </div>
+      </>
     )
   }
 }

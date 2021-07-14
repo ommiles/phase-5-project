@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'Domaine Sans Fine Thin';
+  src: local('Domaine Sans Fine Thin'),
+    url(../Fonts/test-domaine-sans-fine-thin.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Domaine Text Light';
+  src: local('Domaine Text Light'),
+    url(../Fonts/test-domaine-text-light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Bold Italic';
+  src: local('Founders Grotesk Bold Italic'),
+    url(../Fonts/test-founders-grotesk-bold-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Bold';
+  src: local('Founders Grotesk Bold'),
+    url(../Fonts/test-founders-grotesk-bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Condensed Regular';
+  src: local('Founders Grotesk Condensed Regular'),
+    url(../Fonts/test-founders-grotesk-condensed-regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Light Italic';
+  src: local('Founders Grotesk Light Italic'),
+    url(../Fonts/test-founders-grotesk-light-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Light';
+  src: local('Founders Grotesk Light'),
+    url(../Fonts/test-founders-grotesk-light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Medium Italic';
+  src: local('Founders Grotesk Medium Italic'),
+    url(../Fonts/test-founders-grotesk-medium-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Medium';
+  src: local('Founders Grotesk Medium'),
+    url(../Fonts/test-founders-grotesk-medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Mono Light';
+  src: local('Founders Grotesk Mono Light'),
+    url(../Fonts/test-founders-grotesk-mono-light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Regular Italic';
+  src: local('Founders Grotesk Regular Italic'),
+    url(../Fonts/test-founders-grotesk-regular-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Regular';
+  src: local('Founders Grotesk Regular'),
+    url(../Fonts/test-founders-grotesk-regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Semibold Italic';
+  src: local('Founders Grotesk Semibold Italic'),
+    url(../Fonts/test-founders-grotesk-semibold-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Semibold';
+  src: local('Founders Grotesk Semibold'),
+    url(../Fonts/test-founders-grotesk-semibold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk X Condensed Regular';
+  src: local('Founders Grotesk X Condensed Regular'),
+    url(../Fonts/test-founders-grotesk-x-condensed-regular.woff2)
+      format('woff2');
+}
+
+.domaine-sans-fine-thin {
+  font-family: 'Domaine Sans Fine Thin';
+}
+
+.domaine-tx-light {
+  font-family: 'Domaine Text Light';
+}
+
+.fg-bold-italic {
+  font-family: 'Founders Grotesk Bold Italic';
+}
+
+.fg-bold {
+  font-family: 'Founders Grotesk Bold';
+}
+
+.fg-condensed-reg {
+  font-family: 'Founders Grotesk Condensed Regular';
+}
+
+.fg-light-it {
+  font-family: 'Founders Grotesk Light Italic';
+}
+
+.fg-light {
+  font-family: 'Founders Grotesk Light';
+}
+
+.fg-med-it {
+  font-family: 'Founders Grotesk Medium Italic';
+}
+
+.fg-med {
+  font-family: 'Founders Grotesk Medium';
+}
+
+.fg-mono-light {
+  font-family: 'Founders Grotesk Mono Light';
+}
+
+.fg-reg-it {
+  font-family: 'Founders Grotesk Regular Italic';
+}
+
+.fg-reg {
+  font-family: 'Founders Grotesk Regular';
+}
+
+.fg-sem-it {
+  font-family: 'Founders Grotesk Semibold Italic';
+}
+
+.fg-sem {
+  font-family: 'Founders Grotesk Semibold';
+}
+
+.fg-x {
+  font-family: 'Founders Grotesk X Condensed Regular';
+}
