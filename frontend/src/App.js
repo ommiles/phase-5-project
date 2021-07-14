@@ -34,24 +34,69 @@ import { fetchSubscriptions } from "./Actions/subscriptionsAction";
 import { getProfileFetch } from "./Actions/loginAction";
 
 function App(props) {
+
+  // START OF STATE
+  const [toggleHome, setToggleHome] = useState(true);
+  const [toggleSignup, setToggleSignup] = useState(false);
+  const [toggleLogin, setToggleLogin] = useState(false);
+  const [toggleCart, setToggleCart] = useState(false);
+  // END OF STATE
+
+  // SELECTOR FOR USERS MAP
+  const creators = useSelector(state => state.users.users.filter(user => user.is_creator === true));
+  // END SELECTOR
+
+  // START OF TOGGLES FOR MENU
+  const handleClick = e => {
+    switch (e.target.name) {
+      case 'home':
+        console.log(e.target.name);
+        setToggleHome(true);
+        setToggleSignup(false);
+        setToggleLogin(false);
+        setToggleCart(false);
+        break;
+      case 'signup':
+        console.log(e.target.name);
+        setToggleHome(false);
+        setToggleSignup(true);
+        setToggleLogin(false);
+        setToggleCart(false);
+        break;
+      case 'login':
+        console.log(e.target.name);
+        setToggleHome(false);
+        setToggleSignup(false);
+        setToggleLogin(true);
+        setToggleCart(false);
+        break;
+      case 'cart':
+        console.log(e.target.name);
+        setToggleHome(false);
+        setToggleSignup(false);
+        setToggleLogin(false);
+        setToggleCart(true);
+        break;
+      default:
+        break;
+    }
+  };
+  // END OF TOGGLES FOR MENU
+
+
   let history = useHistory();
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const posts = useSelector((state) => state.posts.posts);
   const comments = useSelector((state) => state.comments.comments);
-  const subscriptions = useSelector(
-    (state) => state.subscriptions.subscriptions
-  );
+  const subscriptions = useSelector((state) => state.subscriptions.subscriptions);
   const currentUser = useSelector((state) => state.login.currentUser);
   const login_error = useSelector((state) => state.login.error);
   const token = useSelector((state) => state.login.token);
 
-  // true means show the menu
+  // TOGGLE MENU OPEN & CLOSED
   const [menuOpen, setMenuOpen] = useState(false)
-
-  const handleMenuClick = () => {
-    setMenuOpen(!menuOpen)
-  }
+  const handleMenuClick = () => { setMenuOpen(!menuOpen) }
 
   useEffect(() => {
     dispatch(getProfileFetch());

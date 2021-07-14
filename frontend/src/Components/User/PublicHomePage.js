@@ -8,9 +8,7 @@ export default function PublicHomePage() {
   const [toggleLogin, setToggleLogin] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
 
-  const creators = useSelector(state =>
-    state.users.users.filter(user => user.is_creator === true)
-  );
+  const creators = useSelector(state => state.users.users.filter(user => user.is_creator === true));
 
   const handleClick = e => {
     switch (e.target.name) {
@@ -50,10 +48,10 @@ export default function PublicHomePage() {
   return (
     <>
       <div
-        className='w-25 dn flex-l flex-column fixed top-0 bottom-0'
+        className='w-100 w-25-l dn flex-l flex-column fixed top-0 bottom-0'
         style={{ marginTop: '48px' }}
       >
-        <div className='pt5 h-100 bb ph4'>
+        <div className='pt3-m pv5 h-100 bb ph4'>
           <p className='f3 lh-title domaine-sans-fine-thin'>
             Off Season is a design and photo studio with a focus in music.
             Founded in New York City in 2018, Off Season takes a holistic and
@@ -72,12 +70,12 @@ export default function PublicHomePage() {
       </div>
 
       <main
-        className='w-75 fixed right-0 bottom-0 top-0 br overflow-scroll'
+        className='w-100 w-75-l fixed right-0 bottom-0 top-0  overflow-scroll'
         style={{ marginTop: '48px' }}
       >
         <div className='w-100 h-100 relative'>
           <div className='dn-l w-100 bb h4'>
-            <p className='f4 f2-l domaine-sans-fine-thin'>
+            <p className='f3 domaine-sans-fine-thin mt4 mr5 ml5 mb3'>
               Off Season is a design and photo studio with a focus in music.
               Founded in New York City in 2018, Off Season takes a holistic and
               strategic approach in defining and developing an artist’s creative

@@ -11,9 +11,9 @@ export default function NavBar(props) {
   return (
     <header className='db fixed top-0 right-0 left-0 z-3 domaine-tx-light'>
     {/* <header className='db fixed top-0 right-0 left-0 z-3 domaine-sans-fine-thin'> */}
-      <div className='flex justify-center items-center relative pt3 pb2 pt2-l pb1-l z-1 bb'>
+      <div className='flex justify-center items-center relative pt2 pb2 pt2-l pb1-l z-1 bb'>
         <button
-          className='absolute top-0 bottom-0 left-0 z-2 dn-l ph4 pv3 pointer bg-transparent bn dib'
+          className='absolute top-0 bottom-0 left-0 pl4 z-2 dn-l  pointer bg-transparent bn dib'
           onClick={handleToggle}
         >
           <div
@@ -47,7 +47,7 @@ export default function NavBar(props) {
             fontWeight: 'bold',
             color: 'black',
           }}
-          className='f3 f2-l link pointer'
+          className='f2 link pointer'
         >
           CODINAIRE
         </NavLink>
