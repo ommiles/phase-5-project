@@ -20,14 +20,14 @@ export default function commentsReducer(state = initialState, action) {
       };
     case "FETCH_COMMENTS_FAILURE":
       return {
-        ...state,
+        // ...state,
         loading: false,
         error: true,
         comments: [],
       };
     case "FETCH_COMMENT_SUCCESS":
       return {
-        ...state,
+        // ...state,
         loading: false,
         error: false,
         comments: [...state.comments, action.comment],

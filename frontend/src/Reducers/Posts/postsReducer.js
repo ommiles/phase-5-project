@@ -20,10 +20,16 @@ export default function postsReducer(state = initialState, action) {
       };
     case "FETCH_POSTS_FAILURE":
       return {
-        ...state,
+        // ...state,
         loading: false,
         error: true,
         posts: [],
+      };
+      case "FETCH_POST_SUCCESS":
+      return {
+        loading: false,
+        error: false,
+        posts: [...state.posts, action.post],
       };
     case "EDIT_POST_SUCCESS":
       if (state.posts.findIndex) {

@@ -24,13 +24,13 @@ export const fetchAddPost = (post) => {
         image: post.image,
         post_content: post.post_content,
         subheader: post.subheader,
-        mambership_level: post.mambership_level,
+        membership_level: post.membership_level,
         listing: post.listing,
         user_id: post.user_id,
       }),
     })
       .then((resp) => resp.json())
-      .then((comment) => dispatch({ type: "FETCH_POST_SUCCESS", comment }));
+      .then((post) => dispatch({ type: "FETCH_POST_SUCCESS", post }));
   };
 };
 
@@ -52,7 +52,7 @@ export const fetchEditPost = (post) => {
         image: post.image,
         post_content: post.post_content,
         subheader: post.subheader,
-        mambership_level: post.mambership_level,
+        membership_level: post.membership_level,
         listing: post.listing,
       }),
     })

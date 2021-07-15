@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './CSS/App.css';
 import './CSS/Fonts.css';
-// import emailjs from 'emailjs-com';
 import {
   // BrowserRouter as Router,
   Switch,
@@ -54,13 +53,6 @@ function App(props) {
   const subscriptions = useSelector(state => state.subscriptions.subscriptions);
   const currentUser = useSelector(state => state.login.currentUser);
   const login_error = useSelector(state => state.login.error);
-  // const token = useSelector(state => state.login.token);
-
-  // TOGGLE MENU OPEN & CLOSED
-  // const [menuOpen, setMenuOpen] = useState(false);
-  // const handleMenuClick = () => {
-  //   setMenuOpen(!menuOpen);
-  // };
   const menuOpen = useSelector(state => state.toggle.toggleMenu);
 
   useEffect(() => {
@@ -72,27 +64,6 @@ function App(props) {
     dispatch(fetchSubscriptions());
     console.log('unmounted');
   }, []);
-
-  // useEffect(() => {
-  // if (token !== '' && props.location.pathname === '/password/reset') {
-  //   emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
-
-  //   const templateParams = {
-  //     name: currentUser.first_name,
-  //     reply_to: currentUser.email,
-  //     message: `http://localhost:3001/password/reset/${token}`,
-  //   };
-
-  //   emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
-  //     function (response) {
-  //       console.log('SUCCESS!', response.status, response.text);
-  //     },
-  //     function (error) {
-  //       console.log('FAILED...', error);
-  //     }
-  //   );
-  // }
-  // });
 
   const handleLogin = () => (
     <LoginContainer error={login_error} history={history} />
@@ -145,8 +116,8 @@ function App(props) {
           className='w-100 w-75-l fixed right-0 bottom-0 top-0  overflow-scroll'
           style={{ marginTop: '48px' }}
         >
-          {/* RESPONSIVE SIDEBAR */}
           <div className='w-100 h-100 relative'>
+            {/* RESPONSIVE SIDEBAR */}
             <div className='dn-l w-100 bb h4 fixed flex items-center justify-center'>
               <p className='f5 f4-m f3-l domaine-sans-fine-thin mh3 mh5-m mt0 mb0'>
                 Off Season is a design and photo studio with a focus in music.
@@ -165,11 +136,11 @@ function App(props) {
             </div>
 
             {/* HOME SECTION */}
-            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'>
+            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden flex-m flex-l justify-end mt6-m mt6-s'>
+            {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'> */}
               <Link
-                className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                // name='home'
-                // onClick={handleClick}
+                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 onClick={() => dispatch(toggleHomeState())}
                 to='/'
               >
@@ -221,11 +192,6 @@ function App(props) {
                     path={`/comments/:id/edit`}
                     component={handleEditComment}
                   />
-                  {/* <Route
-                    exact
-                    path={`/password/reset/:token`}
-                    component={handlePasswordEdit}
-                  /> */}
                   <Route
                     exact
                     path={`/:username/add_post`}
@@ -241,9 +207,8 @@ function App(props) {
 
               {/* SIGNUP SECTION */}
               <Link
-                className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                // name='signup'
-                // onClick={handleClick}
+                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 onClick={() => dispatch(toggleSignupState())}
                 to='/signup'
               >
@@ -264,9 +229,8 @@ function App(props) {
 
               {/* LOGIN SECTION */}
               <Link
-                className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                // name='login'
-                // onClick={handleClick}
+                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 to='/login'
                 onClick={() => dispatch(toggleLoginState())}
               >
@@ -282,7 +246,6 @@ function App(props) {
                     : 'dn ma0 w-100'
                 }
               >
-                {/* login paragraph */}
                 <Route exact path='/login' component={handleLogin} />
                 <Route
                   exact
@@ -302,9 +265,8 @@ function App(props) {
               />
               {/* CART SECTION */}
               <Link
-                className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                // name='cart'
-                // onClick={handleClick}
+                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 to='/checkout'
                 onClick={() => dispatch(toggleCartState())}
               >

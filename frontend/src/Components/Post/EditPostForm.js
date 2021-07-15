@@ -61,7 +61,7 @@ export default function EditPostForm(props) {
         // console.log(parseInt(value))
         // console.log(value.to_i)
         // TODO Number not converting to number
-        setMembershipLevel(parseInt(value));
+        setMembershipLevel(value);
         break;
       case "listing":
         console.log(value);
@@ -134,7 +134,7 @@ export default function EditPostForm(props) {
         <div className="">
           <label htmlFor="membership_level">Membership Level:</label>
           <select
-            type="text"
+            type="number"
             name="membership_level"
             className=""
             onChange={handleChange}
