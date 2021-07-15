@@ -58,9 +58,6 @@ export default function EditPostForm(props) {
         setPostContent(value);
         break;
       case "membership_level":
-        // console.log(parseInt(value))
-        // console.log(value.to_i)
-        // TODO Number not converting to number
         setMembershipLevel(value);
         break;
       case "listing":

@@ -1,19 +1,28 @@
-import React, { useEffect } from "react";
-import DeleteProfile from "../User/DeleteProfile";
-import EditProfile from "./EditProfile";
-import { logout } from "../../Actions/loginAction";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { deletePost } from "../../Actions/postsAction";
-import { deleteSubscription } from "../../Actions/subscriptionsAction";
-import { fetchPosts } from "../../Actions/postsAction";
+import React from 'react';
+import DeleteProfile from '../User/DeleteProfile';
+import EditProfile from './EditProfile';
+import { logout } from '../../Actions/loginAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
+import { deletePost } from '../../Actions/postsAction';
+import { deleteSubscription } from '../../Actions/subscriptionsAction';
+// import { fetchPosts } from "../../Actions/postsAction";
 
 export default function Homepage(props) {
-
   const dispatch = useDispatch();
   const history = useHistory();
   const subscriptionsRequest = useSelector(
-    (state) => state.subscriptions.loading
+    state => state.subscriptions.loading
+  );
+  const postsRequest = useSelector(state => state.posts.loading);
+  console.log(props);
+
+  // const currentUserSubscriptions = props.subscriptions.filter(
+  //   subscription => subscription.subscriber_id === props.currentUser.id
+  // );
+
+  const creators = useSelector(state =>
+    state.users.users.filter(user => user.is_creator === true)
   );
 
   const handleAddPost = () => {
@@ -23,33 +32,48 @@ export default function Homepage(props) {
 
   const handleLogout = () => {
     dispatch(logout());
-    history.push("/login");
+    history.push('/login');
   };
 
-  const handleDelete = (post_id) => {
+  const handleDelete = post_id => {
     dispatch(deletePost(post_id));
   };
 
-  const handleDeleteSubscription = (subscription_id) => {
-    dispatch(deleteSubscription(subscription_id))
-  }
+  const handleDeleteSubscription = subscription_id => {
+    dispatch(deleteSubscription(subscription_id));
+  };
 
-  console.log(useSelector(state => state.login.currentUser))
+  // console.log(useSelector(state => state.login.currentUser))
   if (
     Object.keys(props.currentUser).length === 0 ||
-    subscriptionsRequest === true
+    subscriptionsRequest === true ||
+    postsRequest === true
   ) {
     return <div>Hold tight while items are being fetched...</div>;
   } else {
     console.log(
       props.subscriptions.filter(
-        (subscription) =>
-          subscription.subscriber_id === props.currentUser.id
+        subscription => subscription.subscriber_id === props.currentUser.id
       )
     );
+    const currentUserSubscriptions = props.subscriptions.filter(
+      subscription => subscription.subscriber_id === props.currentUser.id
+    );
+
     return (
       <div>
-        <h1>This is a User's private Homepage.</h1>
+        <h1>Browse Creators:</h1>
+        {creators.map(creator => (
+          <div key={creator.id}>
+            <Link
+              className='pointer link black f2 f1-l'
+              to={`/${creator.username}`}
+            >
+              {creator.username.charAt(0).toUpperCase() +
+                    creator.username.slice(1)}
+            </Link>
+          </div>
+        ))}
         <EditProfile user={props.currentUser} />
         <DeleteProfile userId={props.currentUser.id} />
         <button onClick={handleLogout}>Logout</button>
@@ -57,8 +81,8 @@ export default function Homepage(props) {
           <div>
             <h1>Your Posts:</h1>
             {props.posts
-              .filter((post) => post.user.id === props.currentUser.id)
-              .map((post) => (
+              .filter(post => post.user.id === props.currentUser.id)
+              .map(post => (
                 <div key={post.id}>
                   <h2>{post.title}</h2>
                   <h3>
@@ -74,23 +98,24 @@ export default function Homepage(props) {
                   </button>
                 </div>
               ))}
-            <button onClick={handleAddPost} style={{ margin: "50px" }}>
+            <button onClick={handleAddPost} style={{ margin: '50px' }}>
               Create a New Post
             </button>
           </div>
         ) : null}
-        <h1>Your Subscriptions:</h1>
-        {props.subscriptions
-          .filter(
-            (subscription) =>
-              subscription.subscriber_id === props.currentUser.id
-          )
-          .map((subscription) => (
-            <div key={subscription.id} >
-              <h1>{subscription.title}</h1>
-              <button onClick={() => handleDeleteSubscription(subscription.id)} >Cancel Subscription</button>
-            </div>
-          ))}
+        {/* <h1>Your Subscriptions:</h1> */}
+        {currentUserSubscriptions.length > 0 ? (
+          <h1>Your Subscriptions:</h1>
+        ) : null}
+        {currentUserSubscriptions.map(subscription => (
+          <div key={subscription.id}>
+            <h1>{subscription.title.charAt(0).toUpperCase() +
+                    subscription.title.slice(1)}</h1>
+            <button onClick={() => handleDeleteSubscription(subscription.id)}>
+              Cancel Subscription
+            </button>
+          </div>
+        ))}
       </div>
     );
   }

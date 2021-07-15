@@ -10,6 +10,7 @@ function MembershipLevels(props) {
       subscription.subscribee.username === props.match.params.username
   );
   const currentUser = useSelector(state => state.login.currentUser);
+  console.log(currentUser)
 
   let history = useHistory();
 

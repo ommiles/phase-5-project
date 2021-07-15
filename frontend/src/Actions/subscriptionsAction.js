@@ -32,7 +32,7 @@ export const fetchAddSubscription = (subscription) => {
     })
       .then((resp) => resp.json())
       // .then(console.log)
-      .then((subscription) => dispatch({ type: "FETCH_SUBSCRIPTIONS_SUCCESS", subscription }));
+      .then((subscription) => dispatch({ type: "FETCH_SUBSCRIPTION_SUCCESS", subscription }));
   };
 };
 

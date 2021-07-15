@@ -14,16 +14,21 @@ export default function subscriptionsReducer(state = initialState, action) {
       };
     case "FETCH_SUBSCRIPTIONS_SUCCESS":
       return {
-        ...state,
+        error: false,
         loading: false,
         subscriptions: action.subscriptions,
       };
+    case "FETCH_SUBSCRIPTION_SUCCESS":
+      return {
+        loading: false,
+        subscriptions: [...state.subscriptions, action.subscription],
+        error: false,
+      };
     case "FETCH_SUBSCRIPTIONS_FAILURE":
       return {
-        ...state,
         loading: false,
         error: true,
-        subscription: [],
+        subscriptions: [],
       };
     // case "EDIT_SUBSCRIPTION_SUCCESS":
     //   if (state.subscriptions.findIndex) {
