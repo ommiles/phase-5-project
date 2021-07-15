@@ -6,6 +6,7 @@ import signupReducer from "./Signup/signupReducer";
 import postsReducer from "./Posts/postsReducer";
 import subscriptionsReducer from "./Subscription/subscriptionReducer";
 import usersReducer from "./Users/usersReducer";
+import toggleReducer from "./Toggle/toggleReducer";
 
 const rootReducer = combineReducers({
   comments: commentReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   posts: postsReducer,
   subscriptions: subscriptionsReducer,
   users: usersReducer,
+  toggle: toggleReducer,
 });
 
 // shape of state:

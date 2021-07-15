@@ -33,57 +33,18 @@ import { fetchComments } from './Actions/commentsAction';
 import { fetchSubscriptions } from './Actions/subscriptionsAction';
 import { getProfileFetch } from './Actions/loginAction';
 import Sidebar from './Components/Sidebar';
+import { toggleHomeState, toggleSignupState, toggleLoginState, toggleCartState } from './Actions/toggleAction';
 
 function App(props) {
-  // START OF STATE
-  const [toggleHome, setToggleHome] = useState(true);
-  const [toggleSignup, setToggleSignup] = useState(false);
-  const [toggleLogin, setToggleLogin] = useState(false);
-  const [toggleCart, setToggleCart] = useState(false);
-  // END OF STATE
 
-  // SELECTOR FOR USERS MAP
+  const toggleHome = useSelector(state => state.toggle.toggleHome)
+  const toggleSignup = useSelector(state => state.toggle.toggleSignup)
+  const toggleLogin = useSelector(state => state.toggle.toggleLogin)
+  const toggleCart = useSelector(state => state.toggle.toggleCart)
+
   const creators = useSelector(state =>
     state.users.users.filter(user => user.is_creator === true)
   );
-  // END SELECTOR
-
-  // START OF TOGGLES FOR MENU
-  const handleClick = e => {
-    switch (e.target.name) {
-      case 'home':
-        console.log(e.target.name);
-        setToggleHome(true);
-        setToggleSignup(false);
-        setToggleLogin(false);
-        setToggleCart(false);
-        break;
-      case 'signup':
-        console.log(e.target.name);
-        setToggleHome(false);
-        setToggleSignup(true);
-        setToggleLogin(false);
-        setToggleCart(false);
-        break;
-      case 'login':
-        console.log(e.target.name);
-        setToggleHome(false);
-        setToggleSignup(false);
-        setToggleLogin(true);
-        setToggleCart(false);
-        break;
-      case 'cart':
-        console.log(e.target.name);
-        setToggleHome(false);
-        setToggleSignup(false);
-        setToggleLogin(false);
-        setToggleCart(true);
-        break;
-      default:
-        break;
-    }
-  };
-  // END OF TOGGLES FOR MENU
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -170,38 +131,6 @@ function App(props) {
   const handleEditPost = () => <PostFormContainer />;
 
   if (menuOpen === false) {
-    // return (
-    //   <>
-    //     <NavBar handleMenuClick={handleMenuClick} />
-    // <Route exact path="/">
-    //   {(Object.keys(currentUser).length > 0) ? <Redirect to="/home" /> : <PublicHomePage />}
-    // </Route>
-    // <Switch>
-    //   <Route exact path="/login" component={handleLogin} />
-    //   <Route exact path="/signup" component={handleSignup} />
-    //   <Route exact path={`/checkout/:id`} component={handleCheckout} />
-    //   <Route exact path="/home" component={handleHomepage} />
-    //   <Route exact path={`/:username`} component={handleUserProfile} />
-    //   <Route exact path={`/:username/posts`} component={handlePosts} />
-    //   <Route exact path={`/:username/edit`} component={handleProfileEdit} />
-    //   <Route exact path={`/posts/:id`} component={handlePosts} />
-    //   <Route exact path={`/posts/:id/comment`} component={handleAddComment} />
-    //   <Route
-    //     exact
-    //     path={`/comments/:id/edit`}
-    //     component={handleEditComment}
-    //   />
-    //   <Route exact path="/password/reset/" component={handlePasswordReset} />
-    //   <Route
-    //     exact
-    //     path={`/password/reset/:token`}
-    //     component={handlePasswordEdit}
-    //   />
-    //   <Route exact path={`/:username/add_post`} component={handleAddPost} />
-    //   <Route exact path={`/posts/:id/edit`} component={handleEditPost} />
-    // </Switch>
-    //   </>
-    // );
     return (
       <>
         {/* NAVBAR */}
@@ -216,7 +145,7 @@ function App(props) {
           {/* RESPONSIVE SIDEBAR */}
           <div className='w-100 h-100 relative'>
             <div className='dn-l w-100 bb h4'>
-              <p className='f3 domaine-sans-fine-thin mt4 mr5 ml5 mb3'>
+              <p className='f5 f4-m f3-l domaine-sans-fine-thin mt4 mr5 ml5 mb3'>
                 Off Season is a design and photo studio with a focus in music.
                 Founded in New York City in 2018, Off Season takes a holistic
                 and strategic approach in defining and developing an artist’s
@@ -228,8 +157,9 @@ function App(props) {
             <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'>
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                name='home'
-                onClick={handleClick}
+                // name='home'
+                // onClick={handleClick}
+                onClick={() => dispatch(toggleHomeState())}
                 to='/'
               >
                 <span
@@ -254,8 +184,6 @@ function App(props) {
                 </Route>
                 <Switch>
                   <Route exact path='/home' component={handleHomepage} />
-                  {/* <Route exact path='/login' component={handleLogin} /> */}
-                  {/* <Route exact path='/signup' component={handleSignup} /> */}
                   <Route
                     exact
                     path={`/checkout/:id`}
@@ -289,11 +217,6 @@ function App(props) {
                   />
                   <Route
                     exact
-                    path='/password/reset/'
-                    component={handlePasswordReset}
-                  />
-                  <Route
-                    exact
                     path={`/password/reset/:token`}
                     component={handlePasswordEdit}
                   />
@@ -308,49 +231,14 @@ function App(props) {
                     component={handleEditPost}
                   />
                 </Switch>
-                {/* <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p> */}
               </div>
 
               {/* SIGNUP SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                name='signup'
-                onClick={handleClick}
+                // name='signup'
+                // onClick={handleClick}
+                onClick={() => dispatch(toggleSignupState())}
                   to="/signup"
               >
                 <span
@@ -371,9 +259,10 @@ function App(props) {
               {/* LOGIN SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                name='login'
-                onClick={handleClick}
+                // name='login'
+                // onClick={handleClick}
                   to="/login"
+                  onClick={() => dispatch(toggleLoginState())}
               >
                 <span
                   className={toggleLogin === true ? 'dot dot-active' : 'dot'}
@@ -389,14 +278,20 @@ function App(props) {
               >
                 {/* login paragraph */}
                 <Route exact path='/login' component={handleLogin} />
+                <Route
+                    exact
+                    path='/password/reset/'
+                    component={handlePasswordReset}
+                  />
               </div>
 
               {/* CART SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                name='cart'
-                onClick={handleClick}
+                // name='cart'
+                // onClick={handleClick}
                 //   to="/checkout"
+                onClick={() => dispatch(toggleCartState())}
               >
                 <span
                   className={toggleCart === true ? 'dot dot-active' : 'dot'}
