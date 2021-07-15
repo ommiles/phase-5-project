@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { fetchPasswordEdit } from '../../Actions/usersAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -19,8 +19,6 @@ function PasswordEditForm(props) {
   const decoded = jwt_decode(token);
   const id = decoded.user_id;
 
-  console.log(props.users)
-
   const handleChange = e => {
     if (e.target.name === 'password') {
       setPassword(e.target.value);
@@ -40,12 +38,10 @@ function PasswordEditForm(props) {
         password_confirmation,
       })
     );
-    history.push('/');
-    dispatch(toggleHomeState())
+    if (window.confirm('Password has been reset.  Please login.')) history.push('/login')
   };
 
   if (usersLoading === true || props.users.length === 0) {
-    console.log('loading')
     return (
       <h1>App loading</h1>
     )
