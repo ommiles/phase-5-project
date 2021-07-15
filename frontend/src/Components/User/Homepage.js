@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DeleteProfile from "../User/DeleteProfile";
 import EditProfile from "./EditProfile";
 import { logout } from "../../Actions/loginAction";
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deletePost } from "../../Actions/postsAction";
 import { deleteSubscription } from "../../Actions/subscriptionsAction";
+import { fetchPosts } from "../../Actions/postsAction";
 
 export default function Homepage(props) {
 
@@ -22,7 +23,7 @@ export default function Homepage(props) {
 
   const handleLogout = () => {
     dispatch(logout());
-    history.push("/");
+    history.push("/login");
   };
 
   const handleDelete = (post_id) => {
@@ -33,6 +34,7 @@ export default function Homepage(props) {
     dispatch(deleteSubscription(subscription_id))
   }
 
+  console.log(useSelector(state => state.login.currentUser))
   if (
     Object.keys(props.currentUser).length === 0 ||
     subscriptionsRequest === true

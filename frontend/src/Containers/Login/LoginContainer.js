@@ -1,12 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { withRouter } from "react-router-dom";
+import { toggleLoginState } from "../../Actions/toggleAction";
 import LoginForm from "../../Components/Login/LoginForm";
+import { useDispatch } from "react-redux";
 
 function LoginContainer(props) {
-
+  const dispatch = useDispatch()
+  dispatch(toggleLoginState())
   const history = useHistory()
-
   const handlePasswordReset = () => {
     history.push("/password/reset")
   }

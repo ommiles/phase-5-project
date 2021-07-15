@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CSS/App.css';
 import './CSS/Fonts.css';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
 import {
   // BrowserRouter as Router,
   Switch,
@@ -50,7 +50,7 @@ function App(props) {
   const subscriptions = useSelector(state => state.subscriptions.subscriptions);
   const currentUser = useSelector(state => state.login.currentUser);
   const login_error = useSelector(state => state.login.error);
-  const token = useSelector(state => state.login.token);
+  // const token = useSelector(state => state.login.token);
 
   // TOGGLE MENU OPEN & CLOSED
   // const [menuOpen, setMenuOpen] = useState(false);
@@ -143,8 +143,8 @@ function App(props) {
         >
           {/* RESPONSIVE SIDEBAR */}
           <div className='w-100 h-100 relative'>
-            <div className='dn-l w-100 bb h4'>
-              <p className='f5 f4-m f3-l domaine-sans-fine-thin mr5 ml5 mt5-m'>
+            <div className='dn-l w-100 bb h4 fixed flex items-center justify-center'>
+              <p className='f5 f4-m f3-l domaine-sans-fine-thin mh3 mh5-m mt0 mb0'>
                 Off Season is a design and photo studio with a focus in music.
                 Founded in New York City in 2018, Off Season takes a holistic
                 and strategic approach in defining and developing an artist’s
@@ -209,11 +209,11 @@ function App(props) {
                     path={`/comments/:id/edit`}
                     component={handleEditComment}
                   />
-                  <Route
+                  {/* <Route
                     exact
                     path={`/password/reset/:token`}
                     component={handlePasswordEdit}
-                  />
+                  /> */}
                   <Route
                     exact
                     path={`/:username/add_post`}
@@ -277,8 +277,17 @@ function App(props) {
                     path='/password/reset/'
                     component={handlePasswordReset}
                   />
+                <Route
+                    exact
+                    path='/reset/success'
+                    component={handlePasswordReset}
+                  />
               </div>
-
+              <Route
+                    exact
+                    path={`/password/reset/:token`}
+                    component={handlePasswordEdit}
+                  />
               {/* CART SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'

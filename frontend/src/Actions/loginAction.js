@@ -96,9 +96,6 @@ export const getPasswordFetch = (email) => {
 
 export const logout = () => {
   return(dispatch) => {
-    // const token = localStorage.getItem("token");
-    // localStorage.removeItem("token");
-    // TODO: Why did removeItem not clear token?
     localStorage.clear()
     dispatch({ type: "LOGOUT_REQUEST" })
   }

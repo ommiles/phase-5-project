@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { fetchLogin } from "../../Actions/loginAction";
 import { useDispatch } from "react-redux";
+import { toggleHomeState } from "../../Actions/toggleAction";
 
 export default function LoginForm(props) {
   const dispatch = useDispatch();
@@ -20,9 +21,8 @@ export default function LoginForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchLogin({ username, password }));
-
-    // TODO: HOW TO HANDLE 401 UNAUTHORIZED REROUTE OR ALERT?
     props.history.push("/home");
+    dispatch(toggleHomeState())
   };
 
   return (

@@ -3,6 +3,7 @@ import GoBackButton from "../GoBackButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchAddPost } from "../../Actions/postsAction";
+import { toggleHomeState } from "../../Actions/toggleAction";
 
 export default function AddPostForm() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function AddPostForm() {
     );
     // TODO: Homepage component needs to rerender
       history.push(`/home`);
+      // dispatch(toggleHomeState())
   };
 
   const handleChange = (e) => {
