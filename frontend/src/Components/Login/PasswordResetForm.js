@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  getPasswordFetch,
-  // logout,
-  // clearCurrentUser,
-} from '../../Actions/loginAction';
+import { getPasswordFetch } from '../../Actions/loginAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleLoginState } from '../../Actions/toggleAction';
 import { useHistory, withRouter } from 'react-router-dom';
@@ -12,10 +8,9 @@ import emailjs from 'emailjs-com';
 function PasswordResetForm(props) {
   console.log(props);
   const dispatch = useDispatch();
-  dispatch(toggleLoginState())
+  dispatch(toggleLoginState());
   const history = useHistory();
   const [email, setEmail] = useState('');
-  // const [submit, setSubmit] = useState(true);
   const currentUser = useSelector(state => state.login.currentUser);
   const token = useSelector(state => state.login.token);
   const templateParams = {
@@ -36,15 +31,18 @@ function PasswordResetForm(props) {
 
   useEffect(() => {
     console.log('mounted');
-    if (props.match.path === '/reset/success' && templateParams.message !== "http://localhost:3001/password/reset/" ) {
-      handleReset()
+    if (
+      props.match.path === '/reset/success' &&
+      templateParams.message !== 'http://localhost:3001/password/reset/'
+    ) {
+      handleReset();
     }
     console.log('unmounted');
   }, []);
 
   const handleReset = () => {
     emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
-    console.log(templateParams)
+    console.log(templateParams);
 
     emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
       function (response) {
