@@ -42,11 +42,7 @@ function App(props) {
   const toggleLogin = useSelector(state => state.toggle.toggleLogin)
   const toggleCart = useSelector(state => state.toggle.toggleCart)
 
-  const creators = useSelector(state =>
-    state.users.users.filter(user => user.is_creator === true)
-  );
-
-  let history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const users = useSelector(state => state.users.users);
   const posts = useSelector(state => state.posts.posts);
@@ -57,10 +53,11 @@ function App(props) {
   const token = useSelector(state => state.login.token);
 
   // TOGGLE MENU OPEN & CLOSED
-  const [menuOpen, setMenuOpen] = useState(false);
-  const handleMenuClick = () => {
-    setMenuOpen(!menuOpen);
-  };
+  // const [menuOpen, setMenuOpen] = useState(false);
+  // const handleMenuClick = () => {
+  //   setMenuOpen(!menuOpen);
+  // };
+  const menuOpen = useSelector(state => state.toggle.toggleMenu)
 
   useEffect(() => {
     console.log('mounted');
@@ -136,7 +133,7 @@ function App(props) {
     return (
       <>
         {/* NAVBAR */}
-        <NavBar handleMenuClick={handleMenuClick} />
+        <NavBar />
         {/* SIDEBAR */}
         <Sidebar />
         {/* START OF MAIN SECTION */}
@@ -323,7 +320,7 @@ function App(props) {
   } else {
     return (
       <>
-        <NavBar handleMenuClick={handleMenuClick} />
+        <NavBar />
         <Menu />
       </>
     );
