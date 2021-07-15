@@ -3,8 +3,11 @@ import { useHistory, withRouter } from "react-router-dom";
 import GoBackButton from "../../Components/GoBackButton";
 import { fetchAddSubscription } from "../../Actions/subscriptionsAction";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleHomeState } from "../../Actions/toggleAction";
 
 function CheckoutContainer(props) {
+
+
   const subscription_id = parseInt(props.match.params.id);
   const subscription = props.subscriptions.find(
     (subscription) => subscription.id === subscription_id
@@ -34,9 +37,17 @@ function CheckoutContainer(props) {
       })
     );
     history.push("/home")
+    dispatch(toggleHomeState())
   };
 
-  if (subscriptionsRequest === true || Object.keys(currentUser).length === 0) {
+  // NaN is a falsy value
+  // subscription_id ? null : return <h1>Your Cart is Empty</h1>
+
+  if (props.match.path === "/checkout") {
+    return(
+      <h1>Your cart is empty!</h1>
+    )
+  } else if (subscriptionsRequest === true || Object.keys(currentUser).length === 0) {
     return <div>Hold tight while items are being fetched...</div>;
   } else {
     return (

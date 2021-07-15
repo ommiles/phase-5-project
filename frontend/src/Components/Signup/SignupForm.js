@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchSignup } from "../../Actions/signupAction";
+import { toggleHomeState } from "../../Actions/toggleAction";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -37,6 +38,7 @@ export default function SignupForm() {
              Email: ${email} \n 
              Username: ${username} \n
              Password: ${password}`);
+    dispatch(toggleHomeState())
   };
 
   const handleChange = (e) => {

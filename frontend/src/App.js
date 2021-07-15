@@ -63,33 +63,35 @@ function App(props) {
   };
 
   useEffect(() => {
+    console.log('mounted');
     dispatch(getProfileFetch());
     dispatch(fetchPosts());
     dispatch(fetchUsers());
     dispatch(fetchComments());
     dispatch(fetchSubscriptions());
-  }, [dispatch]);
+    console.log('unmounted');
+  }, []);
 
-  useEffect(() => {
-    if (token !== '' && props.location.pathname === '/password/reset') {
-      emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
+  // useEffect(() => {
+    // if (token !== '' && props.location.pathname === '/password/reset') {
+    //   emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
 
-      const templateParams = {
-        name: currentUser.first_name,
-        reply_to: currentUser.email,
-        message: `http://localhost:3001/password/reset/${token}`,
-      };
+    //   const templateParams = {
+    //     name: currentUser.first_name,
+    //     reply_to: currentUser.email,
+    //     message: `http://localhost:3001/password/reset/${token}`,
+    //   };
 
-      emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
-        function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-        },
-        function (error) {
-          console.log('FAILED...', error);
-        }
-      );
-    }
-  });
+    //   emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
+    //     function (response) {
+    //       console.log('SUCCESS!', response.status, response.text);
+    //     },
+    //     function (error) {
+    //       console.log('FAILED...', error);
+    //     }
+    //   );
+    // }
+  // });
 
   const handleLogin = () => (
     <LoginContainer error={login_error} history={history} />
@@ -145,7 +147,7 @@ function App(props) {
           {/* RESPONSIVE SIDEBAR */}
           <div className='w-100 h-100 relative'>
             <div className='dn-l w-100 bb h4'>
-              <p className='f5 f4-m f3-l domaine-sans-fine-thin mt4 mr5 ml5 mb3'>
+              <p className='f5 f4-m f3-l domaine-sans-fine-thin mr5 ml5 mt5-m'>
                 Off Season is a design and photo studio with a focus in music.
                 Founded in New York City in 2018, Off Season takes a holistic
                 and strategic approach in defining and developing an artist’s
@@ -184,11 +186,6 @@ function App(props) {
                 </Route>
                 <Switch>
                   <Route exact path='/home' component={handleHomepage} />
-                  <Route
-                    exact
-                    path={`/checkout/:id`}
-                    component={handleCheckout}
-                  />
                   <Route
                     exact
                     path={`/:username`}
@@ -290,7 +287,7 @@ function App(props) {
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // name='cart'
                 // onClick={handleClick}
-                //   to="/checkout"
+                  to="/checkout"
                 onClick={() => dispatch(toggleCartState())}
               >
                 <span
@@ -298,15 +295,26 @@ function App(props) {
                 ></span>
                 Cart
               </Link>
-              <p
+              <div
                 className={
                   toggleCart === true
                     ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
-                cart paragraph
-              </p>
+                
+              <Route
+                    exact
+                    path="/checkout"
+                    component={handleCheckout}
+                  />
+                
+              <Route
+                    exact
+                    path={`/checkout/:id`}
+                    component={handleCheckout}
+                  />
+              </div>
             </div>
           </div>
         </main>
