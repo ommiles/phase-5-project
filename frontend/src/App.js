@@ -33,14 +33,18 @@ import { fetchComments } from './Actions/commentsAction';
 import { fetchSubscriptions } from './Actions/subscriptionsAction';
 import { getProfileFetch } from './Actions/loginAction';
 import Sidebar from './Components/Sidebar';
-import { toggleHomeState, toggleSignupState, toggleLoginState, toggleCartState } from './Actions/toggleAction';
+import {
+  toggleHomeState,
+  toggleSignupState,
+  toggleLoginState,
+  toggleCartState,
+} from './Actions/toggleAction';
 
 function App(props) {
-
-  const toggleHome = useSelector(state => state.toggle.toggleHome)
-  const toggleSignup = useSelector(state => state.toggle.toggleSignup)
-  const toggleLogin = useSelector(state => state.toggle.toggleLogin)
-  const toggleCart = useSelector(state => state.toggle.toggleCart)
+  const toggleHome = useSelector(state => state.toggle.toggleHome);
+  const toggleSignup = useSelector(state => state.toggle.toggleSignup);
+  const toggleLogin = useSelector(state => state.toggle.toggleLogin);
+  const toggleCart = useSelector(state => state.toggle.toggleCart);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -57,7 +61,7 @@ function App(props) {
   // const handleMenuClick = () => {
   //   setMenuOpen(!menuOpen);
   // };
-  const menuOpen = useSelector(state => state.toggle.toggleMenu)
+  const menuOpen = useSelector(state => state.toggle.toggleMenu);
 
   useEffect(() => {
     console.log('mounted');
@@ -70,24 +74,24 @@ function App(props) {
   }, []);
 
   // useEffect(() => {
-    // if (token !== '' && props.location.pathname === '/password/reset') {
-    //   emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
+  // if (token !== '' && props.location.pathname === '/password/reset') {
+  //   emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
 
-    //   const templateParams = {
-    //     name: currentUser.first_name,
-    //     reply_to: currentUser.email,
-    //     message: `http://localhost:3001/password/reset/${token}`,
-    //   };
+  //   const templateParams = {
+  //     name: currentUser.first_name,
+  //     reply_to: currentUser.email,
+  //     message: `http://localhost:3001/password/reset/${token}`,
+  //   };
 
-    //   emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
-    //     function (response) {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     function (error) {
-    //       console.log('FAILED...', error);
-    //     }
-    //   );
-    // }
+  //   emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
+  //     function (response) {
+  //       console.log('SUCCESS!', response.status, response.text);
+  //     },
+  //     function (error) {
+  //       console.log('FAILED...', error);
+  //     }
+  //   );
+  // }
   // });
 
   const handleLogin = () => (
@@ -150,6 +154,14 @@ function App(props) {
                 and strategic approach in defining and developing an artist’s
                 creative direction through design, photography and typography.
               </p>
+            </div>
+
+            {/* RESPONSIVE HOME SECTION */}
+            <div className='dn-m dn-l absolute top-0 bottom-0 mt6 pa4 w-100'>
+              <Link className='link black pointer outline-transparent domaine-sans-fine-thin flex items-center'>
+                <span className='responsive-dot mr2'></span>
+                Home
+              </Link>
             </div>
 
             {/* HOME SECTION */}
@@ -233,7 +245,7 @@ function App(props) {
                 // name='signup'
                 // onClick={handleClick}
                 onClick={() => dispatch(toggleSignupState())}
-                  to="/signup"
+                to='/signup'
               >
                 <span
                   className={toggleSignup === true ? 'dot dot-active' : 'dot'}
@@ -255,8 +267,8 @@ function App(props) {
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // name='login'
                 // onClick={handleClick}
-                  to="/login"
-                  onClick={() => dispatch(toggleLoginState())}
+                to='/login'
+                onClick={() => dispatch(toggleLoginState())}
               >
                 <span
                   className={toggleLogin === true ? 'dot dot-active' : 'dot'}
@@ -273,27 +285,27 @@ function App(props) {
                 {/* login paragraph */}
                 <Route exact path='/login' component={handleLogin} />
                 <Route
-                    exact
-                    path='/password/reset/'
-                    component={handlePasswordReset}
-                  />
+                  exact
+                  path='/password/reset/'
+                  component={handlePasswordReset}
+                />
                 <Route
-                    exact
-                    path='/reset/success'
-                    component={handlePasswordReset}
-                  />
+                  exact
+                  path='/reset/success'
+                  component={handlePasswordReset}
+                />
               </div>
               <Route
-                    exact
-                    path={`/password/reset/:token`}
-                    component={handlePasswordEdit}
-                  />
+                exact
+                path={`/password/reset/:token`}
+                component={handlePasswordEdit}
+              />
               {/* CART SECTION */}
               <Link
                 className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // name='cart'
                 // onClick={handleClick}
-                  to="/checkout"
+                to='/checkout'
                 onClick={() => dispatch(toggleCartState())}
               >
                 <span
@@ -308,18 +320,13 @@ function App(props) {
                     : 'dn ma0 w-100'
                 }
               >
-                
-              <Route
-                    exact
-                    path="/checkout"
-                    component={handleCheckout}
-                  />
-                
-              <Route
-                    exact
-                    path={`/checkout/:id`}
-                    component={handleCheckout}
-                  />
+                <Route exact path='/checkout' component={handleCheckout} />
+
+                <Route
+                  exact
+                  path={`/checkout/:id`}
+                  component={handleCheckout}
+                />
               </div>
             </div>
           </div>

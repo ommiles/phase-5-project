@@ -44,15 +44,16 @@ function PasswordResetForm(props) {
 
   const handleReset = () => {
     emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
+    console.log(templateParams)
 
-    // emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
-    //   function (response) {
-    //     console.log('SUCCESS!', response.status, response.text);
-    //   },
-    //   function (error) {
-    //     console.log('FAILED...', error);
-    //   }
-    // );
+    emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
+      function (response) {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      function (error) {
+        console.log('FAILED...', error);
+      }
+    );
   };
 
   if (props.match.path === '/reset/success') {

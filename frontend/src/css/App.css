@@ -25,25 +25,33 @@ a:hover,
 a:active,
 a:focus,
 a:visited {
-    outline: transparent !important;
-    box-shadow: none !important;
+  outline: transparent !important;
+  box-shadow: none !important;
 }
 
 .dot {
-    height: .45em;
-    width: .45em;
-    border-radius: 50%;
-    border: 1px solid #000;
-    margin-bottom: .34em;
-    transition: background-color .2s ease;
+  height: 0.45em;
+  width: 0.45em;
+  border-radius: 50%;
+  border: 1px solid #000;
+  margin-bottom: 0.34em;
+  transition: background-color 0.2s ease;
 }
 
 .dot:hover {
-    background-color: #000;
+  background-color: #000;
 }
 
 .dot-active {
-    background-color: #000;
+  background-color: #000;
+}
+
+.responsive-dot {
+  height: 0.45em;
+  width: 0.45em;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background-color: #000;
 }
 
 .change.div1 {
