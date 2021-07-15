@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 // need to decode token to find user_id
 // library found here: https://github.com/auth0/jwt-decode
 import jwt_decode from 'jwt-decode';
-import { toggleHomeState, toggleLoginState } from '../../Actions/toggleAction';
+import { toggleLoginState } from '../../Actions/toggleAction';
 
 function PasswordEditForm(props) {
   const dispatch = useDispatch();
