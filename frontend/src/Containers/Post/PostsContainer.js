@@ -38,9 +38,9 @@ function PostsContainer(props) {
       // the user can see posts
 
       return (
-        <div>
-          <h1>This is the Posts Container.</h1>
-          <h2>Currently viewing: {capitalizedUsername}</h2>
+        <div >
+          {/* <h1>This is the Posts Container.</h1> */}
+          <h2 className='f1 f1-m f-headline-l soehne-breit-leicht mb4 mt0'>Posts by {capitalizedUsername}:</h2>
           {props.posts
             .filter(post => post.user.username === username)
             .map(post => (
@@ -48,9 +48,9 @@ function PostsContainer(props) {
                 post={post}
                 key={post.id}
                 allowed={
-                  subscription !== undefined &&
-                  // subscription.subscribee_id === userId &&
-                  post.membership_level <= subscription.membership_level
+                  (subscription !== undefined &&
+                    post.membership_level <= subscription.membership_level) ||
+                  (post.listing === 'allow_list')
                     ? true
                     : false
                 }
@@ -88,9 +88,9 @@ function PostsContainer(props) {
                 comments={props.comments}
                 id={id}
                 allowed={
-                  subscription !== undefined &&
-                  // subscription.subscribee_id === userId &&
-                  post.membership_level <= subscription.membership_level
+                  (subscription !== undefined &&
+                    post.membership_level <= subscription.membership_level) ||
+                  (post.listing === 'allow_list')
                     ? true
                     : false
                 }

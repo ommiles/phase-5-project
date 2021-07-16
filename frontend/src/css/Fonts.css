@@ -83,10 +83,41 @@
 }
 
 @font-face {
+  font-family: 'Founders Grotesk Text Light';
+  src: local('Founders Grotesk Text Light'),
+    url(../Fonts/test-founders-grotesk-text-light.woff2)
+      format('woff2');
+}
+
+@font-face {
   font-family: 'Founders Grotesk X Condensed Regular';
   src: local('Founders Grotesk X Condensed Regular'),
     url(../Fonts/test-founders-grotesk-x-condensed-regular.woff2)
       format('woff2');
+}
+
+@font-face {
+  font-family: 'Sohne Breit Leicht';
+  src: local('Sohne Breit Leicht'),
+    url(../Fonts/test-soehne-breit-leicht.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Sohne Breit Extraleicht';
+  src: local('Sohne Breit Extraleicht'),
+    url(../Fonts/test-soehne-breit-extraleicht.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Sohne Breit Extrafett';
+  src: local('Sohne Breit Extrafett'),
+    url(../Fonts/test-soehne-breit-extrafett.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Geograph Thin';
+  src: local('Geograph Thin'),
+    url(../Fonts/test-geograph-thin.woff2) format('woff2');
 }
 
 .domaine-sans-fine-thin {
@@ -145,6 +176,26 @@
   font-family: 'Founders Grotesk Semibold';
 }
 
+.fg-text-light {
+  font-family: 'Founders Grotesk Text Light';
+}
+
 .fg-x {
   font-family: 'Founders Grotesk X Condensed Regular';
+}
+
+.soehne-breit-leicht {
+  font-family: 'Sohne Breit Leicht';
+}
+
+.soehne-breit-extraleicht {
+  font-family: 'Sohne Breit Extraleicht';
+}
+
+.soehne-breit-extrafett {
+  font-family: 'Sohne Breit Extrafett';
+}
+
+.geo-thin {
+  font-family: 'Geograph Thin';
 }

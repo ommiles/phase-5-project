@@ -73,3 +73,11 @@ a:visited {
   text-orientation: sideways;
   transform: rotate(180deg);
 }
+
+@media screen and (max-width: 30em) {
+  .sideways-text {
+    text-orientation: upright;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}

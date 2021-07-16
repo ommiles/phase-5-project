@@ -10,5 +10,5 @@ export default function Clock() {
     }, 1000);
   }, []);
 
-  return <p className='absolute right-0 dn db-l f3 pr4 ma0'>{clock}</p>;
+  return <p className='absolute right-0 dn db-l f3 pr4 ma0'>Time {clock} to code ⏰</p>;
 }

@@ -4,46 +4,68 @@ import MembershipLevels from '../Subscriptions/MembershipLevels';
 import { useSelector } from 'react-redux';
 
 function ProfilePage(props) {
-  console.log(props)
   const usersRequest = useSelector(state => state.users.loading);
-  const subscriptionsRequest = useSelector(
-    state => state.subscriptions.loading
-  );
   const loginRequest = useSelector(state => state.login.loading);
-  const postsRequest = useSelector(state => state.posts.loading);
   const users = useSelector(state => state.users.users);
-  
-  if (
-    loginRequest === true ||
-    usersRequest === true
-  ) {
+
+  if (loginRequest === true || usersRequest === true) {
     return <div>Hold tight while items are being fetched...</div>;
   } else {
     const url_username = props.match.params.username;
 
     return (
-      <div>
+      <div className=''>
         {users
           .filter(user => user.username === url_username)
           .map((user, index) =>
             user.is_creator ? (
-              <div key={index}>
-                <h1>
-                  Hi, I'm {user.username.charAt(0).toUpperCase() +
-                    user.username.slice(1)} 👋
-                </h1>
-                <img src={user.banner} alt='profile'></img>
-                {user.is_creator ? (
-                  <h3>I am a creator. </h3>
-                ) : (
-                  <h3>I am not a creator.</h3>
-                )}
-                <h5>Bio: {user.bio}</h5>
-                <img src={user.avatar} alt='profile' className='br-100'></img>
-                <Link
-                className='link black'
-                to={`/${url_username}/posts`}
-                >Check Out My Posts</Link>
+              <div key={index} className=''>
+                <div className='relative'>
+                  <h1 className='f1-m f-headline-l soehne-breit-leicht mt0 mb6 pb5'>
+                    {user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}{' '}
+                    :
+                  </h1>
+                  <img
+                    src={user.avatar}
+                    alt='profile'
+                    className='br-100 relative z-4'
+                    style={{
+                      top: '20%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                  ></img>
+                  <img
+                    src={user.banner}
+                    alt='profile'
+                    className='center relative'
+                    style={{
+                      top: '20%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      marginTop: '-260px',
+                    }}
+                  ></img>
+                </div>
+                <p
+                  className='f3 mt0 pt2 pb4 tc domaine-tx-light'
+                  style={{ marginTop: '-90px' }}
+                >
+                  {user.bio}
+                </p>
+                <div
+                  className='domaine-sans-fine-thin f2-l bt bb pv5 tc'
+                  style={{ marginTop: '100px' }}
+                >
+                  <Link
+                    className='link black b f2-m f1-l w-70-l mv5-l pt3-l'
+                    style={{ marginTop: '200px' }}
+                    to={`/${url_username}/posts`}
+                  >
+                    Check Out My Posts ☞
+                  </Link>
+                </div>
                 <MembershipLevels />
               </div>
             ) : (

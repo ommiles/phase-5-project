@@ -9,14 +9,18 @@ export default function PublicHomePage() {
 
   return (
     <div>
-      <h1>PublicHomePage Component</h1>
+      {/* <h1>PublicHomePage Component</h1> */}
       {/* CREATORS LIST */}
       <div className=''>
-        <h1>Creators</h1>
+        {/* <h1>Creators</h1> */}
         {creators.map(creator => (
           <div key={creator.id}>
-            <Link className='pointer link black f2 f1-l' to={`/${creator.username}`}>
-              {creator.username}
+            <Link
+              className='pointer link black f1 f1-m f-headline-l soehne-breit-leicht mv3'
+              to={`/${creator.username}`}
+            >
+              {creator.username.charAt(0).toUpperCase() +
+                creator.username.slice(1)}
             </Link>
           </div>
         ))}

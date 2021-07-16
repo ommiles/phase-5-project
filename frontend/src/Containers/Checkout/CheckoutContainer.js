@@ -1,27 +1,21 @@
-import React from "react";
-import { useHistory, withRouter } from "react-router-dom";
-import GoBackButton from "../../Components/GoBackButton";
-import { fetchAddSubscription } from "../../Actions/subscriptionsAction";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleHomeState } from "../../Actions/toggleAction";
+import React from 'react';
+import { useHistory, withRouter } from 'react-router-dom';
+import GoBackButton from '../../Components/GoBackButton';
+import { fetchAddSubscription } from '../../Actions/subscriptionsAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleHomeState } from '../../Actions/toggleAction';
 
 function CheckoutContainer(props) {
-
-
   const subscription_id = parseInt(props.match.params.id);
   const subscription = props.subscriptions.find(
-    (subscription) => subscription.id === subscription_id
+    subscription => subscription.id === subscription_id
   );
-  const currentUser = useSelector((state) => state.login.currentUser);
-  console.log(props);
-  console.log(currentUser);
-  console.log(subscription);
-  console.log(subscription_id);
+  const currentUser = useSelector(state => state.login.currentUser);
 
   const dispatch = useDispatch();
   const history = useHistory();
   const subscriptionsRequest = useSelector(
-    (state) => state.subscriptions.loading
+    state => state.subscriptions.loading
   );
 
   const handlePurchase = () => {
@@ -36,18 +30,16 @@ function CheckoutContainer(props) {
         subscribee_id: subscription.subscribee_id,
       })
     );
-    history.push("/home")
-    dispatch(toggleHomeState())
+    history.push('/home');
+    dispatch(toggleHomeState());
   };
 
-  // NaN is a falsy value
-  // subscription_id ? null : return <h1>Your Cart is Empty</h1>
-
-  if (props.match.path === "/checkout") {
-    return(
-      <h1>Your cart is empty!</h1>
-    )
-  } else if (subscriptionsRequest === true || Object.keys(currentUser).length === 0) {
+  if (props.match.path === '/checkout') {
+    return <h1 className='domaine-sans-fine-thin ttu'>Your cart is empty!</h1>;
+  } else if (
+    subscriptionsRequest === true ||
+    Object.keys(currentUser).length === 0
+  ) {
     return <div>Hold tight while items are being fetched...</div>;
   } else {
     return (

@@ -1,28 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Comment from "./Comment";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Comment from './Comment';
 
 export default function CommentsList(props) {
-  console.log(props);
   const history = useHistory();
-  const currentUser = useSelector((state) => state.login.currentUser);
-  console.log(currentUser);
+  const currentUser = useSelector(state => state.login.currentUser);
 
   const handleAddComment = () => {
-    // user must be logged in to comment
-    // grab post id (props.id)
-    // grab user id (state.login.currentUser.id)
-    // save comment content (textarea input)
     history.push(`/posts/${props.id}/comment`);
   };
 
   return (
-    <div>
-      <h1>Here are the comments!</h1>
+    <div className='mb6'>
+      <h1 className='f2 lh-title domaine-sans-fine-thin'>Comments:</h1>
       {props.comments
-        .filter((comment) => comment.post.id === props.id)
-        .map((comment) => (
+        .filter(comment => comment.post.id === props.id)
+        .map(comment => (
           <Comment
             comment={comment}
             key={comment.id}
@@ -31,7 +25,12 @@ export default function CommentsList(props) {
         ))}
       {Object.keys(currentUser).length === 0 ? null : (
         <div>
-          <button onClick={handleAddComment}>Add Comment</button>
+          <button
+            onClick={handleAddComment}
+            className='mv2 f6 link dim br3 ph3 pv2 mb2 dib white bg-black fg-text-light'
+          >
+            Add Comment
+          </button>
         </div>
       )}
     </div>

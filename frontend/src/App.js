@@ -85,7 +85,7 @@ function App(props) {
     />
   );
 
-  const handleSignup = () => <SignupContainer currentUser={currentUser} />;
+  const handleSignup = () => <SignupContainer />;
   const handleProfileEdit = () => <EditProfileForm currentUser={currentUser} />;
   const handleHomepage = () => (
     <Homepage
@@ -118,7 +118,7 @@ function App(props) {
         >
           <div className='w-100 h-100 relative'>
             {/* RESPONSIVE SIDEBAR */}
-            <div className='dn-l w-100 bb h4 fixed flex items-center justify-center'>
+            <div className='dn w-100 bb h4 fixed flex-m items-center justify-center'>
               <p className='f5 f4-m f3-l domaine-sans-fine-thin mh3 mh5-m mt0 mb0'>
                 Off Season is a design and photo studio with a focus in music.
                 Founded in New York City in 2018, Off Season takes a holistic
@@ -129,100 +129,115 @@ function App(props) {
 
             {/* RESPONSIVE HOME SECTION */}
             <div className='dn-m dn-l absolute top-0 bottom-0 mt6 pa4 w-100'>
-              <Link className='link black pointer outline-transparent domaine-sans-fine-thin flex items-center'>
+              {/* TROUBLEMAKER */}
+              {/* <Link className='link black pointer outline-transparent domaine-sans-fine-thin flex items-center'>
                 <span className='responsive-dot mr2'></span>
                 Home
-              </Link>
+              </Link> */}
+              {/* RESPONSIVEAPP.JS COULD GO HERE */}
             </div>
 
             {/* HOME SECTION */}
-            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-scroll-ns flex-m flex-l justify-end mt6-m mt6-s'>
+            {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-scroll-ns flex-m flex-l justify-end mt6-m mt6-s'> */}
             {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'> */}
+            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden flex flex-column flex-row-ns justify-end-ns pa4 pa0-ns mt6-m mt6-s'>
               <Link
-                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                 onClick={() => dispatch(toggleHomeState())}
                 to='/'
               >
                 <span
-                  className={toggleHome === true ? 'dot dot-active' : 'dot'}
+                  className={
+                    toggleHome === true
+                      ? 'dot dot-active dn db-ns'
+                      : 'dot dn db-ns'
+                  }
                 ></span>
                 Home
               </Link>
+              <div className='overflow-scroll' style={{ minHeight: '900px' }}>
+                <div
+                  className={
+                    toggleHome === true
+                      ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                        'ma0 w-100 overflow-scroll pv5-ns ph7 ph6-m ph5-l fg-mono-light f4'
+                      : 'dn ma0 w-100'
+                  }
+                >
+                  <Route exact path='/'>
+                    {Object.keys(currentUser).length > 0 ? (
+                      <Redirect to='/home' />
+                    ) : (
+                      <PublicHomePage />
+                    )}
+                  </Route>
 
-              <div
-                className={
-                  toggleHome === true
-                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
-                    : 'dn ma0 w-100'
-                }
-              >
-                <Route exact path='/'>
-                  {Object.keys(currentUser).length > 0 ? (
-                    <Redirect to='/home' />
-                  ) : (
-                    <PublicHomePage />
-                  )}
-                </Route>
-                <Switch>
-                  <Route exact path='/home' component={handleHomepage} />
-                  <Route
-                    exact
-                    path={`/:username`}
-                    component={handleUserProfile}
-                  />
-                  <Route
-                    exact
-                    path={`/:username/posts`}
-                    component={handlePosts}
-                  />
-                  <Route
-                    exact
-                    path={`/:username/edit`}
-                    component={handleProfileEdit}
-                  />
-                  <Route exact path={`/posts/:id`} component={handlePosts} />
-                  <Route
-                    exact
-                    path={`/posts/:id/comment`}
-                    component={handleAddComment}
-                  />
-                  <Route
-                    exact
-                    path={`/comments/:id/edit`}
-                    component={handleEditComment}
-                  />
-                  <Route
-                    exact
-                    path={`/:username/add_post`}
-                    component={handleAddPost}
-                  />
-                  <Route
-                    exact
-                    path={`/posts/:id/edit`}
-                    component={handleEditPost}
-                  />
-                </Switch>
+                  <Switch>
+                    <Route exact path='/home' component={handleHomepage} />
+                    <Route
+                      exact
+                      path={`/:username`}
+                      component={handleUserProfile}
+                    />
+                    <Route
+                      exact
+                      path={`/:username/posts`}
+                      component={handlePosts}
+                    />
+                    <Route
+                      exact
+                      path={`/:username/edit`}
+                      component={handleProfileEdit}
+                    />
+                    <Route exact path={`/posts/:id`} component={handlePosts} />
+                    <Route
+                      exact
+                      path={`/posts/:id/comment`}
+                      component={handleAddComment}
+                    />
+                    <Route
+                      exact
+                      path={`/comments/:id/edit`}
+                      component={handleEditComment}
+                    />
+                    <Route
+                      exact
+                      path={`/:username/add_post`}
+                      component={handleAddPost}
+                    />
+                    <Route
+                      exact
+                      path={`/posts/:id/edit`}
+                      component={handleEditPost}
+                    />
+                  </Switch>
+                </div>
               </div>
 
               {/* SIGNUP SECTION */}
               <Link
-                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                 onClick={() => dispatch(toggleSignupState())}
                 to='/signup'
               >
                 <span
-                  className={toggleSignup === true ? 'dot dot-active' : 'dot'}
+                  className={
+                    toggleSignup === true
+                      ? 'dot dot-active dn db-ns'
+                      : 'dot dn db-ns'
+                  }
                 ></span>
                 Signup
               </Link>
               <div
                 className={
                   toggleSignup === true
-                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                      'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                     : 'dn ma0 w-100'
                 }
               >
@@ -231,21 +246,26 @@ function App(props) {
 
               {/* LOGIN SECTION */}
               <Link
-                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                 to='/login'
                 onClick={() => dispatch(toggleLoginState())}
               >
                 <span
-                  className={toggleLogin === true ? 'dot dot-active' : 'dot'}
+                  className={
+                    toggleLogin === true
+                      ? 'dot dot-active dn db-ns'
+                      : 'dot dn db-ns'
+                  }
                 ></span>
                 Login
               </Link>
               <div
                 className={
                   toggleLogin === true
-                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                      'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                     : 'dn ma0 w-100'
                 }
               >
@@ -268,21 +288,26 @@ function App(props) {
               />
               {/* CART SECTION */}
               <Link
-                className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                 // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
+                className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                 to='/checkout'
                 onClick={() => dispatch(toggleCartState())}
               >
                 <span
-                  className={toggleCart === true ? 'dot dot-active' : 'dot'}
+                  className={
+                    toggleCart === true
+                      ? 'dot dot-active dn db-ns'
+                      : 'dot dn db-ns'
+                  }
                 ></span>
                 Cart
               </Link>
               <div
                 className={
                   toggleCart === true
-                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                      'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                     : 'dn ma0 w-100'
                 }
               >
