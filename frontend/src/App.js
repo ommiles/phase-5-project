@@ -136,7 +136,7 @@ function App(props) {
             </div>
 
             {/* HOME SECTION */}
-            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden flex-m flex-l justify-end mt6-m mt6-s'>
+            <div className='absolute top-0 bottom-0 right-0 left-0 overflow-scroll-ns flex-m flex-l justify-end mt6-m mt6-s'>
             {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'> */}
               <Link
                 className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
@@ -153,7 +153,8 @@ function App(props) {
               <div
                 className={
                   toggleHome === true
-                    ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
@@ -220,7 +221,8 @@ function App(props) {
               <div
                 className={
                   toggleSignup === true
-                    ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
@@ -242,7 +244,8 @@ function App(props) {
               <div
                 className={
                   toggleLogin === true
-                    ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >
@@ -278,7 +281,8 @@ function App(props) {
               <div
                 className={
                   toggleCart === true
-                    ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
+                    ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                    // ? 'ma0 w-100 overflow-scroll pv5 ph6 fg-mono-light f4'
                     : 'dn ma0 w-100'
                 }
               >

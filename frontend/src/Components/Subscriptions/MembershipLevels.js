@@ -5,7 +5,8 @@ import { toggleCartState, toggleLoginState } from '../../Actions/toggleAction';
 
 function MembershipLevels(props) {
   const dispatch = useDispatch();
-  const creatorMembershipLevels = props.subscriptions.filter(
+  const subscriptions = useSelector(state => state.subscriptions.subscriptions);
+  const creatorMembershipLevels = subscriptions.filter(
     subscription =>
       subscription.subscribee.username === props.match.params.username
   );
@@ -27,7 +28,7 @@ function MembershipLevels(props) {
 
   return (
     <div>
-      <h1>Select a Membership Level:</h1>
+      {creatorMembershipLevels.length > 0 ? <h1>Select a Membership Level:</h1> : null}
       {creatorMembershipLevels.slice(0, 5).map(subscription => (
         <div key={subscription.id}>
           <h3>
