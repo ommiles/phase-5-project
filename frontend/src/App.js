@@ -290,10 +290,10 @@ function App(props) {
                         'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                       : 'dn ma0 w-100'
                   }
-                  style={{
-                    transition:
-                      'all 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2s',
-                  }}
+                  // style={{
+                  //   transition:
+                  //     'all 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2s',
+                  // }}
                 >
                   <Route exact path='/login' component={handleLogin} />
                   <Route
