@@ -6,39 +6,54 @@ const initialState = {
 
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_USERS_REQUEST":
+    case 'FETCH_USERS_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_USERS_SUCCESS":
+    case 'FETCH_USERS_SUCCESS':
       return {
         ...state,
         loading: false,
         users: action.posts,
       };
-    case "FETCH_USERS_FAILURE":
+    case 'FETCH_USERS_FAILURE':
       return {
         ...state,
         loading: false,
         error: true,
         users: [],
       };
-    case "FETCH_USER_REQUEST":
+    case 'FETCH_USER_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_USER_FAILURE":
+    case 'FETCH_USER_FAILURE':
       return {
         ...state,
         loading: false,
         error: true,
         users: [],
       };
-    case "DELETE_USERS_SUCCESS":
+    case 'EDIT_USER_SUCCESS':
+      if (state.users.findIndex) {
+        let index = state.users.findIndex(user => user.id === action.user.id);
+        return {
+          users: [
+            ...state.users.slice(0, index),
+            action.user,
+            ...state.users.slice(index + 1),
+          ],
+          loading: false,
+          error: false,
+        };
+      } else {
+        return { ...state, loading: false, error: false };
+      }
+    case 'DELETE_USERS_SUCCESS':
       return {
         ...state,
         loading: false,

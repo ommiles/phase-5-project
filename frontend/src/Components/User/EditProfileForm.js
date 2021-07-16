@@ -16,6 +16,7 @@ export default function EditProfileForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    history.push("/home");
     dispatch(
       fetchUserEdit({
         //   TODO: HOW TO HANDLE  EMPTY FIELDS ""
@@ -28,7 +29,6 @@ export default function EditProfileForm(props) {
       })
     );
     alert("Your account has been updated.");
-    history.push("/home");
   };
 
   const handleChange = (e) => {
