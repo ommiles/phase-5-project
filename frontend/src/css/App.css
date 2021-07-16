@@ -81,3 +81,56 @@ a:visited {
     transform: none;
   }
 }
+
+.loader-14 {
+  border-radius: 50%;
+  box-shadow: 0 1em 0 -0.2em currentcolor;
+  position: relative;
+  -webkit-animation: loader-14 0.8s ease-in-out alternate infinite;
+  animation: loader-14 0.8s ease-in-out alternate infinite;
+  -webkit-animation-delay: 0.32s;
+  animation-delay: 0.32s;
+  top: -1em;
+}
+
+.loader:after,
+.loader:before {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  box-shadow: inherit;
+  -webkit-animation: inherit;
+  animation: inherit;
+}
+
+.loader:before {
+  left: -1em;
+  -webkit-animation-delay: 0.48s;
+  animation-delay: 0.48s;
+}
+
+.loader:after {
+  right: -1em;
+  -webkit-animation-delay: 0.16s;
+  animation-delay: 0.16s;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    box-shadow: 0 2em 0 -0.2em currentcolor;
+  }
+  100% {
+    box-shadow: 0 1em 0 -0.2em currentcolor;
+  }
+}
+
+@keyframes loader {
+  0% {
+    box-shadow: 0 2em 0 -0.2em currentcolor;
+  }
+  100% {
+    box-shadow: 0 1em 0 -0.2em currentcolor;
+  }
+}

@@ -1,22 +1,29 @@
-import React, { useState } from "react";
-import GoBackButton from "../GoBackButton";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { fetchUserEdit } from "../../Actions/usersAction";
+import React, { useState } from 'react';
+import GoBackButton from '../GoBackButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { fetchUserEdit } from '../../Actions/usersAction';
 
 export default function EditProfileForm(props) {
+  const usersLoading = useSelector(state => state.users.loading);
+  const postsLoading = useSelector(state => state.posts.loading);
+  const commentsLoading = useSelector(state => state.comments.loading);
+  const subscriptionsLoading = useSelector(
+    state => state.subscriptions.loading
+  );
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const id = props.currentUser.id;
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    history.push("/home");
+    history.push('/home');
     dispatch(
       fetchUserEdit({
         //   TODO: HOW TO HANDLE  EMPTY FIELDS ""
@@ -28,24 +35,24 @@ export default function EditProfileForm(props) {
         last_name,
       })
     );
-    alert("Your account has been updated.");
+    alert('Your account has been updated.');
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     console.log(name);
     console.log(value);
     switch (e.target.name) {
-      case "username":
+      case 'username':
         setUsername(e.target.value);
         break;
-      case "email":
+      case 'email':
         setEmail(e.target.value);
         break;
-      case "first_name":
+      case 'first_name':
         setFirstName(e.target.value);
         break;
-      case "last_name":
+      case 'last_name':
         setLastName(e.target.value);
         break;
       default:
@@ -53,56 +60,65 @@ export default function EditProfileForm(props) {
     }
   };
 
-  return (
-    <div>
-      <GoBackButton />
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
+  if (
+    usersLoading === true ||
+    postsLoading === true ||
+    commentsLoading === true ||
+    subscriptionsLoading === true
+  ) {
+    return <div>Hold tight while items are being fetched...</div>;
+  } else {
+    return (
+      <div>
+        <GoBackButton />
+        <form onSubmit={handleSubmit}>
+          <div className='form-group'>
+            <label htmlFor='username'>Username</label>
+            <input
+              type='text'
+              name='username'
+              className='form-control'
+              onChange={handleChange}
+              value={username}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='email'>Email</label>
+            <input
+              type='text'
+              name='email'
+              className='form-control'
+              onChange={handleChange}
+              value={email}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='first_name'>First Name</label>
+            <input
+              type='text'
+              name='first_name'
+              className='form-control'
+              onChange={handleChange}
+              value={first_name}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='last_name'>Last Name</label>
+            <input
+              type='text'
+              name='last_name'
+              className='form-control'
+              onChange={handleChange}
+              value={last_name}
+            />
+          </div>
           <input
-            type="text"
-            name="username"
-            className="form-control"
-            onChange={handleChange}
-            value={username}
+            type='submit'
+            className='btn btn-primary'
+            value='Submit Changes'
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            className="form-control"
-            onChange={handleChange}
-            value={email}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="first_name">First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            className="form-control"
-            onChange={handleChange}
-            value={first_name}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="last_name">Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            className="form-control"
-            onChange={handleChange}
-            value={last_name}
-          />
-        </div>
-        <input
-          type="submit"
-          className="btn btn-primary"
-          value="Submit Changes"
-        />
-      </form>
-    </div>
-  );
+        </form>
+      </div>
+    );
+  }
 }

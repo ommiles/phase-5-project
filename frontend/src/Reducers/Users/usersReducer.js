@@ -14,13 +14,12 @@ export default function usersReducer(state = initialState, action) {
       };
     case 'FETCH_USERS_SUCCESS':
       return {
-        ...state,
         loading: false,
-        users: action.posts,
+        users: action.users,
+        error: false,
       };
     case 'FETCH_USERS_FAILURE':
       return {
-        ...state,
         loading: false,
         error: true,
         users: [],
@@ -29,19 +28,20 @@ export default function usersReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        error: null,
+        error: false,
       };
     case 'FETCH_USER_FAILURE':
       return {
-        ...state,
         loading: false,
         error: true,
         users: [],
       };
     case 'EDIT_USER_SUCCESS':
       if (state.users.findIndex) {
-        let index = state.users.findIndex(user => user.id === action.user.id);
+        const index = state.users.findIndex(user => user.id === action.user.id);
+        console.log(index)
         return {
+          ...state,
           users: [
             ...state.users.slice(0, index),
             action.user,

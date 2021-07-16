@@ -3,7 +3,7 @@ export const fetchUsers = () => {
     dispatch({ type: 'FETCH_USERS_REQUEST' });
     fetch('http://localhost:3000/api/v1/users')
       .then(resp => resp.json())
-      .then(posts => dispatch({ type: 'FETCH_USERS_SUCCESS', posts }));
+      .then(users => dispatch({ type: 'FETCH_USERS_SUCCESS', users }));
   };
 };
 
@@ -30,6 +30,7 @@ export const fetchUserEdit = user => {
         .then(resp => {
           return resp.json();
         })
+        // .then(console.log)
         .then(user => dispatch({ type: 'EDIT_USER_SUCCESS', user }));
     }
   };

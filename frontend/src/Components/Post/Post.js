@@ -11,17 +11,18 @@ export default function Post(props) {
       {/* <h2>
         Author: {props.post.user.first_name} {props.post.user.last_name}
       </h2> */}
-      <h4 className='f3 lh-title domaine-sans-fine-thin' >{props.post.subheader}</h4>
+      <h4 className='f2 lh-title domaine-sans-fine-thin' >{props.post.subheader}</h4>
+
 
       {props.allowed ? (
-        <div>
-          <img src={props.post.image} alt='post' />
-          <p className='geo-thin f3'>{props.post.post_content}</p>
+        <div className="flex flex-column items-center w6 pv5 ph5 bt bb mv5">
+          <img src={props.post.image} alt='post' className='ph4' />
+          <p className='geo-thin f4 ph4'>{props.post.post_content}</p>
         </div>
       ) : (
-        <div>
-          <img src={props.post.image} alt='post' style={{ filter: "blur(10px)" }}/>
-          <p style={{ filter: "blur(3px)" }}>{props.post.post_content}</p>
+        <div className="flex flex-column items-center w6 pv5 ph5 bt bb mv5">
+          <img src={props.post.image} alt='post' style={{ filter: "blur(10px)" }} className='ph4'/>
+          <p style={{ filter: "blur(3px)" }} className='geo-thin f4 ph4'>{props.post.post_content}</p>
         </div>
       )}
       {/* <p>{props.post.post_content}</p> */}
