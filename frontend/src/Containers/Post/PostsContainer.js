@@ -21,7 +21,7 @@ function PostsContainer(props) {
       subscriptionsRequest === true ||
       usersRequest === true
     ) {
-      return <div>Hold tight while items are being fetched...</div>;
+      return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
     } else {
       const username = props.match.params.username;
       const capitalizedUsername =
@@ -68,7 +68,7 @@ function PostsContainer(props) {
       subscriptionsRequest === true ||
       usersRequest === true
     ) {
-      return <div>Hold tight while items are being fetched...</div>;
+      return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
     } else {
       const id = parseInt(props.match.params.id);
       const username = props.match.params.username;

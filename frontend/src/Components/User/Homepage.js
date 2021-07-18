@@ -37,7 +37,7 @@ export default function Homepage(props) {
     subscriptionsRequest === true ||
     postsRequest === true
   ) {
-    return <div>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
   } else {
     const currentUserSubscriptions = props.subscriptions.filter(
       subscription => subscription.subscriber_id === props.currentUser.id

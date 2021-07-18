@@ -77,50 +77,54 @@ export default function AddPostForm() {
   return (
     <div>
       <h1>This is the AddPostForm.</h1>
-      <p>Not ready to upload your post?</p>
+      <p className='soehne-breit-leicht'>Not ready to upload your post?</p>
       <GoBackButton />
       <form onSubmit={handleSubmit}>
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='title'>Title:</label>
           <input
             type='text'
             name='title'
-            className=''
             onChange={handleChange}
             value={title}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='subheader'>Subheader:</label>
           <input
             type='text'
             name='subheader'
-            className=''
             onChange={handleChange}
             value={subheader}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='image'>Image:</label>
           <input
             type='text'
             name='image'
-            className=''
             onChange={handleChange}
             value={image}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='post_type'>Post Type:</label>
           <select
             type='text'
             name='post_type'
-            className=''
             onChange={handleChange}
             value={post_type}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
             <option value=''> Please choose an option </option>
             <option value='text'>Text</option>
@@ -133,14 +137,15 @@ export default function AddPostForm() {
           </select>
         </div>
 
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='membership_level'>Membership Level:</label>
           <select
             type='number'
             name='membership_level'
-            className=''
             onChange={handleChange}
             value={membership_level}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
             <option value='0'> Please choose an option </option>
             <option value='1'>1</option>
@@ -151,25 +156,27 @@ export default function AddPostForm() {
           </select>
         </div>
 
-        <div className='form-group'>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='post_content'>Post Content:</label>
           <textarea
             type='text'
             name='post_content'
-            className=''
             onChange={handleChange}
             value={post_content}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className=''>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           <label htmlFor='listing'>Listing:</label>
           <select
             type='text'
             name='listing'
-            className=''
             onChange={handleChange}
             value={listing}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
             <option value=''> Please choose an option </option>
             <option value='block_list'>For Subscribers Eyes Only :)</option>
@@ -177,7 +184,11 @@ export default function AddPostForm() {
           </select>
         </div>
 
-        <input type='submit' className='' value='Submit Post' />
+        <input
+          type='submit'
+          className='mv2 f6 link dim br3 ph3 pv2 mb2 dib white bg-black fg-text-light'
+          value='Submit Post'
+        />
       </form>
     </div>
   );

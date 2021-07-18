@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import GoBackButton from "../GoBackButton";
-import { fetchEditPost } from "../../Actions/postsAction";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import React, { useState } from 'react';
+import GoBackButton from '../GoBackButton';
+import { fetchEditPost } from '../../Actions/postsAction';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 export default function EditPostForm(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const post_id = parseInt(props.post_id);
-  const [post_type, setPostType] = useState("");
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [post_content, setPostContent] = useState("");
-  const [subheader, setSubheader] = useState("");
-  const [membership_level, setMembershipLevel] = useState("");
-  const [listing, setListing] = useState("");
+  const [post_type, setPostType] = useState('');
+  const [image, setImage] = useState('');
+  const [title, setTitle] = useState('');
+  const [post_content, setPostContent] = useState('');
+  const [subheader, setSubheader] = useState('');
+  const [membership_level, setMembershipLevel] = useState('');
+  const [listing, setListing] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(
       fetchEditPost({
@@ -31,36 +31,36 @@ export default function EditPostForm(props) {
       })
     );
     // TODO: Homepage component needs to be refreshed.
-    history.push("/home");
+    history.push('/home');
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     switch (name) {
-      case "post_type":
+      case 'post_type':
         console.log(value);
         setPostType(value);
         break;
-      case "subheader":
+      case 'subheader':
         console.log(value);
         setSubheader(value);
         break;
-      case "image":
+      case 'image':
         console.log(value);
         setImage(value);
         break;
-      case "title":
+      case 'title':
         console.log(value);
         setTitle(value);
         break;
-      case "post_content":
+      case 'post_content':
         console.log(value);
         setPostContent(value);
         break;
-      case "membership_level":
+      case 'membership_level':
         setMembershipLevel(value);
         break;
-      case "listing":
+      case 'listing':
         console.log(value);
         setListing(value);
         break;
@@ -71,108 +71,132 @@ export default function EditPostForm(props) {
 
   return (
     <div>
-      <h1>This is the EditPostForm.</h1>
-      <p>Not ready to edit your post?</p>
+      <p className='soehne-breit-leicht'>Not ready to upload your post?</p>
       <GoBackButton />
       <form onSubmit={handleSubmit}>
-        <div className="">
-          <label htmlFor="title">Title:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='title' className='pb3'>
+            Title:
+          </label>
           <input
-            type="text"
-            name="title"
-            className=""
+            type='text'
+            name='title'
             onChange={handleChange}
             value={title}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className="">
-          <label htmlFor="subheader">Subheader:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='subheader' className='pb3'>
+            Subheader:
+          </label>
           <input
-            type="text"
-            name="subheader"
-            className=""
+            type='text'
+            name='subheader'
             onChange={handleChange}
             value={subheader}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className="">
-          <label htmlFor="image">Image:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='image' className='pb3'>
+            Image:
+          </label>
           <input
-            type="text"
-            name="image"
-            className=""
+            type='text'
+            name='image'
             onChange={handleChange}
             value={image}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className="">
-          <label htmlFor="post_type">Post Type:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='post_type' className='pb3'>
+            Post Type:
+          </label>
           <select
-            type="text"
-            name="post_type"
-            className=""
+            type='text'
+            name='post_type'
             onChange={handleChange}
             value={post_type}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
-            <option value=""> Please choose an option </option>
-            <option value="text">Text</option>
-            <option value="video">Video</option>
-            <option value="image">Image</option>
-            <option value="poll">Poll</option>
-            <option value="livestream">Livestream</option>
-            <option value="audio">Audio</option>
-            <option value="link">Link</option>
+            <option value=''> Please choose an option </option>
+            <option value='text'>Text</option>
+            <option value='video'>Video</option>
+            <option value='image'>Image</option>
+            <option value='poll'>Poll</option>
+            <option value='livestream'>Livestream</option>
+            <option value='audio'>Audio</option>
+            <option value='link'>Link</option>
           </select>
         </div>
 
-        <div className="">
-          <label htmlFor="membership_level">Membership Level:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='membership_level' className='pb3'>
+            Membership Level:
+          </label>
           <select
-            type="number"
-            name="membership_level"
-            className=""
+            type='number'
+            name='membership_level'
             onChange={handleChange}
             value={membership_level}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
-            <option value=""> Please choose an option </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value=''> Please choose an option </option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
           </select>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="post_content">Post Content:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='post_content' className='pb3'>
+            Post Content:
+          </label>
           <textarea
-            type="text"
-            name="post_content"
-            className=""
+            type='text'
+            name='post_content'
             onChange={handleChange}
             value={post_content}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>
 
-        <div className="">
-          <label htmlFor="listing">Listing:</label>
+        <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <label htmlFor='listing' className='pb3'>
+            Listing:
+          </label>
           <select
-            type="text"
-            name="listing"
-            className=""
+            type='text'
+            name='listing'
             onChange={handleChange}
             value={listing}
+            className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           >
-            <option value=""> Please choose an option </option>
-            <option value="block_list">For Subscribers Eyes Only :)</option>
-            <option value="allow_list">Can be Viewed by the Public</option>
+            <option value=''> Please choose an option </option>
+            <option value='block_list'>For Subscribers Eyes Only :)</option>
+            <option value='allow_list'>Can be Viewed by the Public</option>
           </select>
         </div>
 
-        <input type="submit" className="" value="Submit Post Edit" />
+        <input
+          type='submit'
+          className='mv2 f6 link dim br3 ph3 pv2 mb2 dib white bg-black fg-text-light'
+          value='Submit Post Edit'
+        />
       </form>
     </div>
   );

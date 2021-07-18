@@ -35,9 +35,9 @@ export default function LoginForm(props) {
           <input
             type='text'
             name='username'
-            className='bt-0 bl-0 br-0 bb f3 gray'
             onChange={handleChange}
             value={username}
+            className='bt-0 bl-0 br-0 bb f3 gray'
             style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
           />
         </div>

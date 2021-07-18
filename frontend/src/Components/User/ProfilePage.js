@@ -9,7 +9,7 @@ function ProfilePage(props) {
   const users = useSelector(state => state.users.users);
 
   if (loginRequest === true || usersRequest === true) {
-    return <div>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
   } else {
     const url_username = props.match.params.username;
 

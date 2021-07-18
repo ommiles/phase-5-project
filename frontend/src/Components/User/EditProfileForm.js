@@ -66,55 +66,63 @@ export default function EditProfileForm(props) {
     commentsLoading === true ||
     subscriptionsLoading === true
   ) {
-    return <div>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
   } else {
     return (
       <div>
         <GoBackButton />
         <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='username'>Username</label>
+          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+            <label htmlFor='username' className='pb3'>Username</label>
             <input
               type='text'
               name='username'
-              className='form-control'
+              
               onChange={handleChange}
               value={username}
+              className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
             />
           </div>
-          <div className='form-group'>
-            <label htmlFor='email'>Email</label>
+          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+            <label htmlFor='email' className='pb3'>Email</label>
             <input
               type='text'
               name='email'
-              className='form-control'
+              
               onChange={handleChange}
               value={email}
+              className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
             />
           </div>
-          <div className='form-group'>
-            <label htmlFor='first_name'>First Name</label>
+          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+            <label htmlFor='first_name' className='pb3'>First Name</label>
             <input
               type='text'
               name='first_name'
-              className='form-control'
+              
               onChange={handleChange}
               value={first_name}
+              className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
             />
           </div>
-          <div className='form-group'>
-            <label htmlFor='last_name'>Last Name</label>
+          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+            <label htmlFor='last_name' className='pb3'>Last Name</label>
             <input
               type='text'
               name='last_name'
-              className='form-control'
+              
               onChange={handleChange}
               value={last_name}
+              className='bt-0 bl-0 br-0 bb f3 gray'
+            style={{ backgroundColor: '#f1f1f1', outline: 'transparent' }}
             />
           </div>
           <input
             type='submit'
-            className='btn btn-primary'
+            className='mv2 f6 link dim br3 ph3 pv2 mb2 dib white bg-black fg-text-light'
             value='Submit Changes'
           />
         </form>

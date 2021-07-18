@@ -40,7 +40,7 @@ function CheckoutContainer(props) {
     subscriptionsRequest === true ||
     Object.keys(currentUser).length === 0
   ) {
-    return <div>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
   } else {
     return (
       <div>
