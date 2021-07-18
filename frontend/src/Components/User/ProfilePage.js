@@ -55,12 +55,15 @@ function ProfilePage(props) {
                 </div>
                 <p
                   className='f4 mv0 soehne-breit-leicht tc w-80 center'
-                  // style={{ marginTop: '-90px' }}
+                  style={{ marginTop: '-30px' }}
                 >
-                  {user.bio}
+                  {/* {user.bio} */}I began coding at the age of two and have
+                  loved it ever since. Please become a patron so you can access
+                  my coaching and refactoring services and view my live
+                  code-alongs!
                 </p>
                 <div
-                  className='domaine-sans-fine-thin f2-l bt bb pv5 tc'
+                  className='soehne-breit-leicht f2-l bt bb pv5 tc'
                   style={{ marginTop: '100px' }}
                 >
                   <Link
@@ -68,7 +71,7 @@ function ProfilePage(props) {
                     style={{ marginTop: '200px' }}
                     to={`/${url_username}/posts`}
                   >
-                    Check Out My Posts ☞
+                    Check Out My Posts
                   </Link>
                 </div>
                 <MembershipLevels />
@@ -77,6 +80,11 @@ function ProfilePage(props) {
               <div key={index}>
                 This is falsey AKA {user.username} is not a creator.
                 <h4>My id is: {user.id}</h4>
+                <h5>
+                  I began coding at the age of two and have loved it ever since.
+                  Please become a patron so you can access my cocahing and
+                  refactoring services and view my live code-alongs!{' '}
+                </h5>
                 <h5>My bio is: {user.bio}</h5>
                 <h6>Username: {user.username}</h6>
               </div>

@@ -46,11 +46,11 @@ export default function Homepage(props) {
 
     return (
       <>
-        <div>
+        <div className=''>
           {creators.map(creator => (
             <div key={creator.id} className='mb4'>
               <Link
-                className='pointer link black f1 f1-m f-headline-l soehne-breit-leicht mv3'
+                className='pointer link black f1 f1-m f-subheadline-l soehne-breit-leicht mv3'
                 to={`/${creator.username}`}
               >
                 {creator.username.charAt(0).toUpperCase() +

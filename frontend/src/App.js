@@ -182,7 +182,7 @@ function App(props) {
                         ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
                         // 'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                           // 'ma0 w-100 overflow-scroll pv5-ns ph7 ph6-m ph5-l fg-mono-light f4'
-                          'ma0 w-100 overflow-scroll pv5-ns ph4-m ph7-l fg-mono-light f4 mb7'
+                          'ma0 w-100 overflow-scroll pv5-ns ph4-m pl3-l pr4-l fg-mono-light f4 mb7'
                         : 'dn ma0 w-100'
                     }
                   >

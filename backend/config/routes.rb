@@ -5,11 +5,8 @@ Rails.application.routes.draw do
       resources :posts
       resources :subscriptions
       resources :comments
-      # get '/profile', to: 'users#show'
       post '/login', to: 'users#login'
       get '/profile', to: 'users#profile'
-      # post '/users', to: 'users#create'
-      # the users#show action works with or without the below route:
       post '/posts/:id', to: 'posts#show'
       get '/:username', to: 'users#show'
       get '/password/reset', to: 'users#password_reset'

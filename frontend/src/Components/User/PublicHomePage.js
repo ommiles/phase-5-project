@@ -8,7 +8,7 @@ export default function PublicHomePage() {
   );
 
   return (
-    <div>
+    <div className='ph-4'>
       {/* <h1>PublicHomePage Component</h1> */}
       {/* CREATORS LIST */}
       <div className=''>
@@ -16,7 +16,7 @@ export default function PublicHomePage() {
         {creators.map(creator => (
           <div key={creator.id}>
             <Link
-              className='pointer link black f1 f1-m f-headline-l soehne-breit-leicht mv3'
+              className='pointer link black f1 f1-m f-subheadline-l soehne-breit-leicht mv3'
               to={`/${creator.username}`}
             >
               {creator.username.charAt(0).toUpperCase() +
