@@ -32,7 +32,9 @@ function MembershipLevels(props) {
           Become a Patron:
         </h1>
       ) : null}
-          <div className='flex flex-row justify-center align-center flex-wrap mb6'>
+          <div className='flex flex-row justify-start align-center flex-wrap mb6'
+          style={{ minWidth: '900px' }}
+          >
       {creatorMembershipLevels.slice(0, 5).map(subscription => (
         <div
           key={subscription.id}

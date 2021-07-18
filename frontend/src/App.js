@@ -32,6 +32,7 @@ import { fetchComments } from './Actions/commentsAction';
 import { fetchSubscriptions } from './Actions/subscriptionsAction';
 import { getProfileFetch } from './Actions/loginAction';
 import Sidebar from './Components/Sidebar';
+import Loading from './Components/Loading';
 import {
   toggleHomeState,
   toggleSignupState,
@@ -120,7 +121,8 @@ function App(props) {
       commentsLoading === true ||
       subscriptionsLoading === true
     ) {
-      return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+      // return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+      return <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'><Loading/></div>;
     } else {
       return (
         <>
@@ -180,7 +182,7 @@ function App(props) {
                         ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
                         // 'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                           // 'ma0 w-100 overflow-scroll pv5-ns ph7 ph6-m ph5-l fg-mono-light f4'
-                          'ma0 w-100 overflow-scroll pv5-ns ph7 fg-mono-light f4'
+                          'ma0 w-100 overflow-scroll pv5-ns ph4-m ph7-l fg-mono-light f4 mb7'
                         : 'dn ma0 w-100'
                     }
                   >

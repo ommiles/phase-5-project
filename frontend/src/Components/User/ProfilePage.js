@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import MembershipLevels from '../Subscriptions/MembershipLevels';
 import { useSelector } from 'react-redux';
+import Loading from '../Loading';
 
 function ProfilePage(props) {
   const usersRequest = useSelector(state => state.users.loading);
@@ -9,7 +10,11 @@ function ProfilePage(props) {
   const users = useSelector(state => state.users.users);
 
   if (loginRequest === true || usersRequest === true) {
-    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+    return (
+      <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'>
+        <Loading />
+      </div>
+    );
   } else {
     const url_username = props.match.params.username;
 
@@ -49,8 +54,8 @@ function ProfilePage(props) {
                   ></img>
                 </div>
                 <p
-                  className='f3 mt0 pt2 pb4 tc domaine-tx-light'
-                  style={{ marginTop: '-90px' }}
+                  className='f4 mv0 soehne-breit-leicht tc w-80 center'
+                  // style={{ marginTop: '-90px' }}
                 >
                   {user.bio}
                 </p>

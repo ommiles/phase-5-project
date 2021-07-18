@@ -3,6 +3,7 @@ import GoBackButton from '../GoBackButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { fetchUserEdit } from '../../Actions/usersAction';
+import Loading from '../Loading';
 
 export default function EditProfileForm(props) {
   const usersLoading = useSelector(state => state.users.loading);
@@ -66,7 +67,7 @@ export default function EditProfileForm(props) {
     commentsLoading === true ||
     subscriptionsLoading === true
   ) {
-    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'><Loading/></div>;
   } else {
     return (
       <div>

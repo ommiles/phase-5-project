@@ -32,16 +32,24 @@ export default function Post(props) {
               {props.post.post_type.charAt(0).toUpperCase() +
                 props.post.post_type.slice(1)}
             </p>
-            {props.listing === 'allow_list' ? (
-              <p className='mv1'>Preview for Free</p>
+            {props.allowed ? (
+              <div>
+                <p className='mv1'>Preview for Free</p>
+                <p className='mv1'>{`This listing type is: ${props.post.listing.charAt(0).toUpperCase() +
+                props.post.listing.slice(1)}`}</p>
+              </div>
             ) : (
-              <p className='mv1'>Sign Up to View More!</p>
+              <div>
+                <p className='mv1'>This post is members only.</p>
+                <p className='mv1'>Sign Up to View More!</p>
+                <p className='mv1'>
+                  For Level {props.post.membership_level} Subscribers
+                </p>
+                <p className='mv1'>{`This listing type is: ${props.post.listing.charAt(0).toUpperCase() +
+                props.post.listing.slice(1)}`}</p>
+              </div>
             )}
-            <p className='mv1'>{`This listing type is: ${props.post.listing}`}</p>
 
-            <p className='mv1'>
-              For Level {props.post.membership_level} Subscribers
-            </p>
             {props.post.type !== undefined ? (
               <p className='mv1'>{`This post's type is: ${props.post.type}`}</p>
             ) : null}

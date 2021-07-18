@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PostsList from '../../Components/Post/PostsList';
 import Post from '../../Components/Post/Post';
 import { useSelector } from 'react-redux';
+import Loading from '../../Components/Loading';
 
 function PostsContainer(props) {
   const currentUser = useSelector(state => state.login.currentUser);
@@ -21,7 +22,11 @@ function PostsContainer(props) {
       subscriptionsRequest === true ||
       usersRequest === true
     ) {
-      return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+      return (
+        <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'>
+          <Loading />
+        </div>
+      );
     } else {
       const username = props.match.params.username;
       const capitalizedUsername =
@@ -38,9 +43,11 @@ function PostsContainer(props) {
       // the user can see posts
 
       return (
-        <div >
+        <div>
           {/* <h1>This is the Posts Container.</h1> */}
-          <h2 className='f1 f1-m f-headline-l soehne-breit-leicht mb4 mt0'>Posts by {capitalizedUsername}:</h2>
+          <h2 className='f1 f1-m f-headline-l soehne-breit-leicht mb4 mt0'>
+            Posts by {capitalizedUsername}:
+          </h2>
           {props.posts
             .filter(post => post.user.username === username)
             .map(post => (
@@ -50,7 +57,7 @@ function PostsContainer(props) {
                 allowed={
                   (subscription !== undefined &&
                     post.membership_level <= subscription.membership_level) ||
-                  (post.listing === 'allow_list')
+                  post.listing === 'allow_list'
                     ? true
                     : false
                 }
@@ -68,7 +75,11 @@ function PostsContainer(props) {
       subscriptionsRequest === true ||
       usersRequest === true
     ) {
-      return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+      return (
+        <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'>
+          <Loading />
+        </div>
+      );
     } else {
       const id = parseInt(props.match.params.id);
       const username = props.match.params.username;
@@ -90,7 +101,7 @@ function PostsContainer(props) {
                 allowed={
                   (subscription !== undefined &&
                     post.membership_level <= subscription.membership_level) ||
-                  (post.listing === 'allow_list')
+                  post.listing === 'allow_list'
                     ? true
                     : false
                 }

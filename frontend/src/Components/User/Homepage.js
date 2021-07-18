@@ -6,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { deletePost } from '../../Actions/postsAction';
 import { deleteSubscription } from '../../Actions/subscriptionsAction';
 import Logout from './Logout';
+import Loading from '../Loading';
 
 export default function Homepage(props) {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export default function Homepage(props) {
     subscriptionsRequest === true ||
     postsRequest === true
   ) {
-    return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
+    return <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'><Loading/></div>;
   } else {
     const currentUserSubscriptions = props.subscriptions.filter(
       subscription => subscription.subscriber_id === props.currentUser.id
