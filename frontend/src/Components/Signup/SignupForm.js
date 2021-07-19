@@ -43,12 +43,6 @@ export default function SignupForm() {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log({ name, value });
-    console.log(name);
-    console.log(value);
-    console.log(username);
     switch (e.target.name) {
       case 'username':
         setUsername(e.target.value);

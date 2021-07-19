@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 export default function EditCommentForm(props) {
-  console.log(props);
   const comment_id = props.comment_id;
   const dispatch = useDispatch();
   const history = useHistory();

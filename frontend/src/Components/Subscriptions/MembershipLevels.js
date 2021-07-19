@@ -15,7 +15,6 @@ function MembershipLevels(props) {
   let history = useHistory();
 
   const handleClick = subscription_id => {
-    console.log(subscription_id);
     if (Object.keys(currentUser).length === 0) {
       history.push('/login');
       dispatch(toggleLoginState());

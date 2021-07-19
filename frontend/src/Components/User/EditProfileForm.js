@@ -41,8 +41,6 @@ export default function EditProfileForm(props) {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
     switch (e.target.name) {
       case 'username':
         setUsername(e.target.value);

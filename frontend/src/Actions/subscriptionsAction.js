@@ -31,7 +31,6 @@ export const fetchAddSubscription = (subscription) => {
       }),
     })
       .then((resp) => resp.json())
-      // .then(console.log)
       .then((subscription) => dispatch({ type: "FETCH_SUBSCRIPTION_SUCCESS", subscription }));
   };
 };
@@ -49,9 +48,7 @@ export const deleteSubscription = (subscription_id) => {
       },
     })
       .then((resp) => resp.json())
-      // .then(console.log)
       .then((data) => {
-        console.log(data);
         dispatch({ type: "DELETE_SUBSCRIPTION_SUCCESS", subscription_id });
       });
   };

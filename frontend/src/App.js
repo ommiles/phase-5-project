@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import './CSS/App.css';
 import './CSS/Fonts.css';
 import {
-  // BrowserRouter as Router,
   Switch,
   Route,
   Link,
   Redirect,
   useHistory,
-  // useLocation,
   withRouter,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -42,14 +40,11 @@ import {
 
 function App(props) {
   useEffect(() => {
-    console.log('mounted');
-    console.log(users.length);
     dispatch(getProfileFetch());
     dispatch(fetchPosts());
     dispatch(fetchUsers());
     dispatch(fetchComments());
     dispatch(fetchSubscriptions());
-    console.log('unmounted');
   }, []);
 
   const toggleHome = useSelector(state => state.toggle.toggleHome);
@@ -121,7 +116,6 @@ function App(props) {
       commentsLoading === true ||
       subscriptionsLoading === true
     ) {
-      // return <div className='soehne-breit-leicht f1 flex items-center justify-center h-100 w-100'>Hold tight while items are being fetched...</div>;
       return <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'><Loading/></div>;
     } else {
       return (
@@ -147,21 +141,11 @@ function App(props) {
 
               {/* RESPONSIVE HOME SECTION */}
               <div className='dn-m dn-l absolute top-0 bottom-0 mt6 pa4 w-100'>
-                {/* TROUBLEMAKER */}
-                {/* <Link className='link black pointer outline-transparent domaine-sans-fine-thin flex items-center'>
-                  <span className='responsive-dot mr2'></span>
-                  Home
-                </Link> */}
-                {/* RESPONSIVEAPP.JS COULD GO HERE */}
               </div>
 
               {/* HOME SECTION */}
-              {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-scroll-ns flex-m flex-l justify-end mt6-m mt6-s'> */}
-              {/* <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden dn flex-m flex-l justify-end mt6-m mt6-s'> */}
               <div className='absolute top-0 bottom-0 right-0 left-0 overflow-hidden flex flex-column flex-row-ns justify-end-ns pa4 pa0-ns mt6-m mt6-s'>
                 <Link
-                  // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                  // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                   className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                   onClick={() => dispatch(toggleHomeState())}
                   to='/'
@@ -179,10 +163,7 @@ function App(props) {
                   <div
                     className={
                       toggleHome === true
-                        ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                        // 'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
-                          // 'ma0 w-100 overflow-scroll pv5-ns ph7 ph6-m ph5-l fg-mono-light f4'
-                          'ma0 w-100 overflow-scroll pv5-ns ph4-m pl3-l pr4-l fg-mono-light f4 mb7'
+                        ?  'ma0 w-100 overflow-scroll pv5-ns ph4-m pl3-l pr4-l fg-mono-light f4 mb7'
                         : 'dn ma0 w-100'
                     }
                   >
@@ -242,8 +223,6 @@ function App(props) {
 
                 {/* SIGNUP SECTION */}
                 <Link
-                  // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                  // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                   className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                   onClick={() => dispatch(toggleSignupState())}
                   to='/signup'
@@ -260,8 +239,7 @@ function App(props) {
                 <div
                   className={
                     toggleSignup === true
-                      ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                        'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
+                      ?  'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                       : 'dn ma0 w-100'
                   }
                 >
@@ -270,8 +248,6 @@ function App(props) {
 
                 {/* LOGIN SECTION */}
                 <Link
-                  // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                  // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                   className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                   to='/login'
                   onClick={() => dispatch(toggleLoginState())}
@@ -288,14 +264,10 @@ function App(props) {
                 <div
                   className={
                     toggleLogin === true
-                      ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
+                      ?
                         'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                       : 'dn ma0 w-100'
                   }
-                  // style={{
-                  //   transition:
-                  //     'all 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2s',
-                  // }}
                 >
                   <Route exact path='/login' component={handleLogin} />
                   <Route
@@ -316,8 +288,6 @@ function App(props) {
                 />
                 {/* CART SECTION */}
                 <Link
-                  // className='pointer sideways-text ma0 dn flex-m flex-l justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
-                  // className='pointer sideways-text ma0 flex justify-end f3 f2-l link br outline-transparent black pb5 domaine-sans-fine-thin ph2 items-center'
                   className='pointer sideways-text ma0 flex justify-end-ns f3 f2-l link br-ns outline-transparent black pb4 pb5-ns domaine-sans-fine-thin ph2 items-center'
                   to='/checkout'
                   onClick={() => dispatch(toggleCartState())}
@@ -334,8 +304,7 @@ function App(props) {
                 <div
                   className={
                     toggleCart === true
-                      ? // ? 'mt7 ma0-ns w-100 overflow-scroll pa3 pv5-ns ph6-ns fg-mono-light f4-ns'
-                        'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
+                      ?  'ma0 w-100 overflow-scroll pv5-ns ph6 fg-mono-light f4 flex items-center justify-center'
                       : 'dn ma0 w-100'
                   }
                 >

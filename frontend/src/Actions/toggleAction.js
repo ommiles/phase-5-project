@@ -24,7 +24,6 @@ export const toggleCartState = () => {
 
 export const toggleMenu = () => {
   return dispatch => {
-      console.log('toggleMenu action is firing.')
     dispatch({ type: 'TOGGLE_MENU' });
   };
 };

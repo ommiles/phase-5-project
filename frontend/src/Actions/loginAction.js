@@ -27,7 +27,6 @@ export const fetchLogin = ({ username, password }) => {
           // localStorage.setItem("jwt", data.token);
           // localStorage.setItem("jwt", data.jwt);
           let user = data.user;
-          console.log(user)
           dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
         }
       });
@@ -54,7 +53,6 @@ export const getProfileFetch = () => {
             localStorage.removeItem("token");
           } else {
             let user = data.user;
-            console.log(user)
             dispatch({ type: "FETCH_LOGIN_SUCCESS", user });
           }
         });
@@ -78,16 +76,10 @@ export const getPasswordFetch = (email) => {
     .then((resp) => {
       return resp.json();
     })
-    // .then(console.log)
     .then((data) => {
       if (data.message) {
         alert("Please try again.")
       } else {
-        // let user = data.user;
-        // let token = data.jwt;
-        // console.log(data)
-        // console.log(user)
-        // console.log(token)
         dispatch({ type: "FETCH_PASSWORD_SUCCESS", data });
       }
     });

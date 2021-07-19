@@ -3,7 +3,6 @@ import GoBackButton from '../GoBackButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { fetchAddPost } from '../../Actions/postsAction';
-// import { toggleHomeState } from '../../Actions/toggleAction';
 
 export default function AddPostForm() {
   const dispatch = useDispatch();
@@ -38,35 +37,24 @@ export default function AddPostForm() {
     const { name, value } = e.target;
     switch (name) {
       case 'post_type':
-        console.log(value);
         setPostType(value);
         break;
       case 'subheader':
-        console.log(value);
         setSubheader(value);
         break;
       case 'image':
-        console.log(value);
         setImage(value);
         break;
       case 'title':
-        console.log(value);
         setTitle(value);
         break;
       case 'post_content':
-        console.log(value);
         setPostContent(value);
         break;
       case 'membership_level':
-        // console.log(value);
-        // console.log(typeof value);
-        // console.log(parseInt(value));
-        // console.log(value.to_i);
-        // TODO Number not converting to number
         setMembershipLevel(value);
         break;
       case 'listing':
-        console.log(value);
         setListing(value);
         break;
       default:

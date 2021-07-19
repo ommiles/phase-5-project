@@ -39,7 +39,6 @@ export default function usersReducer(state = initialState, action) {
     case 'EDIT_USER_SUCCESS':
       if (state.users.findIndex) {
         const index = state.users.findIndex(user => user.id === action.user.id);
-        console.log(index)
         return {
           ...state,
           users: [

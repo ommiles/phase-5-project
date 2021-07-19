@@ -6,7 +6,6 @@ import { useHistory, withRouter } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 
 function PasswordResetForm(props) {
-  console.log(props);
   const dispatch = useDispatch();
   dispatch(toggleLoginState());
   const history = useHistory();
@@ -30,19 +29,16 @@ function PasswordResetForm(props) {
   };
 
   useEffect(() => {
-    console.log('mounted');
     if (
       props.match.path === '/reset/success' &&
       templateParams.message !== 'http://localhost:3001/password/reset/'
     ) {
       handleReset();
     }
-    console.log('unmounted');
   }, []);
 
   const handleReset = () => {
     emailjs.init('user_CZ8AxCf2hgq23IKcpjfYS');
-    console.log(templateParams);
 
     emailjs.send('service_wollzph', 'template_89vbj9f', templateParams).then(
       function (response) {

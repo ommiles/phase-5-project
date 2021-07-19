@@ -30,7 +30,6 @@ export default function EditPostForm(props) {
         listing,
       })
     );
-    // TODO: Homepage component needs to be refreshed.
     history.push('/home');
   };
 
@@ -38,30 +37,24 @@ export default function EditPostForm(props) {
     const { name, value } = e.target;
     switch (name) {
       case 'post_type':
-        console.log(value);
         setPostType(value);
         break;
       case 'subheader':
-        console.log(value);
         setSubheader(value);
         break;
       case 'image':
-        console.log(value);
         setImage(value);
         break;
       case 'title':
-        console.log(value);
         setTitle(value);
         break;
       case 'post_content':
-        console.log(value);
         setPostContent(value);
         break;
       case 'membership_level':
         setMembershipLevel(value);
         break;
       case 'listing':
-        console.log(value);
         setListing(value);
         break;
       default:

@@ -8,7 +8,6 @@ export const fetchUsers = () => {
 };
 
 export const fetchUserEdit = user => {
-  console.log(user);
   return dispatch => {
     const token = localStorage.token;
     dispatch({ type: 'FETCH_USER_REQUEST' });
@@ -30,14 +29,12 @@ export const fetchUserEdit = user => {
         .then(resp => {
           return resp.json();
         })
-        // .then(console.log)
         .then(user => dispatch({ type: 'EDIT_USER_SUCCESS', user }));
     }
   };
 };
 
 export const fetchPasswordEdit = passwordTokenObj => {
-  console.log(passwordTokenObj);
   return dispatch => {
     return fetch(`http://localhost:3000/api/v1/users/${passwordTokenObj.id}`, {
       method: 'PATCH',
@@ -55,7 +52,6 @@ export const fetchPasswordEdit = passwordTokenObj => {
         return resp.json();
       })
       .then(data => {
-        console.log(data);
       });
   };
 };

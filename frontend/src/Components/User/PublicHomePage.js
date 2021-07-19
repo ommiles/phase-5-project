@@ -8,12 +8,9 @@ export default function PublicHomePage() {
   );
 
   return (
-    // <div className='pl5 pr4'>
     <div className='ph7'>
-      {/* <h1>PublicHomePage Component</h1> */}
       {/* CREATORS LIST */}
       <div className=''>
-        {/* <h1>Creators</h1> */}
         {creators.map(creator => (
           <div key={creator.id}>
             <Link

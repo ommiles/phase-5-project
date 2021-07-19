@@ -33,7 +33,6 @@ export const fetchAddComment = (comment) => {
 
 export const fetchEditComment = (comment) => {
   return (dispatch) => {
-    console.log(comment);
     dispatch({ type: "FETCH_COMMENTS_REQUEST" });
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3000/api/v1/comments/${comment.comment_id}`, {
@@ -65,9 +64,7 @@ export const deleteComment = (comment_id) => {
       },
     })
       .then((resp) => resp.json())
-      // .then(console.log)
       .then((data) => {
-        console.log(data);
         dispatch({ type: "DELETE_COMMENT_SUCCESS", comment_id });
       });
   };

@@ -1,6 +1,5 @@
 export const fetchSignup = (info) => {
     return (dispatch) => {
-    console.log(info)
     dispatch({ type: "FETCH_SIGNUP_REQUEST" });
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
