@@ -46,7 +46,7 @@ export default function Homepage(props) {
 
     return (
       <>
-        <div className=''>
+        <div className='pl3 pr7'>
           {creators.map(creator => (
             <div key={creator.id} className='mb4'>
               <Link

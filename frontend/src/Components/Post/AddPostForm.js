@@ -75,8 +75,7 @@ export default function AddPostForm() {
   };
 
   return (
-    <div>
-      <h1>This is the AddPostForm.</h1>
+    <div className='ph7'>
       <p className='soehne-breit-leicht'>Not ready to upload your post?</p>
       <GoBackButton />
       <form onSubmit={handleSubmit}>

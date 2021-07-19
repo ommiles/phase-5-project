@@ -28,7 +28,9 @@ export default function AddCommentForm(props) {
   };
 
   return (
-    <div className='w-100 flex flex-column justify-center items-center soehne-breit-leicht' style={{ width: '750px'}}>
+    <div className='w-100 flex flex-column justify-center items-center soehne-breit-leicht ph7' 
+    // style={{ width: '750px'}}
+    >
       <p>Not ready to share your comment?</p>
       <GoBackButton />
       <form onSubmit={handleSubmit} className='w-100 flex flex-column justify-center items-center mb4 mh5 f1 f3-m f2-l soehne-breit-leicht'>

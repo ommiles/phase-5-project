@@ -70,10 +70,10 @@ export default function EditProfileForm(props) {
     return <div className='soehne-breit-leicht f3 flex items-center justify-center vh-100 w-100 center'><Loading/></div>;
   } else {
     return (
-      <div>
+      <div className='ph7'>
         <GoBackButton />
         <form onSubmit={handleSubmit}>
-          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
+          <div className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4 ph2'>
             <label htmlFor='username' className='pb3'>Username</label>
             <input
               type='text'

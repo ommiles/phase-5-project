@@ -52,16 +52,15 @@ function CheckoutContainer(props) {
     );
   } else {
     return (
-      <div>
-        <div>Not ready just yet?</div>
+      <div className='center'>
+        <p className='soehne-breit-leicht'>Not ready just yet?</p>
         <button
           onClick={goBack}
           className='mv2 f6 link dim br3 ph3 pv2 mb2 dib white bg-black fg-text-light'
         >
           Go Back
         </button>
-        <h1>Checkout Container</h1>
-        <h2>
+        <h2 className='flex flex-column f1 f3-m f2-l soehne-breit-leicht mv4'>
           Buy {subscription.title} for ${subscription.cost}
         </h2>
         <button
