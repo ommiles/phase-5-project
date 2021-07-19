@@ -1,8 +1,31 @@
 # Phase 5 Project Todo's:
 
-<h2>To-do List:</h2>
+<h2>Backend</h2>
 
-    -Render Creator Page: List of subscribees 
+    -Ruby on Rails as a REST API
 
-    -Add Button on Creator page: clicking on a locked post leads to a sign up page if not logged in (currentUser is empty)
+    -Authentication with JSON Web Tokens (JWT)
 
+    -Multiple has_many_through relationships
+
+    -Model validations
+
+    -Custom controllers and model methods
+
+    -Custom routes and API namespaced
+
+    -Active Model Serializer
+
+<h2>Frontend</h2>
+
+    -React JS
+
+    -Redux
+
+    -Thunk
+
+    -Tachyons
+
+    - Emailjs
+
+    -Fully Responsive
